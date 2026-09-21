@@ -99,7 +99,7 @@ private Class(ClassLoader loader) {
     //            annotationTypeOffset = objectFieldOffset(fields, "annotationType");
     //            annotationDataOffset = objectFieldOffset(fields, "annotationData");
     //        }
-    
+        }
             //提供反射信息
         // reflection data that might get invalidated when JVM TI RedefineClasses() is called
     //    private static class ReflectionData<T> {
@@ -159,11 +159,11 @@ private Class(ClassLoader loader) {
     //        }
     //    }
     }
+}
 ````
 
 > 我们都知道所有的java类都是继承了object这个类，在object这个类中有一个方法：getclass().这个方法是用来取得该类已经被实例化了的对象的该类的引用，这个引用指向的是Class类的对象。
-> 
-> 我们自己无法生成一个Class对象（构造函数为private)，而 这个Class类的对象是在当各类被调入时，由 Java 虚拟机自动创建 Class 对象，或通过类装载器中的 defineClass 方法生成。
+> 我们自己无法生成一个Class对象（构造函数为private），而 这个Class类的对象是在当各类被调入时，由 Java 虚拟机自动创建 Class 对象，或通过类装载器中的 defineClass 方法生成。
 
     //通过该方法可以动态地将字节码转为一个Class类对象
     protected final Class<?> defineClass(String name, byte[] b, int off, int len)
@@ -171,7 +171,6 @@ private Class(ClassLoader loader) {
     {
         return defineClass(name, b, off, len, null);
     }
->
 
 ### 如何获得一个Class类对象
 
