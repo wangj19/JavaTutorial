@@ -1,20 +1,20 @@
-ÉÏÒ»ÆªÎÄÕÂ×Ü½á springboot Æô¶¯Á÷³ÌÈçÏÂ£º
+ä¸Šä¸€ç¯‡æ–‡ç« æ€»ç»“ springboot å¯åŠ¨æµç¨‹å¦‚ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-07a6b491fbe69b8dcbd41e59a8543f06671.png)
 
-½ÓÉÏÎÄ£¬ÎÒÃÇ¼ÌĞø·ÖÎö½ÓÏÂÀ´µÄ²½Öè¡£
+æ¥ä¸Šæ–‡ï¼Œæˆ‘ä»¬ç»§ç»­åˆ†ææ¥ä¸‹æ¥çš„æ­¥éª¤ã€‚
 
-### 3.10 Ë¢ĞÂ ioc ÈİÆ÷
+### 3.10 åˆ·æ–° ioc å®¹å™¨
 
-½ÓÏÂÀ´ÎÒÃÇÀ´¿´¿´ `SpringApplication#refreshContext` ·½·¨£º
+æ¥ä¸‹æ¥æˆ‘ä»¬æ¥çœ‹çœ‹ `SpringApplication#refreshContext` æ–¹æ³•ï¼š
 
 ```
 private void refreshContext(ConfigurableApplicationContext context) {
-    // Æô¶¯springÈİÆ÷
+    // å¯åŠ¨springå®¹å™¨
     refresh(context);
     if (this.registerShutdownHook) {
         try {
-            // ×¢²á ShutdownHook
+            // æ³¨å†Œ ShutdownHook
             context.registerShutdownHook();
         }
         catch (AccessControlException ex) {
@@ -25,45 +25,45 @@ private void refreshContext(ConfigurableApplicationContext context) {
 
 ```
 
-Õâ¸ö·½·¨²Ù×÷¾ÍÁ½¸ö£º
+è¿™ä¸ªæ–¹æ³•æ“ä½œå°±ä¸¤ä¸ªï¼š
 
-1.  `refresh(context)`£ºÆô¶¯ spring ÈİÆ÷£¬Ò²²»ÊÇµ÷ÓÃ `AbstractApplicationContext#refresh` ·½·¨£»
-2.  `context.registerShutdownHook()`£º×¢²á `ShutdownHook`£¬¿ÉÒÔÔÚ jvm ½ø³Ì¹Ø±ÕÊ±´¦ÀíÒ»Ğ©ÌØ¶¨µÄ²Ù×÷¡£
+1.  `refresh(context)`ï¼šå¯åŠ¨ spring å®¹å™¨ï¼Œä¹Ÿä¸æ˜¯è°ƒç”¨ `AbstractApplicationContext#refresh` æ–¹æ³•ï¼›
+2.  `context.registerShutdownHook()`ï¼šæ³¨å†Œ `ShutdownHook`ï¼Œå¯ä»¥åœ¨ jvm è¿›ç¨‹å…³é—­æ—¶å¤„ç†ä¸€äº›ç‰¹å®šçš„æ“ä½œã€‚
 
-#### 3.10.1 Æô¶¯ spring ÈİÆ÷
+#### 3.10.1 å¯åŠ¨ spring å®¹å™¨
 
-½øÈë `SpringApplication#refresh`£º
+è¿›å…¥ `SpringApplication#refresh`ï¼š
 
 ```
 protected void refresh(ApplicationContext applicationContext) {
     Assert.isInstanceOf(AbstractApplicationContext.class, applicationContext);
-    // spring ÈİÆ÷µÄÆô¶¯²Ù×÷ÁË
+    // spring å®¹å™¨çš„å¯åŠ¨æ“ä½œäº†
     ((AbstractApplicationContext) applicationContext).refresh();
 }
 
 ```
 
-Õâ¸ö·½·¨ºÜ¼òµ¥£¬ÏÈÅĞ¶Ï `applicationContext` µÄÀàĞÍÊÇ·ñÎª `AbstractApplicationContext`£¬È»ºóÔÙµ÷ÓÃ `AbstractApplicationContext#refresh()`¡£
+è¿™ä¸ªæ–¹æ³•å¾ˆç®€å•ï¼Œå…ˆåˆ¤æ–­ `applicationContext` çš„ç±»å‹æ˜¯å¦ä¸º `AbstractApplicationContext`ï¼Œç„¶åå†è°ƒç”¨ `AbstractApplicationContext#refresh()`ã€‚
 
-¹ØÓÚ `AbstractApplicationContext#refresh()`£¬ÄÇ¿ÉÊÇ´óÃû¶¦¶¦°¡£¬¸Ã·½·¨º­¸ÇÁË spring ÈİÆ÷µÄÆô¶¯Á÷³Ì¡£ÓÉÓÚ±¾ÎÄ²»ÊÇ·ÖÎö spring µÄÎÄÕÂ£¬Òò´ËÕâ¿é¾Í²»Õ¹¿ª·ÖÎöÁË£¬ÏëÒªÁË½âµÄÆô¶¯Á÷³ÌµÄĞ¡»ï°é¿ÉÒÔ²Î¿¼ÒÔÏÂÎÄÕÂ£º
+å…³äº `AbstractApplicationContext#refresh()`ï¼Œé‚£å¯æ˜¯å¤§åé¼é¼å•Šï¼Œè¯¥æ–¹æ³•æ¶µç›–äº† spring å®¹å™¨çš„å¯åŠ¨æµç¨‹ã€‚ç”±äºæœ¬æ–‡ä¸æ˜¯åˆ†æ spring çš„æ–‡ç« ï¼Œå› æ­¤è¿™å—å°±ä¸å±•å¼€åˆ†æäº†ï¼Œæƒ³è¦äº†è§£çš„å¯åŠ¨æµç¨‹çš„å°ä¼™ä¼´å¯ä»¥å‚è€ƒä»¥ä¸‹æ–‡ç« ï¼š
 
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨ËÄ£©£ºÆô¶¯Ç°µÄ×¼±¸¹¤×÷](https://my.oschina.net/funcy/blog/4633169)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨Îå£©£ºÖ´ĞĞ BeanFactoryPostProcessor](https://my.oschina.net/funcy/blog/4641114)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨Áù£©£º×¢²á BeanPostProcessor](https://my.oschina.net/funcy/blog/4657181)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨Æß£©£º¹ú¼Ê»¯ÓëÊÂ¼ş´¦Àí](https://my.oschina.net/funcy/blog/4892120)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨°Ë£©£ºÍê³É BeanFactory µÄ³õÊ¼»¯](https://my.oschina.net/funcy/blog/4658230)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨¾Å£©£ºµ¥Àı bean µÄ´´½¨](https://my.oschina.net/funcy/blog/4659524)
-*   [¡¾spring Ô´Âë·ÖÎö¡¿spring Æô¶¯Á÷³Ì£¨Ê®£©£ºÆô¶¯Íê³ÉµÄ´¦Àí](https://my.oschina.net/funcy/blog/4892555)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆå››ï¼‰ï¼šå¯åŠ¨å‰çš„å‡†å¤‡å·¥ä½œ](https://my.oschina.net/funcy/blog/4633169)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆäº”ï¼‰ï¼šæ‰§è¡Œ BeanFactoryPostProcessor](https://my.oschina.net/funcy/blog/4641114)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆå…­ï¼‰ï¼šæ³¨å†Œ BeanPostProcessor](https://my.oschina.net/funcy/blog/4657181)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆä¸ƒï¼‰ï¼šå›½é™…åŒ–ä¸äº‹ä»¶å¤„ç†](https://my.oschina.net/funcy/blog/4892120)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆå…«ï¼‰ï¼šå®Œæˆ BeanFactory çš„åˆå§‹åŒ–](https://my.oschina.net/funcy/blog/4658230)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆä¹ï¼‰ï¼šå•ä¾‹ bean çš„åˆ›å»º](https://my.oschina.net/funcy/blog/4659524)
+*   [ã€spring æºç åˆ†æã€‘spring å¯åŠ¨æµç¨‹ï¼ˆåï¼‰ï¼šå¯åŠ¨å®Œæˆçš„å¤„ç†](https://my.oschina.net/funcy/blog/4892555)
 
-ÔÚ `AbstractApplicationContext#refresh()` ÖĞ£¬spring Ìá¹©ÁË¼¸¸öÀ©Õ¹µã£º
+åœ¨ `AbstractApplicationContext#refresh()` ä¸­ï¼Œspring æä¾›äº†å‡ ä¸ªæ‰©å±•ç‚¹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-b86d0fb2e3790f63b5c6590884be9401354.png)
 
-ÎÒÃÇµ±Ç°Ê¹ÓÃµÄ `applicationContext` Îª `AnnotationConfigServletWebServerApplicationContext`£¬ÆäÖĞÒ²Ê¹ÓÃÁËÕâĞ©À©Õ¹µã£¬ÎÒÃÇÖ÷Òª¹Ø×¢ÕâĞ©À©Õ¹µãµÄÓ¦ÓÃ¡£
+æˆ‘ä»¬å½“å‰ä½¿ç”¨çš„ `applicationContext` ä¸º `AnnotationConfigServletWebServerApplicationContext`ï¼Œå…¶ä¸­ä¹Ÿä½¿ç”¨äº†è¿™äº›æ‰©å±•ç‚¹ï¼Œæˆ‘ä»¬ä¸»è¦å…³æ³¨è¿™äº›æ‰©å±•ç‚¹çš„åº”ç”¨ã€‚
 
-##### 1\. Æô¶¯Ç°×¼±¸£º`prepareRefresh()`
+##### 1\. å¯åŠ¨å‰å‡†å¤‡ï¼š`prepareRefresh()`
 
-¾­¹ıµ÷ÊÔ·¢ÏÖ£¬`initPropertySources()` ·½·¨»áÔËĞĞµ½£¬µ÷ÓÃÁ´ÈçÏÂ£º
+ç»è¿‡è°ƒè¯•å‘ç°ï¼Œ`initPropertySources()` æ–¹æ³•ä¼šè¿è¡Œåˆ°ï¼Œè°ƒç”¨é“¾å¦‚ä¸‹ï¼š
 
 ```
 AbstractApplicationContext#refresh
@@ -73,7 +73,7 @@ AbstractApplicationContext#refresh
 
 ```
 
-×îÖÕµ÷ÓÃµÄÊÇ `GenericWebApplicationContext#initPropertySources`£º
+æœ€ç»ˆè°ƒç”¨çš„æ˜¯ `GenericWebApplicationContext#initPropertySources`ï¼š
 
 ```
 protected void initPropertySources() {
@@ -85,43 +85,43 @@ protected void initPropertySources() {
 
 ```
 
-Õâ¸ö·½·¨ÀïÏÈ»ñÈ¡ `Environment`£¬È»ºóÅĞ¶ÏÊÇ·ñÎª `ConfigurableWebEnvironment` µÄÊµÀı£¬ÔÚÇ°Ãæ·ÖÎö**×¼±¸ÔËĞĞÊ±»·¾³**Ê±£¬ÎÒÃÇµÃµ½µÄ `Environment` Îª `StandardServletEnvironment`£¬ÊÇ `ConfigurableWebEnvironment` µÄ·ûºÏ£¬È»ºóµ÷ÓÃ `ConfigurableWebEnvironment#initPropertySources` ·½·¨£¬½á¹ûµ½ÁË `StandardServletEnvironment#initPropertySources`£º
+è¿™ä¸ªæ–¹æ³•é‡Œå…ˆè·å– `Environment`ï¼Œç„¶ååˆ¤æ–­æ˜¯å¦ä¸º `ConfigurableWebEnvironment` çš„å®ä¾‹ï¼Œåœ¨å‰é¢åˆ†æ**å‡†å¤‡è¿è¡Œæ—¶ç¯å¢ƒ**æ—¶ï¼Œæˆ‘ä»¬å¾—åˆ°çš„ `Environment` ä¸º `StandardServletEnvironment`ï¼Œæ˜¯ `ConfigurableWebEnvironment` çš„ç¬¦åˆï¼Œç„¶åè°ƒç”¨ `ConfigurableWebEnvironment#initPropertySources` æ–¹æ³•ï¼Œç»“æœåˆ°äº† `StandardServletEnvironment#initPropertySources`ï¼š
 
 ```
 public void initPropertySources(@Nullable ServletContext servletContext, 
         @Nullable ServletConfigservletConfig) {
-    // Ìæ»»ÉÏÃæÉèÖÃµÄ servletContextInitParams Îª servletContext
-    // Ìæ»»ÉÏÃæÉèÖÃµÄ servletConfigInitParams Îª servletConfig
+    // æ›¿æ¢ä¸Šé¢è®¾ç½®çš„ servletContextInitParams ä¸º servletContext
+    // æ›¿æ¢ä¸Šé¢è®¾ç½®çš„ servletConfigInitParams ä¸º servletConfig
     WebApplicationContextUtils.initServletPropertySources(getPropertySources(), 
         servletContext, servletConfig);
 }
 
 ```
 
-Õâ¸ö·½·¨»¹ÊÇºÜ¼òµ¥£¬Ö»ÊÇ½« `servletContext` Óë `servletConfig` ÉèÖÃµ½ÁË `Environment` ÖĞ¡£
+è¿™ä¸ªæ–¹æ³•è¿˜æ˜¯å¾ˆç®€å•ï¼Œåªæ˜¯å°† `servletContext` ä¸ `servletConfig` è®¾ç½®åˆ°äº† `Environment` ä¸­ã€‚
 
-##### 2\. »ñÈ¡ `beanFactory`: `obtainFreshBeanFactory()`
+##### 2\. è·å– `beanFactory`: `obtainFreshBeanFactory()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 3\. ×¼±¸ `beanFactory`: `prepareBeanFactory(beanFactory)`
+##### 3\. å‡†å¤‡ `beanFactory`: `prepareBeanFactory(beanFactory)`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 4\. À©Õ¹µã£º`postProcessBeanFactory(beanFactory)`
+##### 4\. æ‰©å±•ç‚¹ï¼š`postProcessBeanFactory(beanFactory)`
 
-`AnnotationConfigServletWebServerApplicationContext` ÖØĞ´ÁËÕâ¸ö·½·¨£º
+`AnnotationConfigServletWebServerApplicationContext` é‡å†™äº†è¿™ä¸ªæ–¹æ³•ï¼š
 
 ```
 @Override
 protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-    // µ÷ÓÃ¸¸ÀàµÄ·½·¨
+    // è°ƒç”¨çˆ¶ç±»çš„æ–¹æ³•
     super.postProcessBeanFactory(beanFactory);
-    // ½øĞĞ°üÉ¨Ãè£¬ÕâÀïµÄ°ü²¢²»´æÔÚ
+    // è¿›è¡ŒåŒ…æ‰«æï¼Œè¿™é‡Œçš„åŒ…å¹¶ä¸å­˜åœ¨
     if (this.basePackages != null && this.basePackages.length > 0) {
         this.scanner.scan(this.basePackages);
     }
-    // ×¢²ábean£¬Îª¿Õ
+    // æ³¨å†Œbeanï¼Œä¸ºç©º
     if (!this.annotatedClasses.isEmpty()) {
         this.reader.register(ClassUtils.toClassArray(this.annotatedClasses));
     }
@@ -129,29 +129,29 @@ protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactor
 
 ```
 
-Õâ¸ö·½·¨µÄÖ´ĞĞ¹ı³ÌÈçÏÂ£º
+è¿™ä¸ªæ–¹æ³•çš„æ‰§è¡Œè¿‡ç¨‹å¦‚ä¸‹ï¼š
 
-1.  µ÷ÓÃÁË¸¸ÀàµÄ·½·¨ `super.postProcessBeanFactory(beanFactory)`
-2.  ½øĞĞ°üÉ¨Ãè£¬Í¨¹ıµ÷ÊÔ·¢ÏÖ£¬ÕâÀïµÄ `basePackages` Îª nul
-3.  ×¢²á `annotatedClasses`£¬ÕâÀïµÄ `annotatedClasses` Îª¿Õ
+1.  è°ƒç”¨äº†çˆ¶ç±»çš„æ–¹æ³• `super.postProcessBeanFactory(beanFactory)`
+2.  è¿›è¡ŒåŒ…æ‰«æï¼Œé€šè¿‡è°ƒè¯•å‘ç°ï¼Œè¿™é‡Œçš„ `basePackages` ä¸º nul
+3.  æ³¨å†Œ `annotatedClasses`ï¼Œè¿™é‡Œçš„ `annotatedClasses` ä¸ºç©º
 
-ÎÒÃÇÖ÷ÒªÀ´¿´¿´ `super.postProcessBeanFactory(beanFactory)`£¬¸Ã·½·¨ÔÚ `ServletWebServerApplicationContext` ÖĞ£º
+æˆ‘ä»¬ä¸»è¦æ¥çœ‹çœ‹ `super.postProcessBeanFactory(beanFactory)`ï¼Œè¯¥æ–¹æ³•åœ¨ `ServletWebServerApplicationContext` ä¸­ï¼š
 
 ```
 @Override
 protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-    // Ìí¼ÓÒ»¸ö BeanPostProcessor
+    // æ·»åŠ ä¸€ä¸ª BeanPostProcessor
     beanFactory.addBeanPostProcessor(
             new WebApplicationContextServletContextAwareProcessor(this));
-    // ºöÂÔ ServletContextAware µÄ×Ô¶¯×¢Èë
+    // å¿½ç•¥ ServletContextAware çš„è‡ªåŠ¨æ³¨å…¥
     beanFactory.ignoreDependencyInterface(ServletContextAware.class);
-    // ×¢²á web bean µÄ·¶Î§£¬ÕâÀï»á×¢²árequest¡¢session¡¢globalSessionµÄ×÷ÓÃÓò
+    // æ³¨å†Œ web bean çš„èŒƒå›´ï¼Œè¿™é‡Œä¼šæ³¨å†Œrequestã€sessionã€globalSessionçš„ä½œç”¨åŸŸ
     registerWebApplicationScopes();
 }
 
 ```
 
-Õâ¸ö·½·¨ÄÚÈİ±È½Ï¼òµ¥£¬Ö÷ÒªÊÇ×¢²á `BeanPostProcessor` ÒÔ¼°×¢²á `web bean` µÄ×÷ÓÃ·¶Î§¡£ÕâÀïÎÒÃÇÖ÷Òª¿´ÏÂ `WebApplicationContextServletContextAwareProcessor` µÄ×÷ÓÃ£¬´úÂëÈçÏÂ£º
+è¿™ä¸ªæ–¹æ³•å†…å®¹æ¯”è¾ƒç®€å•ï¼Œä¸»è¦æ˜¯æ³¨å†Œ `BeanPostProcessor` ä»¥åŠæ³¨å†Œ `web bean` çš„ä½œç”¨èŒƒå›´ã€‚è¿™é‡Œæˆ‘ä»¬ä¸»è¦çœ‹ä¸‹ `WebApplicationContextServletContextAwareProcessor` çš„ä½œç”¨ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 public class WebApplicationContextServletContextAwareProcessor 
@@ -166,7 +166,7 @@ public class WebApplicationContextServletContextAwareProcessor
     }
 
     /**
-     * »ñÈ¡ ServletContext
+     * è·å– ServletContext
      */
     @Override
     protected ServletContext getServletContext() {
@@ -175,7 +175,7 @@ public class WebApplicationContextServletContextAwareProcessor
     }
 
     /**
-     * »ñÈ¡ ServletConfig
+     * è·å– ServletConfig
      */
     @Override
     protected ServletConfig getServletConfig() {
@@ -187,7 +187,7 @@ public class WebApplicationContextServletContextAwareProcessor
 
 ```
 
-Õâ¸öÀàËÆºõ²¢Ã»ÓĞ×öÊ²Ã´£¬ÎÒÃÇÔÙ¸ú½ø¸¸Àà£¬ÓÉÓÚËüÊÇ¸ö `BeanPostProcessor`£¬ÎÒÃÇÖ÷Òª¹Ø×¢ËüµÄ `postProcessBeforeInitialization()` Óë `postProcessAfterInitialization()` Á½¸ö·½·¨£º
+è¿™ä¸ªç±»ä¼¼ä¹å¹¶æ²¡æœ‰åšä»€ä¹ˆï¼Œæˆ‘ä»¬å†è·Ÿè¿›çˆ¶ç±»ï¼Œç”±äºå®ƒæ˜¯ä¸ª `BeanPostProcessor`ï¼Œæˆ‘ä»¬ä¸»è¦å…³æ³¨å®ƒçš„ `postProcessBeforeInitialization()` ä¸ `postProcessAfterInitialization()` ä¸¤ä¸ªæ–¹æ³•ï¼š
 
 ```
 public class ServletContextAwareProcessor implements BeanPostProcessor {
@@ -196,11 +196,11 @@ public class ServletContextAwareProcessor implements BeanPostProcessor {
 
     public Object postProcessBeforeInitialization(Object bean, 
             String beanName) throws BeansException {
-        // ÉèÖÃ ServletContext
+        // è®¾ç½® ServletContext
         if (getServletContext() != null && bean instanceof ServletContextAware) {
             ((ServletContextAware) bean).setServletContext(getServletContext());
         }
-        // ÉèÖÃ ServletConfig
+        // è®¾ç½® ServletConfig
         if (getServletConfig() != null && bean instanceof ServletConfigAware) {
             ((ServletConfigAware) bean).setServletConfig(getServletConfig());
         }
@@ -216,37 +216,37 @@ public class ServletContextAwareProcessor implements BeanPostProcessor {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬Õâ¸ö `BeanPostProcessor` ÊÇÓÃÀ´´¦Àí `ServletContextAware` Óë `ServletConfigAware` Á½¸ö `Aware` ½Ó¿ÚµÄ£¬Ì×Â·Í¬´¦Àí `ApplicationAware`¡¢`BeanFactoryAware` µÈÒ»Ñù¡£
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™ä¸ª `BeanPostProcessor` æ˜¯ç”¨æ¥å¤„ç† `ServletContextAware` ä¸ `ServletConfigAware` ä¸¤ä¸ª `Aware` æ¥å£çš„ï¼Œå¥—è·¯åŒå¤„ç† `ApplicationAware`ã€`BeanFactoryAware` ç­‰ä¸€æ ·ã€‚
 
-##### 5\. Ö´ĞĞ `BeanFactoryPostProcessors`: `invokeBeanFactoryPostProcessors(beanFactory)`
+##### 5\. æ‰§è¡Œ `BeanFactoryPostProcessors`: `invokeBeanFactoryPostProcessors(beanFactory)`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-ÖµµÃÒ»ÌáµÄÊÇ£¬ÔÚÕâ¸ö·½·¨ÖĞ£¬ÓĞ¸öÖØµÄ `BeanFactoryPostProcessor` »á±»Ö´ĞĞ£º`ConfigurationClassPostProcessor`£¬springboot µÄ×Ô¶¯×°ÅäµÄÆôÓÃ×¢½â `@EnableAutoConfiguration` »áÔÚÕâÀï´¦Àí£¬×Ô¶¯×°ÅäÀàµÄ¼ÓÔØ¡¢Ìõ¼ş×¢½âÒ²ÊÇÔÚ `ConfigurationClassPostProcessor` ÖĞ¡£
+å€¼å¾—ä¸€æçš„æ˜¯ï¼Œåœ¨è¿™ä¸ªæ–¹æ³•ä¸­ï¼Œæœ‰ä¸ªé‡çš„ `BeanFactoryPostProcessor` ä¼šè¢«æ‰§è¡Œï¼š`ConfigurationClassPostProcessor`ï¼Œspringboot çš„è‡ªåŠ¨è£…é…çš„å¯ç”¨æ³¨è§£ `@EnableAutoConfiguration` ä¼šåœ¨è¿™é‡Œå¤„ç†ï¼Œè‡ªåŠ¨è£…é…ç±»çš„åŠ è½½ã€æ¡ä»¶æ³¨è§£ä¹Ÿæ˜¯åœ¨ `ConfigurationClassPostProcessor` ä¸­ã€‚
 
-##### 6\. ×¢²á `BeanPostProcessor`: `registerBeanPostProcessors(beanFactory)`
+##### 6\. æ³¨å†Œ `BeanPostProcessor`: `registerBeanPostProcessors(beanFactory)`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 7\. ³õÊ¼»¯` MessageSource`(ÓÃÓÚ¹ú¼Ê»¯²Ù×÷): `initMessageSource()`
+##### 7\. åˆå§‹åŒ–` MessageSource`(ç”¨äºå›½é™…åŒ–æ“ä½œ): `initMessageSource()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 8\. ³õÊ¼»¯ÊÂ¼ş¹ã²¥Æ÷£º`initApplicationEventMulticaster()`
+##### 8\. åˆå§‹åŒ–äº‹ä»¶å¹¿æ’­å™¨ï¼š`initApplicationEventMulticaster()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 9\. À©Õ¹µã£º`onRefresh()`
+##### 9\. æ‰©å±•ç‚¹ï¼š`onRefresh()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨µÄÀ©Õ¹Îª `ServletWebServerApplicationContext#onRefresh` ·½·¨£¬´úÂëÈçÏÂ£º
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•çš„æ‰©å±•ä¸º `ServletWebServerApplicationContext#onRefresh` æ–¹æ³•ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 @Override
 protected void onRefresh() {
-    // µ÷ÓÃ¸¸Àà·½·¨
+    // è°ƒç”¨çˆ¶ç±»æ–¹æ³•
     super.onRefresh();
     try {
-        // ´´½¨web·şÎñÆ÷£¬Èçtomcat,jettyµÈ
+        // åˆ›å»ºwebæœåŠ¡å™¨ï¼Œå¦‚tomcat,jettyç­‰
         createWebServer();
     }
     catch (Throwable ex) {
@@ -256,34 +256,34 @@ protected void onRefresh() {
 
 ```
 
-¿ÉÒÔ ¿´µ½£¬web ·şÎñÆ÷ÊÇÔÚÕâ¸ö·½·¨ÖĞ´´½¨µÄ¡£²»¹ı web ·şÎñÆ÷µÄ´´½¨²¢²»¼òµ¥£¬ĞèÒª¾­¹ı¶àÖÖÌõ¼şÅĞ¶Ï£¬¹ØÓÚÕâµãÎÒÃÇºóÃæÔÙÏêÏ¸ËµÃ÷¡£
+å¯ä»¥ çœ‹åˆ°ï¼Œweb æœåŠ¡å™¨æ˜¯åœ¨è¿™ä¸ªæ–¹æ³•ä¸­åˆ›å»ºçš„ã€‚ä¸è¿‡ web æœåŠ¡å™¨çš„åˆ›å»ºå¹¶ä¸ç®€å•ï¼Œéœ€è¦ç»è¿‡å¤šç§æ¡ä»¶åˆ¤æ–­ï¼Œå…³äºè¿™ç‚¹æˆ‘ä»¬åé¢å†è¯¦ç»†è¯´æ˜ã€‚
 
-##### 10\. ×¢²áÊÂ¼ş¼àÌıÆ÷£º`registerListeners()`
+##### 10\. æ³¨å†Œäº‹ä»¶ç›‘å¬å™¨ï¼š`registerListeners()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 11\. ³õÊ¼»¯µ¥Àı `bean`: `finishBeanFactoryInitialization(beanFactory)`
+##### 11\. åˆå§‹åŒ–å•ä¾‹ `bean`: `finishBeanFactoryInitialization(beanFactory)`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-##### 12\. Íê³ÉÆô¶¯²Ù×÷: `finishRefresh()`
+##### 12\. å®Œæˆå¯åŠ¨æ“ä½œ: `finishRefresh()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨µÄÀ©Õ¹Îª `ServletWebServerApplicationContext#finishRefresh` ·½·¨£¬´úÂëÈçÏÂ£º
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•çš„æ‰©å±•ä¸º `ServletWebServerApplicationContext#finishRefresh` æ–¹æ³•ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 @Override
 protected void finishRefresh() {
     super.finishRefresh();
-    // Æô¶¯webÈİÆ÷
+    // å¯åŠ¨webå®¹å™¨
     WebServer webServer = startWebServer();
     if (webServer != null) {
-        // ·¢²¼ ServletWebServerInitializedEvent ÊÂ¼ş
+        // å‘å¸ƒ ServletWebServerInitializedEvent äº‹ä»¶
         publishEvent(new ServletWebServerInitializedEvent(webServer, this));
     }
 }
 
 /**
- * Æô¶¯webÈİÆ÷
+ * å¯åŠ¨webå®¹å™¨
  */
 private WebServer startWebServer() {
     WebServer webServer = this.webServer;
@@ -295,15 +295,15 @@ private WebServer startWebServer() {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬ÕâÀï²ÅÊÇÕæÕıÆô¶¯ web ÈİÆ÷¡£
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™é‡Œæ‰æ˜¯çœŸæ­£å¯åŠ¨ web å®¹å™¨ã€‚
 
-##### 13\. Çå³ı»º´æ: `resetCommonCaches()`
+##### 13\. æ¸…é™¤ç¼“å­˜: `resetCommonCaches()`
 
-µ±Ç° `applicationContext` ¶Ô¸Ã·½·¨ÎŞÀ©Õ¹£¬²»·ÖÎö¡£
+å½“å‰ `applicationContext` å¯¹è¯¥æ–¹æ³•æ— æ‰©å±•ï¼Œä¸åˆ†æã€‚
 
-#### 3.10.2 ×¢²á `ShutdownHook`
+#### 3.10.2 æ³¨å†Œ `ShutdownHook`
 
-ÎÒÃÇÔÙÀ´¿´ `context.registerShutdownHook()`£¬¸Ã·½·¨ÓÉ `AbstractApplicationContext#registerShutdownHook` Ìá¹©£º
+æˆ‘ä»¬å†æ¥çœ‹ `context.registerShutdownHook()`ï¼Œè¯¥æ–¹æ³•ç”± `AbstractApplicationContext#registerShutdownHook` æä¾›ï¼š
 
 ```
 public abstract class AbstractApplicationContext extends DefaultResourceLoader
@@ -312,12 +312,12 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
     @Override
     public void registerShutdownHook() {
         if (this.shutdownHook == null) {
-            // Ö¸¶¨Ïß³ÌµÄÃû×Ö
+            // æŒ‡å®šçº¿ç¨‹çš„åå­—
             this.shutdownHook = new Thread(SHUTDOWN_HOOK_THREAD_NAME) {
                 @Override
                 public void run() {
                     synchronized (startupShutdownMonitor) {
-                        // ÕâÀï¾ÍÊÇ ShutdownHook µÄÄÚÈİ
+                        // è¿™é‡Œå°±æ˜¯ ShutdownHook çš„å†…å®¹
                         doClose();
                     }
                 }
@@ -327,7 +327,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
     }
 
     /**
-     * ´¦ÀíÈİÆ÷µÄ¹Ø±Õ²Ù×÷
+     * å¤„ç†å®¹å™¨çš„å…³é—­æ“ä½œ
      */
     protected void doClose() {
         // Check whether an actual close attempt is necessary...
@@ -335,14 +335,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
             LiveBeansView.unregisterApplicationContext(this);
 
             try {
-                // ·¢²¼¹Ø±ÕÊÂ¼ş
+                // å‘å¸ƒå…³é—­äº‹ä»¶
                 publishEvent(new ContextClosedEvent(this));
             }
             catch (Throwable ex) {
                 logger.warn(...);
             }
 
-            // µ÷ÓÃ lifecycle µÄ onClose() ·½·¨
+            // è°ƒç”¨ lifecycle çš„ onClose() æ–¹æ³•
             if (this.lifecycleProcessor != null) {
                 try {
                     this.lifecycleProcessor.onClose();
@@ -352,22 +352,22 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
                 }
             }
 
-            // Ïú»Ù bean
+            // é”€æ¯ bean
             destroyBeans();
 
-            // ¹Ø±ÕÈİÆ÷
+            // å…³é—­å®¹å™¨
             closeBeanFactory();
 
-            // À©Õ¹µã£¬´ı×ÓÀàÊµÏÖ
+            // æ‰©å±•ç‚¹ï¼Œå¾…å­ç±»å®ç°
             onClose();
 
-            // Çå³ı¼àÌıÆ÷
+            // æ¸…é™¤ç›‘å¬å™¨
             if (this.earlyApplicationListeners != null) {
                 this.applicationListeners.clear();
                 this.applicationListeners.addAll(this.earlyApplicationListeners);
             }
 
-            // ÉèÖÃ active ±êÊ¶
+            // è®¾ç½® active æ ‡è¯†
             this.active.set(false);
         }
     }
@@ -378,12 +378,12 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 ```
 
-¿ÉÒÔ¿´µ½£¬`context.registerShutdownHook()` Êµ¼ÊÉÏÊÇÔËĞĞÁË `doClose()` ·½·¨£¬ÓÃÀ´´¦ÀíÈİÆ÷µÄ¹Ø±Õ²Ù×÷¡£¹Ø±Õ spring ÈİÆ÷µÄ¹Ø±Õ£¬×¢ÊÍÒÑ¾­Ïàµ±Çå³şÁË£¬ÕâÀï¾Í²»ÉîÈëÁË¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`context.registerShutdownHook()` å®é™…ä¸Šæ˜¯è¿è¡Œäº† `doClose()` æ–¹æ³•ï¼Œç”¨æ¥å¤„ç†å®¹å™¨çš„å…³é—­æ“ä½œã€‚å…³é—­ spring å®¹å™¨çš„å…³é—­ï¼Œæ³¨é‡Šå·²ç»ç›¸å½“æ¸…æ¥šäº†ï¼Œè¿™é‡Œå°±ä¸æ·±å…¥äº†ã€‚
 
-ºÃÁË£¬ÈİÆ÷µÄÆô¶¯¾Í·ÖÎöµ½ÕâÀïÁË£¬´ÓÁ÷³ÌÉÏÀ´½²£¬Óë spring ÈİÆ÷Æô¶¯µÄ×î´óÀ©Õ¹ÔÚÓÚ `onRefresh()` Óë `finishRefresh()`£¬Ç°Õß´´½¨ÁË `webServer` ÈİÆ÷£¬ºóÕßÆô¶¯ÁË `webServer` ÈİÆ÷¡£
+å¥½äº†ï¼Œå®¹å™¨çš„å¯åŠ¨å°±åˆ†æåˆ°è¿™é‡Œäº†ï¼Œä»æµç¨‹ä¸Šæ¥è®²ï¼Œä¸ spring å®¹å™¨å¯åŠ¨çš„æœ€å¤§æ‰©å±•åœ¨äº `onRefresh()` ä¸ `finishRefresh()`ï¼Œå‰è€…åˆ›å»ºäº† `webServer` å®¹å™¨ï¼Œåè€…å¯åŠ¨äº† `webServer` å®¹å™¨ã€‚
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-81033ec78641ad875623cf452ef9cd62eb6.png)
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4888129](https://my.oschina.net/funcy/blog/4888129) £¬ÏŞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖĞÄÑÃâÓĞ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õı£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŸæ–‡é“¾æ¥ï¼š[https://my.oschina.net/funcy/blog/4888129](https://my.oschina.net/funcy/blog/4888129) ï¼Œé™äºä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿æŒ‡æ­£ï¼åŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚_

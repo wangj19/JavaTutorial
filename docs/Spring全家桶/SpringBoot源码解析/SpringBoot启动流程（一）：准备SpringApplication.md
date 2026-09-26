@@ -1,39 +1,39 @@
-±¾ÎÄÀ´Ì½¾¿ springboot ÊÇÈçºÎÆô¶¯µÄ£¬±¾ÎÄÊ¹ÓÃµ½µÄ demo Î»ÓÚ?[gitee/funcy](https://gitee.com/funcy/spring-boot/tree/v2.2.2.RELEASE_learn/spring-boot-project/spring-boot-learn/src/main/java/org/springframework/boot/learn/autoconfigure/demo01).
+æœ¬æ–‡æ¥æ¢ç©¶ springboot æ˜¯å¦‚ä½•å¯åŠ¨çš„ï¼Œæœ¬æ–‡ä½¿ç”¨åˆ°çš„ demo ä½äº?[gitee/funcy](https://gitee.com/funcy/spring-boot/tree/v2.2.2.RELEASE_learn/spring-boot-project/spring-boot-learn/src/main/java/org/springframework/boot/learn/autoconfigure/demo01).
 
-## 1\. ´Ó?`Demo01Application#main(...)`?¿ªÊ¼
+## 1\. ä»?`Demo01Application#main(...)`?å¼€å§‹
 
-springboot µÄÆô¶¯·½Ê½·Ç³£¼òµ¥£¬¾ÍÒ»ĞĞ£º
+springboot çš„å¯åŠ¨æ–¹å¼éå¸¸ç®€å•ï¼Œå°±ä¸€è¡Œï¼š
 
 ```
 @SpringBootApplication
 public class Demo01Application {
 
     public static void main(String[] args) {
-        // ÕâÒ»ĞĞ¾ÍÊÇÓÃÀ´Æô¶¯springbootµÄ
+        // è¿™ä¸€è¡Œå°±æ˜¯ç”¨æ¥å¯åŠ¨springbootçš„
         SpringApplication.run(Demo01Application.class, args);
     }
 }
 
 ```
 
-È»ºóÎÒÃÇ¾Í½øÈëÕâ¸ö·½·¨£¬¿´¿´Ëü¸ÉÁËÊ²Ã´£º
+ç„¶åæˆ‘ä»¬å°±è¿›å…¥è¿™ä¸ªæ–¹æ³•ï¼Œçœ‹çœ‹å®ƒå¹²äº†ä»€ä¹ˆï¼š
 
 ```
 public class SpringApplication {
     ...
-    // primarySource ¾ÍÊÇÎÒÃÇ´«ÈëµÄ Demo01Application.class£¬
-    // args ¾ÍÊÇ main() ·½·¨µÄ²ÎÊı
+    // primarySource å°±æ˜¯æˆ‘ä»¬ä¼ å…¥çš„ Demo01Application.classï¼Œ
+    // args å°±æ˜¯ main() æ–¹æ³•çš„å‚æ•°
     public static ConfigurableApplicationContext run(
             Class<?> primarySource, String... args) {
-        // ½« primarySource °ü×°³ÉÊı×é£¬¼ÌĞøµ÷ÓÃ run(...) ·½·¨
+        // å°† primarySource åŒ…è£…æˆæ•°ç»„ï¼Œç»§ç»­è°ƒç”¨ run(...) æ–¹æ³•
         return run(new Class<?>[] { primarySource }, args);
     }
 
-    // primarySources ¾ÍÊÇÎÒÃÇ´«ÈëµÄ Demo01Application.class °ü×°³ÉµÄÊı×é£¬
-    // args ¾ÍÊÇ main() ·½·¨µÄ²ÎÊı
+    // primarySources å°±æ˜¯æˆ‘ä»¬ä¼ å…¥çš„ Demo01Application.class åŒ…è£…æˆçš„æ•°ç»„ï¼Œ
+    // args å°±æ˜¯ main() æ–¹æ³•çš„å‚æ•°
     public static ConfigurableApplicationContext run(
             Class<?>[] primarySources, String[] args) {
-        // ÕâÀï¿ªÊ¼¸ÉÕıÊÂÁË
+        // è¿™é‡Œå¼€å§‹å¹²æ­£äº‹äº†
         return new SpringApplication(primarySources).run(args);
     }
     ...
@@ -41,69 +41,69 @@ public class SpringApplication {
 
 ```
 
-Í¨¹ı·½·¨Ò»²½²½×·²éÏÂÈ¥ºó£¬×îºóµ½ÁË?`SpringApplication#run(Class<?>[], String[])`?·½·¨£¬¹Ø¼ü´úÂëÈçÏÂ£º
+é€šè¿‡æ–¹æ³•ä¸€æ­¥æ­¥è¿½æŸ¥ä¸‹å»åï¼Œæœ€ååˆ°äº†?`SpringApplication#run(Class<?>[], String[])`?æ–¹æ³•ï¼Œå…³é”®ä»£ç å¦‚ä¸‹ï¼š
 
 ```
 return new SpringApplication(primarySources).run(args);
 
 ```
 
-Õâ¿é´úÂëĞèÒª²ğ¿ªÀ´¿´£¬¿ÉÒÔ²ğ³ÉÒÔÏÂÁ½²¿·Ö£º
+è¿™å—ä»£ç éœ€è¦æ‹†å¼€æ¥çœ‹ï¼Œå¯ä»¥æ‹†æˆä»¥ä¸‹ä¸¤éƒ¨åˆ†ï¼š
 
-*   ¹¹Ôì·½·¨£º`SpringApplication#SpringApplication(Class<?>...)`
-*   ÊµÀı·½·¨£º`SpringApplication#run(String...)`
+*   æ„é€ æ–¹æ³•ï¼š`SpringApplication#SpringApplication(Class<?>...)`
+*   å®ä¾‹æ–¹æ³•ï¼š`SpringApplication#run(String...)`
 
-¿´À´£¬ÕâÁ½¸ö·½·¨¾ÍÊÇ springboot µÄÆô¶¯ËùÓĞÁ÷³ÌÁË£¬½ÓÏÂÀ´ÎÒÃÇ¾ÍÀ´·ÖÎöÕâÁ½¸ö·½·¨¡£
+çœ‹æ¥ï¼Œè¿™ä¸¤ä¸ªæ–¹æ³•å°±æ˜¯ springboot çš„å¯åŠ¨æ‰€æœ‰æµç¨‹äº†ï¼Œæ¥ä¸‹æ¥æˆ‘ä»¬å°±æ¥åˆ†æè¿™ä¸¤ä¸ªæ–¹æ³•ã€‚
 
-## 2\. ´´½¨?`SpringApplication`£º`SpringApplication#SpringApplication(Class<?>...)`
+## 2\. åˆ›å»º?`SpringApplication`ï¼š`SpringApplication#SpringApplication(Class<?>...)`
 
 ```
 public class SpringApplication {
     public SpringApplication(Class<?>... primarySources) {
-        // ¼ÌĞøµ÷ÓÃ
+        // ç»§ç»­è°ƒç”¨
         this(null, primarySources);
     }
 
     /**
-     * ÕâÀï¾Í×îÖÕµ÷ÓÃµÄ¹¹Ôì·½·¨ÁË
-     * resourceLoader Îª null
-     * primarySources Îª Demo01Application.class
+     * è¿™é‡Œå°±æœ€ç»ˆè°ƒç”¨çš„æ„é€ æ–¹æ³•äº†
+     * resourceLoader ä¸º null
+     * primarySources ä¸º Demo01Application.class
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources) {
-        // 1\. ½«´«ÈëµÄresourceLoaderÉèÖÃµ½³ÉÔ±±äÁ¿£¬ÕâÀïµÄÖµÎªnull
+        // 1\. å°†ä¼ å…¥çš„resourceLoaderè®¾ç½®åˆ°æˆå‘˜å˜é‡ï¼Œè¿™é‡Œçš„å€¼ä¸ºnull
         this.resourceLoader = resourceLoader;
         Assert.notNull(primarySources, "PrimarySources must not be null");
-        // 2\. ½«´«ÈëµÄprimarySourcesÉèÖÃµ½³ÉÔ±±äÁ¿£¬ÕâÀïµÄÖµÎª Demo01Application.class
+        // 2\. å°†ä¼ å…¥çš„primarySourcesè®¾ç½®åˆ°æˆå‘˜å˜é‡ï¼Œè¿™é‡Œçš„å€¼ä¸º Demo01Application.class
         this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
-        // 3\. µ±Ç°µÄ web Ó¦ÓÃÀàĞÍ£¬REACTIVE£¬NONE£¬SERVLET
+        // 3\. å½“å‰çš„ web åº”ç”¨ç±»å‹ï¼ŒREACTIVEï¼ŒNONEï¼ŒSERVLET
         this.webApplicationType = WebApplicationType.deduceFromClasspath();
-        // 4\. ÉèÖÃ³õÊ¼»¯Æ÷£¬getSpringFactoriesInstances£º´Ó META-INF/spring.factories ÖĞ»ñÈ¡ÅäÖÃ
+        // 4\. è®¾ç½®åˆå§‹åŒ–å™¨ï¼ŒgetSpringFactoriesInstancesï¼šä» META-INF/spring.factories ä¸­è·å–é…ç½®
         setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
-        // 5\. ÉèÖÃ¼àÌıÆ÷£¬getSpringFactoriesInstances£º´Ó META-INF/spring.factories ÖĞ»ñÈ¡ÅäÖÃ
+        // 5\. è®¾ç½®ç›‘å¬å™¨ï¼ŒgetSpringFactoriesInstancesï¼šä» META-INF/spring.factories ä¸­è·å–é…ç½®
         setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
-        // 6\. ·µ»Ø°üº¬main()·½·¨µÄclass
+        // 6\. è¿”å›åŒ…å«main()æ–¹æ³•çš„class
         this.mainApplicationClass = deduceMainApplicationClass();
     }
 }
 
 ```
 
-Õâ¸ö·½·¨Ëù×öµÄÊÂ»¹ÊÇ±È½ÏÇåÎúµÄ£¬Ïà¹ØÄÚÈİ¶¼ÒÑÔÚ´úÂëÖĞ×¢ÊÍÁË£¬²»¹ıÓĞĞ©·½·¨»¹ĞèÒªÕ¹¿ª£¬½ÓÏÂÀ´ÎÒÃÇ¾ÍÀ´¿´¿´¡£
+è¿™ä¸ªæ–¹æ³•æ‰€åšçš„äº‹è¿˜æ˜¯æ¯”è¾ƒæ¸…æ™°çš„ï¼Œç›¸å…³å†…å®¹éƒ½å·²åœ¨ä»£ç ä¸­æ³¨é‡Šäº†ï¼Œä¸è¿‡æœ‰äº›æ–¹æ³•è¿˜éœ€è¦å±•å¼€ï¼Œæ¥ä¸‹æ¥æˆ‘ä»¬å°±æ¥çœ‹çœ‹ã€‚
 
-### 2.1 »ñÈ¡µ±Ç° web Ó¦ÓÃÀàĞÍ£º`WebApplicationType.deduceFromClasspath()`
+### 2.1 è·å–å½“å‰ web åº”ç”¨ç±»å‹ï¼š`WebApplicationType.deduceFromClasspath()`
 
-`WebApplicationType.deduceFromClasspath()`?·½·¨ÊÇÓÃÀ´ÍÆ¶Ïµ±Ç°ÏîÄ¿ÊÇÊ²Ã´ÀàĞÍµÄ£¬´úÂëÈçÏÂ£º
+`WebApplicationType.deduceFromClasspath()`?æ–¹æ³•æ˜¯ç”¨æ¥æ¨æ–­å½“å‰é¡¹ç›®æ˜¯ä»€ä¹ˆç±»å‹çš„ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 public enum WebApplicationType {
-    // ²»ÊÇ web Ó¦ÓÃ
+    // ä¸æ˜¯ web åº”ç”¨
     NONE,
 
-    // servlet ÀàĞÍµÄ web Ó¦ÓÃ
+    // servlet ç±»å‹çš„ web åº”ç”¨
     SERVLET,
 
-    // reactive ÀàĞÍµÄ web Ó¦ÓÃ
+    // reactive ç±»å‹çš„ web åº”ç”¨
     REACTIVE;
 
     ...
@@ -122,20 +122,20 @@ public enum WebApplicationType {
             = "org.glassfish.jersey.servlet.ServletContainer";
 
     static WebApplicationType deduceFromClasspath() {
-        // classpath ÖĞ½ö´æÔÚ WEBFLUX Ïà¹ØÀà
+        // classpath ä¸­ä»…å­˜åœ¨ WEBFLUX ç›¸å…³ç±»
         if (ClassUtils.isPresent(WEBFLUX_INDICATOR_CLASS, null) 
                 && !ClassUtils.isPresent(WEBMVC_INDICATOR_CLASS, null)
                 && !ClassUtils.isPresent(JERSEY_INDICATOR_CLASS, null)) {
             return WebApplicationType.REACTIVE;
         }
-        // classpath ²»´æÔÚ SERVLET Ïà¹ØÀà
+        // classpath ä¸å­˜åœ¨ SERVLET ç›¸å…³ç±»
         for (String className : SERVLET_INDICATOR_CLASSES) {
             if (!ClassUtils.isPresent(className, null)) {
                 return WebApplicationType.NONE;
             }
         }
-        // Ä¬ÈÏ web ÀàĞÍÎª SERVLET
-        // Ò²¾ÍÊÇËµ£¬Í¬Ê±´æÔÚ WEBFLUX Óë SERVLET Ïà¹ØÀà£¬×îÖÕ·µ»ØµÄÊÇ SERVLET
+        // é»˜è®¤ web ç±»å‹ä¸º SERVLET
+        // ä¹Ÿå°±æ˜¯è¯´ï¼ŒåŒæ—¶å­˜åœ¨ WEBFLUX ä¸ SERVLET ç›¸å…³ç±»ï¼Œæœ€ç»ˆè¿”å›çš„æ˜¯ SERVLET
         return WebApplicationType.SERVLET;
     }
 
@@ -144,54 +144,54 @@ public enum WebApplicationType {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬springboot ¶¨ÒåÁËÈıÖÖÏîÄ¿ÀàĞÍ£º`NONE`(²»ÊÇ web Ó¦ÓÃ)¡¢`SERVLET`(`servlet`?ÀàĞÍµÄ web Ó¦ÓÃ)¡¢`REACTIVE`(`reactive`?ÀàĞÍµÄ web Ó¦ÓÃ)£¬`WebApplicationType.deduceFromClasspath()`?µÄÖ´ĞĞÁ÷³ÌÈçÏÂ£º
+å¯ä»¥çœ‹åˆ°ï¼Œspringboot å®šä¹‰äº†ä¸‰ç§é¡¹ç›®ç±»å‹ï¼š`NONE`(ä¸æ˜¯ web åº”ç”¨)ã€`SERVLET`(`servlet`?ç±»å‹çš„ web åº”ç”¨)ã€`REACTIVE`(`reactive`?ç±»å‹çš„ web åº”ç”¨)ï¼Œ`WebApplicationType.deduceFromClasspath()`?çš„æ‰§è¡Œæµç¨‹å¦‚ä¸‹ï¼š
 
-1.  Èç¹û?`classpath`?ÖĞ½ö´æÔÚ?`WEBFLUX`?Ïà¹ØÀà£¬Ôò±íÃ÷µ±Ç°ÏîÄ¿ÊÇ?`reactive`?ÀàĞÍµÄ web Ó¦ÓÃ£¬·µ»Ø£»
-2.  Èç¹û?`classpath`?ÖĞ²»´æÔÚ?`SERVLET`?Ïà¹ØÀà£¬Ôò±íÃ÷µ±Ç°ÏîÄ¿²»ÊÇ web Ó¦ÓÃ£¬·µ»Ø£»
-3.  Èç¹ûÒÔÉÏÌõ¼ş¶¼²»Âú×ã£¬Ôò±íÃ÷µ±Ç°ÏîÄ¿ÊÇ?`servlet`?ÀàĞÍµÄ web Ó¦ÓÃ¡£
+1.  å¦‚æœ?`classpath`?ä¸­ä»…å­˜åœ¨?`WEBFLUX`?ç›¸å…³ç±»ï¼Œåˆ™è¡¨æ˜å½“å‰é¡¹ç›®æ˜¯?`reactive`?ç±»å‹çš„ web åº”ç”¨ï¼Œè¿”å›ï¼›
+2.  å¦‚æœ?`classpath`?ä¸­ä¸å­˜åœ¨?`SERVLET`?ç›¸å…³ç±»ï¼Œåˆ™è¡¨æ˜å½“å‰é¡¹ç›®ä¸æ˜¯ web åº”ç”¨ï¼Œè¿”å›ï¼›
+3.  å¦‚æœä»¥ä¸Šæ¡ä»¶éƒ½ä¸æ»¡è¶³ï¼Œåˆ™è¡¨æ˜å½“å‰é¡¹ç›®æ˜¯?`servlet`?ç±»å‹çš„ web åº”ç”¨ã€‚
 
-ÓÉÓÚ demo ÒıÓÃÁË?`spring-boot-starter-web`?Ïà¹ØÒÀÀµ£¬Òò´Ëµ±Ç°ÏîÄ¿ÊÇ?`servlet`?ÀàĞÍµÄ web Ó¦ÓÃ¡£
+ç”±äº demo å¼•ç”¨äº†?`spring-boot-starter-web`?ç›¸å…³ä¾èµ–ï¼Œå› æ­¤å½“å‰é¡¹ç›®æ˜¯?`servlet`?ç±»å‹çš„ web åº”ç”¨ã€‚
 
-### 2.2 ÉèÖÃ³õÊ¼»¯Æ÷£º`setInitializers(...)`
+### 2.2 è®¾ç½®åˆå§‹åŒ–å™¨ï¼š`setInitializers(...)`
 
-Õâ¿é´úÂëÈçÏÂ£º
+è¿™å—ä»£ç å¦‚ä¸‹ï¼š
 
 ```
 setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 
 ```
 
-ÕâĞĞ´úÂë·ÖÎªÁ½²¿·Ö:
+è¿™è¡Œä»£ç åˆ†ä¸ºä¸¤éƒ¨åˆ†:
 
-*   »ñÈ¡?`ApplicationContextInitializer`£º`getSpringFactoriesInstances(ApplicationContextInitializer.class)`
-*   ÉèÖÃ³õÊ¼»¯Æ÷£º`setInitializers(...)`
+*   è·å–?`ApplicationContextInitializer`ï¼š`getSpringFactoriesInstances(ApplicationContextInitializer.class)`
+*   è®¾ç½®åˆå§‹åŒ–å™¨ï¼š`setInitializers(...)`
 
-ÎÒÃÇÏÈÀ´¿´¿´»ñÈ¡?`ApplicationContextInitializer`?µÄÁ÷³Ì£¬´úÂëÈçÏÂ£º
+æˆ‘ä»¬å…ˆæ¥çœ‹çœ‹è·å–?`ApplicationContextInitializer`?çš„æµç¨‹ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 public class SpringApplication {
     ...
 
-    // type Îª ApplicationContextInitializer.class
+    // type ä¸º ApplicationContextInitializer.class
     private <T> Collection<T> getSpringFactoriesInstances(Class<T> type) {
         return getSpringFactoriesInstances(type, new Class<?>[] {});
     }
 
     /**
-     * type Îª ApplicationContextInitializer.class
-     * parameterTypes Îª ew Class<?>[] {}
-     * args Îª null
+     * type ä¸º ApplicationContextInitializer.class
+     * parameterTypes ä¸º ew Class<?>[] {}
+     * args ä¸º null
      */
     private <T> Collection<T> getSpringFactoriesInstances(Class<T> type, 
             Class<?>[] parameterTypes, Object... args) {
         ClassLoader classLoader = getClassLoader();
-        // ´Ó META-INF/spring.factories ¼ÓÔØÄÚÈİ
+        // ä» META-INF/spring.factories åŠ è½½å†…å®¹
         Set<String> names = new LinkedHashSet<>(
                 SpringFactoriesLoader.loadFactoryNames(type, classLoader));
-        // ÊµÀı»¯£¬Ê¹ÓÃµÄ·´Éä²Ù×÷
+        // å®ä¾‹åŒ–ï¼Œä½¿ç”¨çš„åå°„æ“ä½œ
         List<T> instances = createSpringFactoriesInstances(
                 type, parameterTypes, classLoader, args, names);
-        // ÅÅĞò£¬±È½ÏµÄÊÇ @Order ×¢½â£¬»òÊµÏÖµÄ Orderd ½Ó¿Ú
+        // æ’åºï¼Œæ¯”è¾ƒçš„æ˜¯ @Order æ³¨è§£ï¼Œæˆ–å®ç°çš„ Orderd æ¥å£
         AnnotationAwareOrderComparator.sort(instances);
         return instances;
     }
@@ -200,25 +200,25 @@ public class SpringApplication {
 
 ```
 
-ÒÔÉÏ´úÂë±È½Ï¼òµ¥£¬ÏÈ´Ó?`META-INF/spring.factories`?»ñÈ¡ÄÚÈİ£¬È»ºóÊ¹ÓÃ·´Éä½øĞĞÊµÀı»¯£¬½øĞĞÅÅĞòºóÔÙ·µ»Ø¡£
+ä»¥ä¸Šä»£ç æ¯”è¾ƒç®€å•ï¼Œå…ˆä»?`META-INF/spring.factories`?è·å–å†…å®¹ï¼Œç„¶åä½¿ç”¨åå°„è¿›è¡Œå®ä¾‹åŒ–ï¼Œè¿›è¡Œæ’åºåå†è¿”å›ã€‚
 
-¹ØÓÚ?`SpringFactoriesLoader.loadFactoryNames(...)`£¬Ëü×îÖÕ»á´Ó?`META-INF/spring.factories`?¼ÓÔØÄÚÈİ£¬`META-INF/spring.factories`?¿ÉÒÔÀí½âÎªÒ»¸öÅäÖÃÎÄ¼ş£¬key Îª´«ÈëµÄ type£¬¸Ã·½·¨µÄÏêÏ¸·ÖÎö£¬¿ÉÒÔ²Î¿¼?[springboot ×Ô¶¯×°ÅäÖ®¼ÓÔØ×Ô¶¯×°ÅäÀà](https://my.oschina.net/funcy/blog/4870868)¡£
+å…³äº?`SpringFactoriesLoader.loadFactoryNames(...)`ï¼Œå®ƒæœ€ç»ˆä¼šä»?`META-INF/spring.factories`?åŠ è½½å†…å®¹ï¼Œ`META-INF/spring.factories`?å¯ä»¥ç†è§£ä¸ºä¸€ä¸ªé…ç½®æ–‡ä»¶ï¼Œkey ä¸ºä¼ å…¥çš„ typeï¼Œè¯¥æ–¹æ³•çš„è¯¦ç»†åˆ†æï¼Œå¯ä»¥å‚è€ƒ?[springboot è‡ªåŠ¨è£…é…ä¹‹åŠ è½½è‡ªåŠ¨è£…é…ç±»](https://my.oschina.net/funcy/blog/4870868)ã€‚
 
-×îÖÕ»áÓĞ¶àÉÙ¸ö?`ApplicationContextInitializer`?¼ÓÔØ½øÀ´ÄØ£¿Í¨¹ıµ÷ÊÔ£¬·¢ÏÖÒ»¹²ÓĞ 7 ¸ö£º
+æœ€ç»ˆä¼šæœ‰å¤šå°‘ä¸ª?`ApplicationContextInitializer`?åŠ è½½è¿›æ¥å‘¢ï¼Ÿé€šè¿‡è°ƒè¯•ï¼Œå‘ç°ä¸€å…±æœ‰ 7 ä¸ªï¼š
 
 ![](https://oscimg.oschina.net/oscnet/up-53f764fefeb0c55fcfef6e34634805162f5.png)
 
-¶ÔÕâ 7 ¸ö?`ApplicationContextInitializer`£¬ËµÃ÷ÈçÏÂ£º
+å¯¹è¿™ 7 ä¸ª?`ApplicationContextInitializer`ï¼Œè¯´æ˜å¦‚ä¸‹ï¼š
 
-*   `ConfigurationWarningsApplicationContextInitializer`£º±¨¸æ IOC ÈİÆ÷µÄÒ»Ğ©³£¼ûµÄ´íÎóÅäÖÃ
-*   `ContextIdApplicationContextInitializer`£ºÉèÖÃ Spring Ó¦ÓÃÉÏÏÂÎÄµÄ ID
-*   `DelegatingApplicationContextInitializer`£º¼ÓÔØ?`application.properties`?ÖĞ?`context.initializer.classes`?ÅäÖÃµÄÀà
-*   `RSocketPortInfoApplicationContextInitializer`£º½«?`RSocketServer`?Êµ¼ÊÊ¹ÓÃµÄ¼àÌı¶Ë¿ÚĞ´Èëµ½?`Environment`?»·¾³ÊôĞÔÖĞ
-*   `ServerPortInfoApplicationContextInitializer`£º½«ÄÚÖÃ servlet ÈİÆ÷Êµ¼ÊÊ¹ÓÃµÄ¼àÌı¶Ë¿ÚĞ´Èëµ½?`Environment`?»·¾³ÊôĞÔÖĞ
-*   `SharedMetadataReaderFactoryContextInitializer`£º´´½¨Ò»¸ö?`SpringBoot`?ºÍ?`ConfigurationClassPostProcessor`?¹²ÓÃµÄ?`CachingMetadataReaderFactory`?¶ÔÏó
-*   `ConditionEvaluationReportLoggingListener`£º½«?`ConditionEvaluationReport`?Ğ´ÈëÈÕÖ¾
+*   `ConfigurationWarningsApplicationContextInitializer`ï¼šæŠ¥å‘Š IOC å®¹å™¨çš„ä¸€äº›å¸¸è§çš„é”™è¯¯é…ç½®
+*   `ContextIdApplicationContextInitializer`ï¼šè®¾ç½® Spring åº”ç”¨ä¸Šä¸‹æ–‡çš„ ID
+*   `DelegatingApplicationContextInitializer`ï¼šåŠ è½½?`application.properties`?ä¸­?`context.initializer.classes`?é…ç½®çš„ç±»
+*   `RSocketPortInfoApplicationContextInitializer`ï¼šå°†?`RSocketServer`?å®é™…ä½¿ç”¨çš„ç›‘å¬ç«¯å£å†™å…¥åˆ°?`Environment`?ç¯å¢ƒå±æ€§ä¸­
+*   `ServerPortInfoApplicationContextInitializer`ï¼šå°†å†…ç½® servlet å®¹å™¨å®é™…ä½¿ç”¨çš„ç›‘å¬ç«¯å£å†™å…¥åˆ°?`Environment`?ç¯å¢ƒå±æ€§ä¸­
+*   `SharedMetadataReaderFactoryContextInitializer`ï¼šåˆ›å»ºä¸€ä¸ª?`SpringBoot`?å’Œ?`ConfigurationClassPostProcessor`?å…±ç”¨çš„?`CachingMetadataReaderFactory`?å¯¹è±¡
+*   `ConditionEvaluationReportLoggingListener`ï¼šå°†?`ConditionEvaluationReport`?å†™å…¥æ—¥å¿—
 
-»ñÈ¡µ½?`ApplicationContextInitializer`£¬ÎÒÃÇÔÙÀ´¿´¿´?`setInitializers(...)`?·½·¨£º
+è·å–åˆ°?`ApplicationContextInitializer`ï¼Œæˆ‘ä»¬å†æ¥çœ‹çœ‹?`setInitializers(...)`?æ–¹æ³•ï¼š
 
 ```
 public class SpringApplication {
@@ -232,36 +232,36 @@ public class SpringApplication {
 
 ```
 
-ÕâÊÇÒ»¸ö±ê×¼µÄ?`setter`?·½·¨£¬Ëù×öµÄ¾ÍÖ»ÊÇÉèÖÃ³ÉÔ±±äÁ¿¡£
+è¿™æ˜¯ä¸€ä¸ªæ ‡å‡†çš„?`setter`?æ–¹æ³•ï¼Œæ‰€åšçš„å°±åªæ˜¯è®¾ç½®æˆå‘˜å˜é‡ã€‚
 
-### 2.3 ÉèÖÃ¼àÌıÆ÷£º`setListeners(...)`
+### 2.3 è®¾ç½®ç›‘å¬å™¨ï¼š`setListeners(...)`
 
-ÉèÖÃ¼àÌıÆ÷µÄ´úÂëÈçÏÂ£º
+è®¾ç½®ç›‘å¬å™¨çš„ä»£ç å¦‚ä¸‹ï¼š
 
 ```
 setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 
 ```
 
-´ÓĞÎÊ½ÉÏ¿´£¬Í¬?`Initializer`?Ò»Ñù£¬Ò²ÊÇÏÈ´Ó?`META-INF/spring.factories`?ÖĞ¼ÓÔØ?`ApplicationListener`£¬È»ºóÌí¼Óµ½³ÉÔ±±äÁ¿ÖĞ£¬ÕâÀïÎÒÃÇÖ±½Ó¿´ÄÜ»ñÈ¡µ½ÄÄĞ©?`listener`£º
+ä»å½¢å¼ä¸Šçœ‹ï¼ŒåŒ?`Initializer`?ä¸€æ ·ï¼Œä¹Ÿæ˜¯å…ˆä»?`META-INF/spring.factories`?ä¸­åŠ è½½?`ApplicationListener`ï¼Œç„¶åæ·»åŠ åˆ°æˆå‘˜å˜é‡ä¸­ï¼Œè¿™é‡Œæˆ‘ä»¬ç›´æ¥çœ‹èƒ½è·å–åˆ°å“ªäº›?`listener`ï¼š
 
 ![](https://oscimg.oschina.net/oscnet/up-0440eb21c69a75686850a1b44eb9f1287c8.png)
 
-¿ÉÒÔ¿´µ½£¬Ò»¹²¿ÉÒÔ»ñÈ¡µ½ 11 ¸ö?`listener`£¬ÕâĞ©?`listener`?µÄ×÷ÓÃÈçÏÂ£º
+å¯ä»¥çœ‹åˆ°ï¼Œä¸€å…±å¯ä»¥è·å–åˆ° 11 ä¸ª?`listener`ï¼Œè¿™äº›?`listener`?çš„ä½œç”¨å¦‚ä¸‹ï¼š
 
-*   `ClearCachesApplicationListener`£ºÓ¦ÓÃÉÏÏÂÎÄ¼ÓÔØÍê³Éºó¶Ô»º´æ×öÇå³ı¹¤×÷
-*   `ParentContextCloserApplicationListener`£º¼àÌıË«Ç×Ó¦ÓÃÉÏÏÂÎÄµÄ¹Ø±ÕÊÂ¼ş²¢Íù×Ô¼ºµÄ×ÓÓ¦ÓÃÉÏÏÂÎÄÖĞ´«²¥
-*   `CloudFoundryVcapEnvironmentPostProcessor`£º¶Ô?`CloudFoundry`?Ìá¹©Ö§³Ö
-*   `FileEncodingApplicationListener`£º¼ì²âÏµÍ³ÎÄ¼ş±àÂëÓëÓ¦ÓÃ»·¾³±àÂëÊÇ·ñÒ»ÖÂ£¬Èç¹ûÏµÍ³ÎÄ¼ş±àÂëºÍÓ¦ÓÃ»·¾³µÄ±àÂë²»Í¬ÔòÖÕÖ¹Ó¦ÓÃÆô¶¯
-*   `AnsiOutputApplicationListener`£º¸ù¾İ?`spring.output.ansi.enabled`?²ÎÊıÅäÖÃ?`AnsiOutput`
-*   `ConfigFileApplicationListener`£º´Ó³£¼ûµÄÄÇĞ©Ô¼¶¨µÄÎ»ÖÃ¶ÁÈ¡ÅäÖÃÎÄ¼ş
-*   `DelegatingApplicationListener`£º¼àÌıµ½ÊÂ¼şºó×ª·¢¸ø?`application.properties`?ÖĞÅäÖÃµÄ?`context.listener.classes`?µÄ¼àÌıÆ÷
-*   `ClasspathLoggingApplicationListener`£º¶Ô»·¾³¾ÍĞ÷ÊÂ¼ş?`ApplicationEnvironmentPreparedEvent`?ºÍÓ¦ÓÃÊ§°ÜÊÂ¼ş?`ApplicationFailedEvent`?×ö³öÏìÓ¦
-*   `LoggingApplicationListener`£ºÅäÖÃ?`LoggingSystem`£¬Ê¹ÓÃ?`logging.config`?»·¾³±äÁ¿Ö¸¶¨µÄÅäÖÃ»òÕßÈ±Ê¡ÅäÖÃ
-*   `LiquibaseServiceLocatorApplicationListener`£ºÊ¹ÓÃÒ»¸ö¿ÉÒÔºÍ?`SpringBoot`?¿ÉÖ´ĞĞ jar °üÅäºÏ¹¤×÷µÄ°æ±¾Ìæ»»?`LiquibaseServiceLocator`
-*   `BackgroundPreinitializer`£ºÊ¹ÓÃÒ»¸öºóÌ¨Ïß³Ì¾¡Ôç´¥·¢Ò»Ğ©ºÄÊ±µÄ³õÊ¼»¯ÈÎÎñ
+*   `ClearCachesApplicationListener`ï¼šåº”ç”¨ä¸Šä¸‹æ–‡åŠ è½½å®Œæˆåå¯¹ç¼“å­˜åšæ¸…é™¤å·¥ä½œ
+*   `ParentContextCloserApplicationListener`ï¼šç›‘å¬åŒäº²åº”ç”¨ä¸Šä¸‹æ–‡çš„å…³é—­äº‹ä»¶å¹¶å¾€è‡ªå·±çš„å­åº”ç”¨ä¸Šä¸‹æ–‡ä¸­ä¼ æ’­
+*   `CloudFoundryVcapEnvironmentPostProcessor`ï¼šå¯¹?`CloudFoundry`?æä¾›æ”¯æŒ
+*   `FileEncodingApplicationListener`ï¼šæ£€æµ‹ç³»ç»Ÿæ–‡ä»¶ç¼–ç ä¸åº”ç”¨ç¯å¢ƒç¼–ç æ˜¯å¦ä¸€è‡´ï¼Œå¦‚æœç³»ç»Ÿæ–‡ä»¶ç¼–ç å’Œåº”ç”¨ç¯å¢ƒçš„ç¼–ç ä¸åŒåˆ™ç»ˆæ­¢åº”ç”¨å¯åŠ¨
+*   `AnsiOutputApplicationListener`ï¼šæ ¹æ®?`spring.output.ansi.enabled`?å‚æ•°é…ç½®?`AnsiOutput`
+*   `ConfigFileApplicationListener`ï¼šä»å¸¸è§çš„é‚£äº›çº¦å®šçš„ä½ç½®è¯»å–é…ç½®æ–‡ä»¶
+*   `DelegatingApplicationListener`ï¼šç›‘å¬åˆ°äº‹ä»¶åè½¬å‘ç»™?`application.properties`?ä¸­é…ç½®çš„?`context.listener.classes`?çš„ç›‘å¬å™¨
+*   `ClasspathLoggingApplicationListener`ï¼šå¯¹ç¯å¢ƒå°±ç»ªäº‹ä»¶?`ApplicationEnvironmentPreparedEvent`?å’Œåº”ç”¨å¤±è´¥äº‹ä»¶?`ApplicationFailedEvent`?åšå‡ºå“åº”
+*   `LoggingApplicationListener`ï¼šé…ç½®?`LoggingSystem`ï¼Œä½¿ç”¨?`logging.config`?ç¯å¢ƒå˜é‡æŒ‡å®šçš„é…ç½®æˆ–è€…ç¼ºçœé…ç½®
+*   `LiquibaseServiceLocatorApplicationListener`ï¼šä½¿ç”¨ä¸€ä¸ªå¯ä»¥å’Œ?`SpringBoot`?å¯æ‰§è¡Œ jar åŒ…é…åˆå·¥ä½œçš„ç‰ˆæœ¬æ›¿æ¢?`LiquibaseServiceLocator`
+*   `BackgroundPreinitializer`ï¼šä½¿ç”¨ä¸€ä¸ªåå°çº¿ç¨‹å°½æ—©è§¦å‘ä¸€äº›è€—æ—¶çš„åˆå§‹åŒ–ä»»åŠ¡
 
-ÔÙÀ´¿´¿´?`SpringApplication#setListeners`£º
+å†æ¥çœ‹çœ‹?`SpringApplication#setListeners`ï¼š
 
 ```
 public void setListeners(Collection<? extends ApplicationListener<?>> listeners) {
@@ -270,18 +270,18 @@ public void setListeners(Collection<? extends ApplicationListener<?>> listeners)
 
 ```
 
-ÕâÒ²ÊÇÒ»¸ö±ê×¼µÄ?`setter`?·½·¨¡£
+è¿™ä¹Ÿæ˜¯ä¸€ä¸ªæ ‡å‡†çš„?`setter`?æ–¹æ³•ã€‚
 
-### 2.4 ÍÆ¶ÏÖ÷Àà£º`deduceMainApplicationClass()`
+### 2.4 æ¨æ–­ä¸»ç±»ï¼š`deduceMainApplicationClass()`
 
-ËùÎ½Ö÷Àà£¬¾ÍÊÇ°üº¬?`main(String[])`£¬Ò²¾ÍÊÇµ±Ç° spring Ó¦ÓÃµÄÆô¶¯Àà£¬`SpringApplication#deduceMainApplicationClass`?´úÂëÈçÏÂ£º
+æ‰€è°“ä¸»ç±»ï¼Œå°±æ˜¯åŒ…å«?`main(String[])`ï¼Œä¹Ÿå°±æ˜¯å½“å‰ spring åº”ç”¨çš„å¯åŠ¨ç±»ï¼Œ`SpringApplication#deduceMainApplicationClass`?ä»£ç å¦‚ä¸‹ï¼š
 
 ```
 private Class<?> deduceMainApplicationClass() {
     try {
-        // »ñÈ¡µ÷ÓÃÕ»
+        // è·å–è°ƒç”¨æ ˆ
         StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
-        // ±éÀúµ÷ÓÃÕ»£¬ÕÒ µ½main·½·¨
+        // éå†è°ƒç”¨æ ˆï¼Œæ‰¾ åˆ°mainæ–¹æ³•
         for (StackTraceElement stackTraceElement : stackTrace) {
             if ("main".equals(stackTraceElement.getMethodName())) {
                 return Class.forName(stackTraceElement.getClassName());
@@ -296,23 +296,23 @@ private Class<?> deduceMainApplicationClass() {
 
 ```
 
-ÕâÀïÖ÷ÒªÊÇÍ¨¹ı?`new RuntimeException().getStackTrace()`?»ñÈ¡µ÷ÓÃÕ»£¬È»ºó±éÀú£¬µÃµ½°üº¬?`main`?·½·¨µÄÀà£¬µÃµ½µÄµ÷ÓÃÕ»ÈçÏÂ£º
+è¿™é‡Œä¸»è¦æ˜¯é€šè¿‡?`new RuntimeException().getStackTrace()`?è·å–è°ƒç”¨æ ˆï¼Œç„¶åéå†ï¼Œå¾—åˆ°åŒ…å«?`main`?æ–¹æ³•çš„ç±»ï¼Œå¾—åˆ°çš„è°ƒç”¨æ ˆå¦‚ä¸‹ï¼š
 
 ![](https://oscimg.oschina.net/oscnet/up-8c04487e6b05f583e7d45b83c293634f42a.png)
 
-¿ÉÒÔ¿´µ½£¬`main()`?¾Í°üº¬ÔÚµ÷ÓÃÕ»ÖĞÁË¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`main()`?å°±åŒ…å«åœ¨è°ƒç”¨æ ˆä¸­äº†ã€‚
 
-### 2.5 ×Ü½á
+### 2.5 æ€»ç»“
 
-±¾ÎÄÖ÷ÒªÊÇ½éÉÜ?`SpringApplication`?µÄ´´½¨¹ı³Ì£¬ÎÒÃÇÖØµã·ÖÎöÁËÒÔÏÂ¼¸µã£º
+æœ¬æ–‡ä¸»è¦æ˜¯ä»‹ç»?`SpringApplication`?çš„åˆ›å»ºè¿‡ç¨‹ï¼Œæˆ‘ä»¬é‡ç‚¹åˆ†æäº†ä»¥ä¸‹å‡ ç‚¹ï¼š
 
-1.  ÍÆ¶Ïµ±Ç° web Ó¦ÓÃÀàĞÍ£ºNONE, SERVLET,REACTIVE£»
-2.  ÉèÖÃ³õÊ¼»¯Æ÷£º`ApplicationContextInitializer`£»
-3.  ÉèÖÃ¼àÌıÆ÷£º`ApplicationListener`£»
-4.  ÍÆ¶ÏÖ÷Àà¡£
+1.  æ¨æ–­å½“å‰ web åº”ç”¨ç±»å‹ï¼šNONE, SERVLET,REACTIVEï¼›
+2.  è®¾ç½®åˆå§‹åŒ–å™¨ï¼š`ApplicationContextInitializer`ï¼›
+3.  è®¾ç½®ç›‘å¬å™¨ï¼š`ApplicationListener`ï¼›
+4.  æ¨æ–­ä¸»ç±»ã€‚
 
 ![](https://oscimg.oschina.net/oscnet/up-e9a43f1c523c0f19d37e4741580ed32ca08.png)
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4877610](https://my.oschina.net/funcy/blog/4877610)?£¬ÏŞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖĞÄÑÃâÓĞ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õı£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŸæ–‡é“¾æ¥ï¼š[https://my.oschina.net/funcy/blog/4877610](https://my.oschina.net/funcy/blog/4877610)?ï¼Œé™äºä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿æŒ‡æ­£ï¼åŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚_

@@ -1,32 +1,32 @@
-ÔÚ springboot ÖĞ£¬Èç¹ûÎÒÃÇĞèÒª×¢²á servlet Èı´ó×é¼ş£º`servlet`¡¢`filter`¡¢`listener`£¬¸ÃÔõÃ´×öÄØ£¬springboot ÌùĞÄµØÎªÎÒÃÇÌá¹©ÁË 3 ÖÖ·½·¨£¬±¾ÎÄ¾ÍÀ´·ÖÎöÕâ 3 ÖÖ·½·¨µÄÔ´ÂëÊµÏÖ¡£
+åœ¨ springboot ä¸­ï¼Œå¦‚æœæˆ‘ä»¬éœ€è¦æ³¨å†Œ servlet ä¸‰å¤§ç»„ä»¶ï¼š`servlet`ã€`filter`ã€`listener`ï¼Œè¯¥æ€ä¹ˆåšå‘¢ï¼Œspringboot è´´å¿ƒåœ°ä¸ºæˆ‘ä»¬æä¾›äº† 3 ç§æ–¹æ³•ï¼Œæœ¬æ–‡å°±æ¥åˆ†æè¿™ 3 ç§æ–¹æ³•çš„æºç å®ç°ã€‚
 
-### 1\. ×¢²á·½Ê½
+### 1\. æ³¨å†Œæ–¹å¼
 
-#### 1.1 Ê¹ÓÃ `XxxRegistrationBean` ×¢²á
+#### 1.1 ä½¿ç”¨ `XxxRegistrationBean` æ³¨å†Œ
 
-springboot Ìá¹©ÁËÈı¸öÀàĞÍµÄ `RegistrationBean` À´´¦Àí servlet Èı´ó×é¼şµÄ×¢²á£¬·Ö±ğÊÇ `ServletRegistrationBean`¡¢`FilterRegistrationBean`¡¢`ServletListenerRegistrationBean`£¬ÕâÀïÎÒÃÇ¼òµ¥Ê¾ÒâÏÂËüÃÇµÄÓÃ·¨£º
+springboot æä¾›äº†ä¸‰ä¸ªç±»å‹çš„ `RegistrationBean` æ¥å¤„ç† servlet ä¸‰å¤§ç»„ä»¶çš„æ³¨å†Œï¼Œåˆ†åˆ«æ˜¯ `ServletRegistrationBean`ã€`FilterRegistrationBean`ã€`ServletListenerRegistrationBean`ï¼Œè¿™é‡Œæˆ‘ä»¬ç®€å•ç¤ºæ„ä¸‹å®ƒä»¬çš„ç”¨æ³•ï¼š
 
 ```
 /**
- * ×¼±¸ÁËÒ»¸öservlet
+ * å‡†å¤‡äº†ä¸€ä¸ªservlet
  */
 public class MyServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // ´¦ÀíÒ»Ğ©²Ù×÷
+        // å¤„ç†ä¸€äº›æ“ä½œ
         ...
     }
 }
 
 /**
- * ½øĞĞ×¢²á²Ù×÷
+ * è¿›è¡Œæ³¨å†Œæ“ä½œ
  */
 @Bean
 public ServletRegistrationBean registerServlet() {
     ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(
             new MyServlet(), "/myServlet");
-    // ´¦ÀíÒ»Ğ©ÅäÖÃ²Ù×÷
+    // å¤„ç†ä¸€äº›é…ç½®æ“ä½œ
     servletRegistrationBean.setXxx();
     ...
     return servletRegistrationBean;
@@ -34,17 +34,17 @@ public ServletRegistrationBean registerServlet() {
 
 ```
 
-ÒÔÉÏÌá¹©ÁË `servlet` µÄ×¢²á·½Ê½£¬Òª×¢²á `filter`¡¢`listener`£¬Ö»ĞèÊ¹ÓÃ¶ÔÓ¦µÄ `RegistrationBean` ¼´¿É£¬ÕâÀï¾Í²»Õ¹Ê¾ÁË¡£
+ä»¥ä¸Šæä¾›äº† `servlet` çš„æ³¨å†Œæ–¹å¼ï¼Œè¦æ³¨å†Œ `filter`ã€`listener`ï¼Œåªéœ€ä½¿ç”¨å¯¹åº”çš„ `RegistrationBean` å³å¯ï¼Œè¿™é‡Œå°±ä¸å±•ç¤ºäº†ã€‚
 
-#### 1.2 Ê¹ÓÃ servlet ×¢½â×¢²á
+#### 1.2 ä½¿ç”¨ servlet æ³¨è§£æ³¨å†Œ
 
-ÔÚ `Servlet 3.0`£¬servlet ÈİÆ÷Ìá¹©ÁË 3 ¸ö×¢½âÀ´´¦Àí `servlet` Èı´ó×é¼şµÄ×¢²á£º
+åœ¨ `Servlet 3.0`ï¼Œservlet å®¹å™¨æä¾›äº† 3 ä¸ªæ³¨è§£æ¥å¤„ç† `servlet` ä¸‰å¤§ç»„ä»¶çš„æ³¨å†Œï¼š
 
-*   `@WebServlet`: ´¦Àí `servlet` ×¢²á
-*   `@WebFilter`: ´¦Àí `filter` ×¢²á
-*   `@WebListener`: ´¦Àí `listener` ×¢²á
+*   `@WebServlet`: å¤„ç† `servlet` æ³¨å†Œ
+*   `@WebFilter`: å¤„ç† `filter` æ³¨å†Œ
+*   `@WebListener`: å¤„ç† `listener` æ³¨å†Œ
 
-»¹ÊÇÒÔ `servlet` ×¢²áÎªÀı£¬ÏÈÀ´¿´¿´ `@WebServlet`:
+è¿˜æ˜¯ä»¥ `servlet` æ³¨å†Œä¸ºä¾‹ï¼Œå…ˆæ¥çœ‹çœ‹ `@WebServlet`:
 
 ```
 @Target({ElementType.TYPE})
@@ -74,7 +74,7 @@ public @interface WebServlet {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬`@WebServlet` Ö§³Ö¶à¸öÊôĞÔÅäÖÃ£¬ÏñÖ¸¶¨ servlet µÄÃû³Æ¡¢Ó³ÉäµÄ url ¶¼¿ÉÒÔÔÚÕâÀïÖ¸¶¨£¬ÎÒÃÇÒ²Ìá¹©Ò»¸öÊ¾Àı£º
+å¯ä»¥çœ‹åˆ°ï¼Œ`@WebServlet` æ”¯æŒå¤šä¸ªå±æ€§é…ç½®ï¼ŒåƒæŒ‡å®š servlet çš„åç§°ã€æ˜ å°„çš„ url éƒ½å¯ä»¥åœ¨è¿™é‡ŒæŒ‡å®šï¼Œæˆ‘ä»¬ä¹Ÿæä¾›ä¸€ä¸ªç¤ºä¾‹ï¼š
 
 ```
 @WebServlet(name = "myServlet", urlPatterns = "/myServlet")
@@ -82,7 +82,7 @@ public class JavaServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // ´¦ÀíÒ»Ğ©²Ù×÷
+        // å¤„ç†ä¸€äº›æ“ä½œ
         ...
     }
 
@@ -90,10 +90,10 @@ public class JavaServlet extends HttpServlet {
 
 ```
 
-ÕâÑù´¦Àíºó£¬»¹Òª×öÒ»¸öÖØÒªµÄ²Ù×÷£¬ÄÇ¾ÍÊÇÊ¹ÓÃ `@ServletComponentScan` À´¿ªÆôÉ¨Ãè¹¦ÄÜ£º
+è¿™æ ·å¤„ç†åï¼Œè¿˜è¦åšä¸€ä¸ªé‡è¦çš„æ“ä½œï¼Œé‚£å°±æ˜¯ä½¿ç”¨ `@ServletComponentScan` æ¥å¼€å¯æ‰«æåŠŸèƒ½ï¼š
 
 ```
-// Ê¹ÓÃ @ServletComponentScan À´¿ªÆô servlet ×é¼şµÄÉ¨Ãè¹¦ÄÜ
+// ä½¿ç”¨ @ServletComponentScan æ¥å¼€å¯ servlet ç»„ä»¶çš„æ‰«æåŠŸèƒ½
 @ServletComponentScan
 @SpringBootApplication
 public class MyApplication {
@@ -104,34 +104,34 @@ public class MyApplication {
 
 ```
 
-#### 1.3 `ServletContextInitializer` ×¢²á
+#### 1.3 `ServletContextInitializer` æ³¨å†Œ
 
-Ê¹ÓÃÕâÖÖ·½Ê½×¢²á£¬ĞèÒªÊµÏÖ `ServletContextInitializer` ½Ó¿Ú£º
+ä½¿ç”¨è¿™ç§æ–¹å¼æ³¨å†Œï¼Œéœ€è¦å®ç° `ServletContextInitializer` æ¥å£ï¼š
 
 ```
 /**
- * ×¼±¸Ò»¸öservlet
+ * å‡†å¤‡ä¸€ä¸ªservlet
  */
 public class MyServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // ´¦ÀíÒ»Ğ©²Ù×÷
+        // å¤„ç†ä¸€äº›æ“ä½œ
         ...
     }
 }
 
 /**
- * ÊµÏÖ ServletContextInitializer 
+ * å®ç° ServletContextInitializer 
  */
 @Component
 public class ServletConfig implements ServletContextInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) {
-        // Ê¹ÓÃ servletContext ½øĞĞ×¢²á
+        // ä½¿ç”¨ servletContext è¿›è¡Œæ³¨å†Œ
         ServletRegistration initServlet = servletContext.addServlet("myServlet", MyServlet.class);
-        // ¿ÉÒÔ½øĞĞÒ»Ğ©ÅäÖÃ
+        // å¯ä»¥è¿›è¡Œä¸€äº›é…ç½®
         initServlet.addMapping("/myServlet");
     }
 
@@ -139,15 +139,15 @@ public class ServletConfig implements ServletContextInitializer {
 
 ```
 
-Ê¹ÓÃÕâÖÖ·½Ê½×¢²á£¬ÏÈÒªÊµÏÖ `ServletContextInitializer`£¬È»ºóÖØĞ´ `ServletContextInitializer#onStartup` ·½·¨£¬ÔÚ `ServletContextInitializer#onStartup` Ê¹ÓÃ `ServletContext` ¶ÔÏó½øĞĞ×¢²á¡£`ServletContext` ¶ÔÏóÓÉ servlet ÈİÆ÷Ìá¹©£¬Õâ¸ö¶ÔÏó¾ÍÊÇ×¢²áµÄÖÕ¼«Àà£¬²»¹ÜÊÇÊ¹ÓÃ `RegistrationBean` ×¢²á£¬»¹ÊÇÊ¹ÓÃ `@ServletComponentScan` É¨Ãè×¢²á£¬×îÖÕ¶¼ÊÇÍ¨¹ı `ServletContext` ×¢²áµ½ servlet ÈİÆ÷ÖĞ¡£
+ä½¿ç”¨è¿™ç§æ–¹å¼æ³¨å†Œï¼Œå…ˆè¦å®ç° `ServletContextInitializer`ï¼Œç„¶åé‡å†™ `ServletContextInitializer#onStartup` æ–¹æ³•ï¼Œåœ¨ `ServletContextInitializer#onStartup` ä½¿ç”¨ `ServletContext` å¯¹è±¡è¿›è¡Œæ³¨å†Œã€‚`ServletContext` å¯¹è±¡ç”± servlet å®¹å™¨æä¾›ï¼Œè¿™ä¸ªå¯¹è±¡å°±æ˜¯æ³¨å†Œçš„ç»ˆæç±»ï¼Œä¸ç®¡æ˜¯ä½¿ç”¨ `RegistrationBean` æ³¨å†Œï¼Œè¿˜æ˜¯ä½¿ç”¨ `@ServletComponentScan` æ‰«ææ³¨å†Œï¼Œæœ€ç»ˆéƒ½æ˜¯é€šè¿‡ `ServletContext` æ³¨å†Œåˆ° servlet å®¹å™¨ä¸­ã€‚
 
-### 2\. Ô´ÂëÊµÏÖ
+### 2\. æºç å®ç°
 
-ÁË½âÍêÈçºÎÊ¹ÓÃºó£¬½ÓÏÂÀ´ÎÒÃÇ¾Í ½øÈëÔ´Âë¿´¿´ÕâĞ©Á÷³ÌÊÇÈçºÎÊµÏÖ¡£
+äº†è§£å®Œå¦‚ä½•ä½¿ç”¨åï¼Œæ¥ä¸‹æ¥æˆ‘ä»¬å°± è¿›å…¥æºç çœ‹çœ‹è¿™äº›æµç¨‹æ˜¯å¦‚ä½•å®ç°ã€‚
 
-#### 2.1 `@ServletComponentScan` É¨Ãè
+#### 2.1 `@ServletComponentScan` æ‰«æ
 
-ÎÒÃÇÖ±½Ó½øÈë `@ServletComponentScan`£º
+æˆ‘ä»¬ç›´æ¥è¿›å…¥ `@ServletComponentScan`ï¼š
 
 ```
 @Target(ElementType.TYPE)
@@ -160,12 +160,12 @@ public @interface ServletComponentScan {
 
 ```
 
-Õâ¸ö×¢²áÉÏÃæ±ê¼ÇÁË `@Import` ×¢½â£¬ÒıÈëÁËÒ»¸öÀà£º`ServletComponentScanRegistrar`£¬ÎÒÃÇ¿´¿´Õâ¸öÀà¾¿¾¹×öÁËÉ¶£º
+è¿™ä¸ªæ³¨å†Œä¸Šé¢æ ‡è®°äº† `@Import` æ³¨è§£ï¼Œå¼•å…¥äº†ä¸€ä¸ªç±»ï¼š`ServletComponentScanRegistrar`ï¼Œæˆ‘ä»¬çœ‹çœ‹è¿™ä¸ªç±»ç©¶ç«Ÿåšäº†å•¥ï¼š
 
 ```
 /**
- * ÊµÏÖÁËImportBeanDefinitionRegistrar
- * ÏòÈİÆ÷ÖĞ×¢²áÁË ServletComponentRegisteringPostProcessor
+ * å®ç°äº†ImportBeanDefinitionRegistrar
+ * å‘å®¹å™¨ä¸­æ³¨å†Œäº† ServletComponentRegisteringPostProcessor
  */
 class ServletComponentScanRegistrar implements ImportBeanDefinitionRegistrar {
 
@@ -179,22 +179,22 @@ class ServletComponentScanRegistrar implements ImportBeanDefinitionRegistrar {
             updatePostProcessor(registry, packagesToScan);
         }
         else {
-            // ×¢²á BeanFactoryPostProcessor
+            // æ³¨å†Œ BeanFactoryPostProcessor
             addPostProcessor(registry, packagesToScan);
         }
     }
 
     /**
-     * ×¢²á BeanFactoryPostProcessor
-     * ×¢²áÁË ServletComponentRegisteringPostProcessor
+     * æ³¨å†Œ BeanFactoryPostProcessor
+     * æ³¨å†Œäº† ServletComponentRegisteringPostProcessor
      */
     private void addPostProcessor(BeanDefinitionRegistry registry, Set<String> packagesToScan) {
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-        // ServletComponentRegisteringPostProcessor: ´¦ÀíÉ¨ÃèµÄ BeanFactoryPostProcessor
+        // ServletComponentRegisteringPostProcessor: å¤„ç†æ‰«æçš„ BeanFactoryPostProcessor
         beanDefinition.setBeanClass(ServletComponentRegisteringPostProcessor.class);
         beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(packagesToScan);
         beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
-        // ServletComponentScanRegistrar ¾ÍÊÇÎªÁË×¢²á ServletComponentRegisteringPostProcessor
+        // ServletComponentScanRegistrar å°±æ˜¯ä¸ºäº†æ³¨å†Œ ServletComponentRegisteringPostProcessor
         registry.registerBeanDefinition(BEAN_NAME, beanDefinition);
     }
 
@@ -204,37 +204,37 @@ class ServletComponentScanRegistrar implements ImportBeanDefinitionRegistrar {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬Õâ¸öÀàÊµÏÖÁË `ImportBeanDefinitionRegistrar`£¬Ö÷ÒªÊÇÏò spring ÈİÆ÷ÖĞ×¢²áÁË `ServletComponentRegisteringPostProcessor`¡£ÎÒÃÇ¼ÌĞø¿´ÏÂÈ¥£¬½øÈë `ServletComponentRegisteringPostProcessor`£º
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™ä¸ªç±»å®ç°äº† `ImportBeanDefinitionRegistrar`ï¼Œä¸»è¦æ˜¯å‘ spring å®¹å™¨ä¸­æ³¨å†Œäº† `ServletComponentRegisteringPostProcessor`ã€‚æˆ‘ä»¬ç»§ç»­çœ‹ä¸‹å»ï¼Œè¿›å…¥ `ServletComponentRegisteringPostProcessor`ï¼š
 
 ```
 class ServletComponentRegisteringPostProcessor implements BeanFactoryPostProcessor, 
         ApplicationContextAware {
 
     /**
-     * ĞèÒªÉ¨ÃèµÄ°ü.
+     * éœ€è¦æ‰«æçš„åŒ….
      */
     private final Set<String> packagesToScan;
 
     /**
-     * ÒªÉ¨ÃèµÄ°üÓÉ¹¹Ôì·½·¨´«Èë
+     * è¦æ‰«æçš„åŒ…ç”±æ„é€ æ–¹æ³•ä¼ å…¥
      */
     ServletComponentRegisteringPostProcessor(Set<String> packagesToScan) {
         this.packagesToScan = packagesToScan;
     }
 
     /**
-     * ÖØĞ´ÁËBeanFactoryPostProcessorµÄ·½·¨
+     * é‡å†™äº†BeanFactoryPostProcessorçš„æ–¹æ³•
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) 
             throws BeansException {
-        // ÅĞ¶ÏÊÇ·ñÔËĞĞÔÚÄÚÇ¶µÄ web ÈİÆ÷ÖĞ
+        // åˆ¤æ–­æ˜¯å¦è¿è¡Œåœ¨å†…åµŒçš„ web å®¹å™¨ä¸­
         if (isRunningInEmbeddedWebServer()) {
-            // É¨ÃèÆ÷£¬ÅäÖÃÁËÉ¨Ãè¹æÔò
+            // æ‰«æå™¨ï¼Œé…ç½®äº†æ‰«æè§„åˆ™
             ClassPathScanningCandidateComponentProvider componentProvider 
                     = createComponentProvider();
             for (String packageToScan : this.packagesToScan) {
-                // ½øĞĞ°üÉ¨Ãè²Ù×÷
+                // è¿›è¡ŒåŒ…æ‰«ææ“ä½œ
                 scanPackage(componentProvider, packageToScan);
             }
         }
@@ -246,12 +246,12 @@ class ServletComponentRegisteringPostProcessor implements BeanFactoryPostProcess
 
 ```
 
-¿ÉÒÔ¿´µ½£¬`ServletComponentRegisteringPostProcessor` ÊµÏÖÁË `BeanFactoryPostProcessor`£¬ÔÚÖØĞ´µÄ `BeanFactoryPostProcessor#postProcessBeanFactory` ·½·¨ÖĞ´¦ÀíÉ¨Ãè²Ù×÷£¬É¨ÃèÇ°£¬ÏÈÊÇ´´½¨ÁËÉ¨ÃèÆ÷ `ClassPathScanningCandidateComponentProvider`£¬È»ºóÔÙ½øĞĞÉ¨Ãè¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`ServletComponentRegisteringPostProcessor` å®ç°äº† `BeanFactoryPostProcessor`ï¼Œåœ¨é‡å†™çš„ `BeanFactoryPostProcessor#postProcessBeanFactory` æ–¹æ³•ä¸­å¤„ç†æ‰«ææ“ä½œï¼Œæ‰«æå‰ï¼Œå…ˆæ˜¯åˆ›å»ºäº†æ‰«æå™¨ `ClassPathScanningCandidateComponentProvider`ï¼Œç„¶åå†è¿›è¡Œæ‰«æã€‚
 
-ÎÒÃÇÏÈÀ´¿´É¨ÃèÆ÷µÄ´´½¨·½·¨ `createComponentProvider()`£º
+æˆ‘ä»¬å…ˆæ¥çœ‹æ‰«æå™¨çš„åˆ›å»ºæ–¹æ³• `createComponentProvider()`ï¼š
 
 ```
-// ´¦Àí¸÷ÖÖ handler
+// å¤„ç†å„ç§ handler
 private static final List<ServletComponentHandler> HANDLERS;
 
 static {
@@ -263,16 +263,16 @@ static {
 }
 
 /**
- * ´´½¨É¨ÃèÆ÷
+ * åˆ›å»ºæ‰«æå™¨
  */
 private ClassPathScanningCandidateComponentProvider createComponentProvider() {
-    // ´´½¨¶ÔÏó
+    // åˆ›å»ºå¯¹è±¡
     ClassPathScanningCandidateComponentProvider componentProvider 
             = new ClassPathScanningCandidateComponentProvider(false);
     componentProvider.setEnvironment(this.applicationContext.getEnvironment());
     componentProvider.setResourceLoader(this.applicationContext);
     for (ServletComponentHandler handler : HANDLERS) {
-        // ÅäÖÃ¹ıÂË¹æÔò
+        // é…ç½®è¿‡æ»¤è§„åˆ™
         componentProvider.addIncludeFilter(handler.getTypeFilter());
     }
     return componentProvider;
@@ -280,9 +280,9 @@ private ClassPathScanningCandidateComponentProvider createComponentProvider() {
 
 ```
 
-`createComponentProvider()` ·½·¨ÖĞ£¬ÏÈÊÇ´´½¨ÁËÉ¨ÃèÆ÷¶ÔÏó£¬È»ºóÉèÖÃÁËÒ»Ğ©ÊôĞÔ£¬½Ó×Å¾ÍÊÇÅäÖÃ¹ıÂË¹æÔò£¬ÎÒÃÇÕâÀïÖØµãÀ´¿´ÏÂ¹ıÂË¹æÔòµÄÅäÖÃ£¬ÕâĞ©¹æÔòÓÉ `WebServletHandler`/`WebFilterHandler`/`WebListenerHandler` µÄ `getTypeFilter()` ·½·¨Ìá¹©£º
+`createComponentProvider()` æ–¹æ³•ä¸­ï¼Œå…ˆæ˜¯åˆ›å»ºäº†æ‰«æå™¨å¯¹è±¡ï¼Œç„¶åè®¾ç½®äº†ä¸€äº›å±æ€§ï¼Œæ¥ç€å°±æ˜¯é…ç½®è¿‡æ»¤è§„åˆ™ï¼Œæˆ‘ä»¬è¿™é‡Œé‡ç‚¹æ¥çœ‹ä¸‹è¿‡æ»¤è§„åˆ™çš„é…ç½®ï¼Œè¿™äº›è§„åˆ™ç”± `WebServletHandler`/`WebFilterHandler`/`WebListenerHandler` çš„ `getTypeFilter()` æ–¹æ³•æä¾›ï¼š
 
-`getTypeFilter()` ·½·¨Î»ÓÚÒ»¸ö³éÏó·½·¨ÖĞ£º
+`getTypeFilter()` æ–¹æ³•ä½äºä¸€ä¸ªæŠ½è±¡æ–¹æ³•ä¸­ï¼š
 
 ```
 abstract class ServletComponentHandler {
@@ -290,7 +290,7 @@ abstract class ServletComponentHandler {
     private final TypeFilter typeFilter;
 
     /**
-     * ´«Èë×¢½â£¬×ª»»Îª AnnotationTypeFilter ¶ÔÏó
+     * ä¼ å…¥æ³¨è§£ï¼Œè½¬æ¢ä¸º AnnotationTypeFilter å¯¹è±¡
      */
     protected ServletComponentHandler(Class<? extends Annotation> annotationType) {
         this.typeFilter = new AnnotationTypeFilter(annotationType);
@@ -298,7 +298,7 @@ abstract class ServletComponentHandler {
     }
 
     /**
-     * ·µ»Ø TypeFilter
+     * è¿”å› TypeFilter
      */
     TypeFilter getTypeFilter() {
         return this.typeFilter;
@@ -308,13 +308,13 @@ abstract class ServletComponentHandler {
 
 ```
 
-ÔÚ `ServletComponentHandler` ÖĞ£¬ÓĞÒ»¸ö³ÉÔ±±äÁ¿ `typeFilter`£¬ÔÚ¹¹Ôì·½·¨ÖĞ´«Èë×¢²áÖµºó»á×ª»»»á `AnnotationTypeFilter`£¬È»ºó¸³Öµ¸ø `typeFilter`£¬¶ø `getTypeFilter()` ·½·¨·µ»ØµÄ¾ÍÊÇÕâ¸ö `typeFilter`¡£
+åœ¨ `ServletComponentHandler` ä¸­ï¼Œæœ‰ä¸€ä¸ªæˆå‘˜å˜é‡ `typeFilter`ï¼Œåœ¨æ„é€ æ–¹æ³•ä¸­ä¼ å…¥æ³¨å†Œå€¼åä¼šè½¬æ¢ä¼š `AnnotationTypeFilter`ï¼Œç„¶åèµ‹å€¼ç»™ `typeFilter`ï¼Œè€Œ `getTypeFilter()` æ–¹æ³•è¿”å›çš„å°±æ˜¯è¿™ä¸ª `typeFilter`ã€‚
 
-ÁË½âÍêÕâ¸ö `typeFilter` µÄÀ´Ô´ºó£¬ÎÒÃÇÀ´¿´¿´ËüµÄ¼¸¸öÊµÏÖÀà£º
+äº†è§£å®Œè¿™ä¸ª `typeFilter` çš„æ¥æºåï¼Œæˆ‘ä»¬æ¥çœ‹çœ‹å®ƒçš„å‡ ä¸ªå®ç°ç±»ï¼š
 
 ```
 /**
- * WebFilterHandler ¹¹Ôì·½·¨´«ÈëµÄ²ÎÊıÊÇ WebFilter
+ * WebFilterHandler æ„é€ æ–¹æ³•ä¼ å…¥çš„å‚æ•°æ˜¯ WebFilter
  */
 class WebFilterHandler extends ServletComponentHandler {
     WebFilterHandler() {
@@ -324,7 +324,7 @@ class WebFilterHandler extends ServletComponentHandler {
 }
 
 /**
- * WebListenerHandler ¹¹Ôì·½·¨´«ÈëµÄ²ÎÊıÊÇ WebListener
+ * WebListenerHandler æ„é€ æ–¹æ³•ä¼ å…¥çš„å‚æ•°æ˜¯ WebListener
  */
 class WebListenerHandler extends ServletComponentHandler {
     WebListenerHandler() {
@@ -334,7 +334,7 @@ class WebListenerHandler extends ServletComponentHandler {
 }
 
 /**
- * WebServletHandler ¹¹Ôì·½·¨´«ÈëµÄ²ÎÊıÊÇ WebServlet
+ * WebServletHandler æ„é€ æ–¹æ³•ä¼ å…¥çš„å‚æ•°æ˜¯ WebServlet
  */
 class WebServletHandler extends ServletComponentHandler {
     WebServletHandler() {
@@ -345,20 +345,20 @@ class WebServletHandler extends ServletComponentHandler {
 
 ```
 
-ÓÉ´Ë¾ÍÃ÷°×ÁË£¬`createComponentProvider()` µÃµ½µÄ `ClassPathScanningCandidateComponentProvider` Ö»´¦Àí°üº¬ 3 ¸ö×¢½âµÄÀà£º
+ç”±æ­¤å°±æ˜ç™½äº†ï¼Œ`createComponentProvider()` å¾—åˆ°çš„ `ClassPathScanningCandidateComponentProvider` åªå¤„ç†åŒ…å« 3 ä¸ªæ³¨è§£çš„ç±»ï¼š
 
 *   `@WebFilter`
 *   `@WebListener`
 *   `@WebServlet`
 
-ÎÒÃÇ¼ÌĞø£¬½ÓÏÂÀ´¿´¿´É¨ÃèÁ÷³Ì£¬·½·¨Îª `ServletComponentRegisteringPostProcessor#scanPackage`:
+æˆ‘ä»¬ç»§ç»­ï¼Œæ¥ä¸‹æ¥çœ‹çœ‹æ‰«ææµç¨‹ï¼Œæ–¹æ³•ä¸º `ServletComponentRegisteringPostProcessor#scanPackage`:
 
 ```
 private void scanPackage(ClassPathScanningCandidateComponentProvider componentProvider, 
         String packageToScan) {
     for (BeanDefinition candidate : componentProvider.findCandidateComponents(packageToScan)) {
         if (candidate instanceof AnnotatedBeanDefinition) {
-            // ´¦ÀíµÃµ½µÄ BeanDefinition
+            // å¤„ç†å¾—åˆ°çš„ BeanDefinition
             for (ServletComponentHandler handler : HANDLERS) {
                 handler.handle(((AnnotatedBeanDefinition) candidate),
                         (BeanDefinitionRegistry) this.applicationContext);
@@ -369,14 +369,14 @@ private void scanPackage(ClassPathScanningCandidateComponentProvider componentPr
 
 ```
 
-¹ØÓÚ¾ßÌåµÄÉ¨ÃèÁ÷³Ì£¨`ClassPathScanningCandidateComponentProvider#findCandidateComponents` ·½·¨£©£¬Í¬ spring µÄ°üÉ¨ÃèÁ÷³Ì»ù±¾Ò»ÖÂ£¬ÕâÀï¾Í²»Õ¹¿ªÏ¸½²ÁË£¬ÎÒÃÇ°ÑÖØµã·ÅÔÚ `BeanDefinition` µÄ´¦ÀíÉÏ£¬Ò²¾ÍÊÇ `ServletComponentHandler#handle` ·½·¨£º
+å…³äºå…·ä½“çš„æ‰«ææµç¨‹ï¼ˆ`ClassPathScanningCandidateComponentProvider#findCandidateComponents` æ–¹æ³•ï¼‰ï¼ŒåŒ spring çš„åŒ…æ‰«ææµç¨‹åŸºæœ¬ä¸€è‡´ï¼Œè¿™é‡Œå°±ä¸å±•å¼€ç»†è®²äº†ï¼Œæˆ‘ä»¬æŠŠé‡ç‚¹æ”¾åœ¨ `BeanDefinition` çš„å¤„ç†ä¸Šï¼Œä¹Ÿå°±æ˜¯ `ServletComponentHandler#handle` æ–¹æ³•ï¼š
 
 ```
 void handle(AnnotatedBeanDefinition beanDefinition, BeanDefinitionRegistry registry) {
-    // ÕâÀïµÄ annotationType ¾ÍÊÇ¹¹Ôì·½·¨ÖĞ´«ÈëµÄ×¢½â£¬Èç@WebFilter£¬@WebListener µÈ
+    // è¿™é‡Œçš„ annotationType å°±æ˜¯æ„é€ æ–¹æ³•ä¸­ä¼ å…¥çš„æ³¨è§£ï¼Œå¦‚@WebFilterï¼Œ@WebListener ç­‰
     Map<String, Object> attributes = beanDefinition.getMetadata()
             .getAnnotationAttributes(this.annotationType.getName());
-    // ÅĞ¶Ï¶ÔÓ¦µÄ×¢½âÊÇ·ñ´æÔÚ£¬´æÔÚÔò´¦Àí
+    // åˆ¤æ–­å¯¹åº”çš„æ³¨è§£æ˜¯å¦å­˜åœ¨ï¼Œå­˜åœ¨åˆ™å¤„ç†
     if (attributes != null) {
         doHandle(attributes, beanDefinition, registry);
     }
@@ -384,20 +384,20 @@ void handle(AnnotatedBeanDefinition beanDefinition, BeanDefinitionRegistry regis
 
 ```
 
-ÔÚ´¦ÀíÉ¨ÃèµÃµ½µÄ `BeanDefinition` Ê±£¬ÏÈ±éÀúËùÓĞµÄ `handler`(`WebServletHandler`/`WebFilterHandler`/`WebListenerHandler`)£¬È»ºóµ÷ÓÃ `ServletComponentHandler#handle` ·½·¨½øĞĞ´¦Àí¡£ÔÚ `ServletComponentHandler#handle` ÖĞ£¬ÓÖ»á¸ù¾İÊÇ·ñ´æÔÚ¶ÔÓ¦µÄ×¢½âÊÇ·ñ´æÔÚ£¨Ê¹ÓÃ `AnnotatedBeanDefinition#getMetadata` »ñÈ¡¶ÔÓ¦×¢²áµÄĞÅÏ¢£©À´¾ö¶¨ÊÇ·ñµ÷ÓÃ×ÓÀàµÄ `doHandler()` ·½·¨¡£
+åœ¨å¤„ç†æ‰«æå¾—åˆ°çš„ `BeanDefinition` æ—¶ï¼Œå…ˆéå†æ‰€æœ‰çš„ `handler`(`WebServletHandler`/`WebFilterHandler`/`WebListenerHandler`)ï¼Œç„¶åè°ƒç”¨ `ServletComponentHandler#handle` æ–¹æ³•è¿›è¡Œå¤„ç†ã€‚åœ¨ `ServletComponentHandler#handle` ä¸­ï¼Œåˆä¼šæ ¹æ®æ˜¯å¦å­˜åœ¨å¯¹åº”çš„æ³¨è§£æ˜¯å¦å­˜åœ¨ï¼ˆä½¿ç”¨ `AnnotatedBeanDefinition#getMetadata` è·å–å¯¹åº”æ³¨å†Œçš„ä¿¡æ¯ï¼‰æ¥å†³å®šæ˜¯å¦è°ƒç”¨å­ç±»çš„ `doHandler()` æ–¹æ³•ã€‚
 
-ÄÇÃ´Õâ¸ö `doHandler()` ·½·¨¸ÉÁËÊ²Ã´ÄØ£¿ÎÒÃÇ½øÈë `WebServletHandler#doHandle`£º
+é‚£ä¹ˆè¿™ä¸ª `doHandler()` æ–¹æ³•å¹²äº†ä»€ä¹ˆå‘¢ï¼Ÿæˆ‘ä»¬è¿›å…¥ `WebServletHandler#doHandle`ï¼š
 
 ```
 public void doHandle(Map<String, Object> attributes, AnnotatedBeanDefinition beanDefinition,
         BeanDefinitionRegistry registry) {
-    // ×¢²áµÄÊÇ ServletRegistrationBean ¶ÔÓ¦µÄ BeanDefinition
+    // æ³¨å†Œçš„æ˜¯ ServletRegistrationBean å¯¹åº”çš„ BeanDefinition
     BeanDefinitionBuilder builder = BeanDefinitionBuilder
             .rootBeanDefinition(ServletRegistrationBean.class);
     builder.addPropertyValue("asyncSupported", attributes.get("asyncSupported"));
     builder.addPropertyValue("initParameters", extractInitParameters(attributes));
     builder.addPropertyValue("loadOnStartup", attributes.get("loadOnStartup"));
-    // »ñÈ¡ servlet Ãû³Æ£¬Èç¹ûÖ¸¶¨ÁËÃû³Æ£¬¾ÍÊ¹ÓÃÖ¸¶¨Ãû³Æ£¬Èç¹ûÃ»ÓĞÖ¸¶¨£¬¾ÍÊ¹ÓÃÊÇbeanµÄÃû³Æ
+    // è·å– servlet åç§°ï¼Œå¦‚æœæŒ‡å®šäº†åç§°ï¼Œå°±ä½¿ç”¨æŒ‡å®šåç§°ï¼Œå¦‚æœæ²¡æœ‰æŒ‡å®šï¼Œå°±ä½¿ç”¨æ˜¯beançš„åç§°
     String name = determineName(attributes, beanDefinition);
     builder.addPropertyValue("name", name);
     builder.addPropertyValue("servlet", beanDefinition);
@@ -408,34 +408,34 @@ public void doHandle(Map<String, Object> attributes, AnnotatedBeanDefinition bea
 
 ```
 
-¿ÉÒÔ¿´µ½£¬Õâ¸ö·½·¨Ö÷ÒªÊÇ´¦Àí `Servlet` µÄÅäÖÃ£¬×îÖÕÏò spring ÈİÆ÷ÖĞ×¢²áµÄÊÇ `ServletRegistrationBean` ¶ÔÓ¦µÄ `beanDefinition`¡£
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™ä¸ªæ–¹æ³•ä¸»è¦æ˜¯å¤„ç† `Servlet` çš„é…ç½®ï¼Œæœ€ç»ˆå‘ spring å®¹å™¨ä¸­æ³¨å†Œçš„æ˜¯ `ServletRegistrationBean` å¯¹åº”çš„ `beanDefinition`ã€‚
 
-ÆäËûÁ½¸ö `Handler` ÀàµÄ `doHandle()` ·½·¨´¦ÀíÁ÷³ÌÒ²²î²»¶à£¬²»¹ı×îÖÕÏò spring ÈİÆ÷ÖĞ×¢²áµÄ `beanDefinition` ÓĞËù²»Í¬£¬ÕâÀï¾Í²»Ï¸¶ÁÁË¡£
+å…¶ä»–ä¸¤ä¸ª `Handler` ç±»çš„ `doHandle()` æ–¹æ³•å¤„ç†æµç¨‹ä¹Ÿå·®ä¸å¤šï¼Œä¸è¿‡æœ€ç»ˆå‘ spring å®¹å™¨ä¸­æ³¨å†Œçš„ `beanDefinition` æœ‰æ‰€ä¸åŒï¼Œè¿™é‡Œå°±ä¸ç»†è¯»äº†ã€‚
 
-ÕâÀï×Ü½áÏÂÕâ¼¸¸ö×¢½â×îÖÕÏò spring ÈİÆ÷ÖĞ×¢²áµÄ `beanDefinition`£º
+è¿™é‡Œæ€»ç»“ä¸‹è¿™å‡ ä¸ªæ³¨è§£æœ€ç»ˆå‘ spring å®¹å™¨ä¸­æ³¨å†Œçš„ `beanDefinition`ï¼š
 
-*   `@WebServlet`: ×¢²áÁË `ServletRegistrationBean` ¶ÔÓ¦µÄ `beanDefinition`
-*   `@WebFilter`: ×¢²áÁË `FilterRegistrationBean` ¶ÔÓ¦µÄ `beanDefinition`
-*   `@WebListener`: ×¢²áÁË `ServletListenerRegistrationBean` ¶ÔÓ¦µÄ `beanDefinition`
+*   `@WebServlet`: æ³¨å†Œäº† `ServletRegistrationBean` å¯¹åº”çš„ `beanDefinition`
+*   `@WebFilter`: æ³¨å†Œäº† `FilterRegistrationBean` å¯¹åº”çš„ `beanDefinition`
+*   `@WebListener`: æ³¨å†Œäº† `ServletListenerRegistrationBean` å¯¹åº”çš„ `beanDefinition`
 
-ÔÚÊ¹ÓÃ `XxxRegistrationBean` ×¢²áÊ±£¬ÎÒÃÇÊÇÊÖ¶¯´´½¨ÁË `XxxRegistrationBean`£¬È»ºóÍ¨¹ı `@Bean` ×¢½â×¢²áµ½ spring ÈİÆ÷ÖĞ£¬¶øÊ¹ÓÃ `@WebServlet`/`@WebFilter`/`@WebListener` ÄÖÁËÒ»È¦£¬×îÖÕÒ²ÊÇ»Øµ½ÁË `XxxRegistrationBean`£¡
+åœ¨ä½¿ç”¨ `XxxRegistrationBean` æ³¨å†Œæ—¶ï¼Œæˆ‘ä»¬æ˜¯æ‰‹åŠ¨åˆ›å»ºäº† `XxxRegistrationBean`ï¼Œç„¶åé€šè¿‡ `@Bean` æ³¨è§£æ³¨å†Œåˆ° spring å®¹å™¨ä¸­ï¼Œè€Œä½¿ç”¨ `@WebServlet`/`@WebFilter`/`@WebListener` é—¹äº†ä¸€åœˆï¼Œæœ€ç»ˆä¹Ÿæ˜¯å›åˆ°äº† `XxxRegistrationBean`ï¼
 
-#### 2.2 `XxxRegistrationBean` µÄ×¢²á
+#### 2.2 `XxxRegistrationBean` çš„æ³¨å†Œ
 
-ÎŞÂÛÊÇÊ¹ÓÃ `XxxRegistrationBean` ×¢²á£¬»¹ÊÇÊ¹ÓÃ `@ServletComponentScan` É¨Ãè×¢²á£¬×îÖÕ¶¼»áµÃµ½ `XxxRegistrationBean` ¶ÔÓ¦µÄ bean£¬½ÓÏÂÀ´ÎÒÃÇ¾ÍÀ´Ì½¾¿ÏÂÕâĞ© bean ÊÇÈçºÎ×¢²áµ½ servlet ÈİÆ÷ÖĞµÄ¡£
+æ— è®ºæ˜¯ä½¿ç”¨ `XxxRegistrationBean` æ³¨å†Œï¼Œè¿˜æ˜¯ä½¿ç”¨ `@ServletComponentScan` æ‰«ææ³¨å†Œï¼Œæœ€ç»ˆéƒ½ä¼šå¾—åˆ° `XxxRegistrationBean` å¯¹åº”çš„ beanï¼Œæ¥ä¸‹æ¥æˆ‘ä»¬å°±æ¥æ¢ç©¶ä¸‹è¿™äº› bean æ˜¯å¦‚ä½•æ³¨å†Œåˆ° servlet å®¹å™¨ä¸­çš„ã€‚
 
-´Ó´úÂëÉÏ¿´£¬`ServletRegistrationBean`¡¢`FilterRegistrationBean` Óë `ServletListenerRegistrationBean` ¶¼ÊÇ `ServletContextInitializer` ½Ó¿ÚµÄÊµÏÖÀà£¬`ServletRegistrationBean` µÄ¼Ì³Ğ½á¹¹ÈçÏÂ£º
+ä»ä»£ç ä¸Šçœ‹ï¼Œ`ServletRegistrationBean`ã€`FilterRegistrationBean` ä¸ `ServletListenerRegistrationBean` éƒ½æ˜¯ `ServletContextInitializer` æ¥å£çš„å®ç°ç±»ï¼Œ`ServletRegistrationBean` çš„ç»§æ‰¿ç»“æ„å¦‚ä¸‹ï¼š
 
-![Í¼Æ¬À´×ÔÍøÂç](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-0397d56cfb328683ae349d0822db2320231.png)
+![å›¾ç‰‡æ¥è‡ªç½‘ç»œ](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-0397d56cfb328683ae349d0822db2320231.png)
 
-`ServletContextInitializer` ÖĞÖ»ÓĞÒ»¸ö·½·¨ `onStartup(...)`£º
+`ServletContextInitializer` ä¸­åªæœ‰ä¸€ä¸ªæ–¹æ³• `onStartup(...)`ï¼š
 
 ```
 @FunctionalInterface
 public interface ServletContextInitializer {
 
     /**
-     * ¾ÍÊÇÕâ¸ö servletContext£¬ÓĞÁËËü£¬¾ÍÊÇ½øĞĞ Servlet£¬filter£¬listener µÄ×¢²áÁË
+     * å°±æ˜¯è¿™ä¸ª servletContextï¼Œæœ‰äº†å®ƒï¼Œå°±æ˜¯è¿›è¡Œ Servletï¼Œfilterï¼Œlistener çš„æ³¨å†Œäº†
      */
     void onStartup(ServletContext servletContext) throws ServletException;
 
@@ -443,28 +443,28 @@ public interface ServletContextInitializer {
 
 ```
 
-ÎÒÃÇÔÚ½éÉÜ `servlet` Èı´ó×é¼şµÄ×¢²á·½Ê½Ê±£¬ÎÒÃÇÌáµ½¿ÉÒÔÍ¨¹ıÊµÏÖ `ServletContextInitializer`£¬ÖØĞ´Æä `onStartup()` À´ÊµÏÖ `servlet` ×é¼şµÄ×¢²á£¬¶ø `XxxRegistrationBean` µÄµ×²ãÊµÏÖÒ²ÊÇÕâÃ´×öµÄ¡£
+æˆ‘ä»¬åœ¨ä»‹ç» `servlet` ä¸‰å¤§ç»„ä»¶çš„æ³¨å†Œæ–¹å¼æ—¶ï¼Œæˆ‘ä»¬æåˆ°å¯ä»¥é€šè¿‡å®ç° `ServletContextInitializer`ï¼Œé‡å†™å…¶ `onStartup()` æ¥å®ç° `servlet` ç»„ä»¶çš„æ³¨å†Œï¼Œè€Œ `XxxRegistrationBean` çš„åº•å±‚å®ç°ä¹Ÿæ˜¯è¿™ä¹ˆåšçš„ã€‚
 
-ÒÔ `ServletRegistrationBean`£¬ÎÒÃÇÀ´¿´¿´ËüµÄ `onStartup(...)` ·½·¨×öÁËÉ¶£º
+ä»¥ `ServletRegistrationBean`ï¼Œæˆ‘ä»¬æ¥çœ‹çœ‹å®ƒçš„ `onStartup(...)` æ–¹æ³•åšäº†å•¥ï¼š
 
-`ServletRegistrationBean` Ã»ÓĞÖØĞ´ `onStartup(...)` ·½·¨£¬Ö±½Ó¼Ì³Ğ×Ô `RegistrationBean`:
+`ServletRegistrationBean` æ²¡æœ‰é‡å†™ `onStartup(...)` æ–¹æ³•ï¼Œç›´æ¥ç»§æ‰¿è‡ª `RegistrationBean`:
 
 ```
 public final void onStartup(ServletContext servletContext) throws ServletException {
-    // »ñÈ¡ÃèÊöĞÅÏ¢ 
+    // è·å–æè¿°ä¿¡æ¯ 
     String description = getDescription();
-    // ÊÇ·ñ¿ªÆô×¢²á£¬Ä¬ÈÏÎªtrue
+    // æ˜¯å¦å¼€å¯æ³¨å†Œï¼Œé»˜è®¤ä¸ºtrue
     if (!isEnabled()) {
         logger.info(StringUtils.capitalize(description) + " was not registered (disabled)");
         return;
     }
-    // ½øĞĞ×¢²á²Ù×÷
+    // è¿›è¡Œæ³¨å†Œæ“ä½œ
     register(description, servletContext);
 }
 
 ```
 
-Õâ¸ö·½·¨²¢²»¸´ÔÓ£¬ÏÈ»ñÈ¡ÁËÒ»ÏÂÃèÊöĞÅÏ¢£¬È»ºóÅĞ¶ÏÊÇ·ñ¿ªÆôÁË×¢²á£¬½Ó×Å¾ÍÊÇ½øĞĞ×¢²á²Ù×÷ÁË¡£ÎÒÃÇÖ±½Ó²é¿´×¢²á²Ù×÷£¬½øÈë `DynamicRegistrationBean#register`:
+è¿™ä¸ªæ–¹æ³•å¹¶ä¸å¤æ‚ï¼Œå…ˆè·å–äº†ä¸€ä¸‹æè¿°ä¿¡æ¯ï¼Œç„¶ååˆ¤æ–­æ˜¯å¦å¼€å¯äº†æ³¨å†Œï¼Œæ¥ç€å°±æ˜¯è¿›è¡Œæ³¨å†Œæ“ä½œäº†ã€‚æˆ‘ä»¬ç›´æ¥æŸ¥çœ‹æ³¨å†Œæ“ä½œï¼Œè¿›å…¥ `DynamicRegistrationBean#register`:
 
 ```
 protected final void register(String description, ServletContext servletContext) {
@@ -473,33 +473,33 @@ protected final void register(String description, ServletContext servletContext)
         logger.info(...);
         return;
     }
-    // ´¦ÀíÅäÖÃ
+    // å¤„ç†é…ç½®
     configure(registration);
 }
 
 ```
 
-Õâ¸ö·½·¨Ö÷Òª×öÁËÁ½¸ö¼şÊÂ£º×¢²á `servlet` Óë´¦ÀíÅäÖÃ£¬ÎÒÃÇÏÈÀ´¿´¿´×¢²á²Ù×÷£¬½øÈë `ServletRegistrationBean#addRegistration` ·½·¨:
+è¿™ä¸ªæ–¹æ³•ä¸»è¦åšäº†ä¸¤ä¸ªä»¶äº‹ï¼šæ³¨å†Œ `servlet` ä¸å¤„ç†é…ç½®ï¼Œæˆ‘ä»¬å…ˆæ¥çœ‹çœ‹æ³¨å†Œæ“ä½œï¼Œè¿›å…¥ `ServletRegistrationBean#addRegistration` æ–¹æ³•:
 
 ```
 protected ServletRegistration.Dynamic addRegistration(String description, 
         ServletContext servletContext) {
     String name = getServletName();
-    // ×¢²á
+    // æ³¨å†Œ
     return servletContext.addServlet(name, this.servlet);
 }
 
 ```
 
-×¢²á²Ù×÷»¹ÊÇ±È½Ï¼òµ¥µÄ£¬Ö±½Óµ÷ÓÃ `ServletContext#addServlet` ½øĞĞ¡£
+æ³¨å†Œæ“ä½œè¿˜æ˜¯æ¯”è¾ƒç®€å•çš„ï¼Œç›´æ¥è°ƒç”¨ `ServletContext#addServlet` è¿›è¡Œã€‚
 
-¼ÌĞø²é¿´ÅäÖÃ´¦Àí£¬½øÈë `ServletRegistrationBean#configure` ·½·¨£º
+ç»§ç»­æŸ¥çœ‹é…ç½®å¤„ç†ï¼Œè¿›å…¥ `ServletRegistrationBean#configure` æ–¹æ³•ï¼š
 
 ```
 protected void configure(ServletRegistration.Dynamic registration) {
-    // µ÷ÓÃ¸¸Àà
+    // è°ƒç”¨çˆ¶ç±»
     super.configure(registration);
-    // ÅäÖÃurlMapping
+    // é…ç½®urlMapping
     String[] urlMapping = StringUtils.toStringArray(this.urlMappings);
     if (urlMapping.length == 0 && this.alwaysMapUrl) {
         urlMapping = DEFAULT_MAPPINGS;
@@ -507,9 +507,9 @@ protected void configure(ServletRegistration.Dynamic registration) {
     if (!ObjectUtils.isEmpty(urlMapping)) {
         registration.addMapping(urlMapping);
     }
-    // ÅäÖÃloadOnStartup
+    // é…ç½®loadOnStartup
     registration.setLoadOnStartup(this.loadOnStartup);
-    // »¹´¦ÀíÁËÒ»Ğ©ÆäËûÅäÖÃ
+    // è¿˜å¤„ç†äº†ä¸€äº›å…¶ä»–é…ç½®
     if (this.multipartConfig != null) {
         registration.setMultipartConfig(this.multipartConfig);
     }
@@ -517,17 +517,17 @@ protected void configure(ServletRegistration.Dynamic registration) {
 
 ```
 
-Õâ¸ö·½·¨ÏÈÊÇµ÷ÓÃÁË¸¸ÀàµÄ·½·¨£¬È»ºó¾ÍÊÇÅäÖÃ´¦ÀíÁË£¬ÔÚÕâ¸ö·½·¨ÀïÖ÷ÒªÊÇ´¦ÀíÁË `urlMapping` Óë `loadOnStartup`£¬¾Í²»¶à×ö·ÖÎöÁË¡£
+è¿™ä¸ªæ–¹æ³•å…ˆæ˜¯è°ƒç”¨äº†çˆ¶ç±»çš„æ–¹æ³•ï¼Œç„¶åå°±æ˜¯é…ç½®å¤„ç†äº†ï¼Œåœ¨è¿™ä¸ªæ–¹æ³•é‡Œä¸»è¦æ˜¯å¤„ç†äº† `urlMapping` ä¸ `loadOnStartup`ï¼Œå°±ä¸å¤šåšåˆ†æäº†ã€‚
 
-ÎÒÃÇÔÙÀ´¿´¿´ `super.configure(...)` ÅäÖÃÁËÉ¶£¬½øÈë `DynamicRegistrationBean#configure`:
+æˆ‘ä»¬å†æ¥çœ‹çœ‹ `super.configure(...)` é…ç½®äº†å•¥ï¼Œè¿›å…¥ `DynamicRegistrationBean#configure`:
 
 ```
 /**
- * Ò²ÊÇ´¦ÀíÒ»Ğ©ÅäÖÃ
+ * ä¹Ÿæ˜¯å¤„ç†ä¸€äº›é…ç½®
  */
 protected void configure(D registration) {
     registration.setAsyncSupported(this.asyncSupported);
-    // ÅäÖÃ³õÊ¼»¯²ÎÊı
+    // é…ç½®åˆå§‹åŒ–å‚æ•°
     if (!this.initParameters.isEmpty()) {
         registration.setInitParameters(this.initParameters);
     }
@@ -535,20 +535,20 @@ protected void configure(D registration) {
 
 ```
 
-Õâ¸ö·½·¨Ö÷Òª´¦ÀíÁË³õÊ¼²ÎÊıµÄÅäÖÃ¡£
+è¿™ä¸ªæ–¹æ³•ä¸»è¦å¤„ç†äº†åˆå§‹å‚æ•°çš„é…ç½®ã€‚
 
-´ÓÉÏÃæµÄ·ÖÎöÀ´¿´£¬`ServletRegistrationBean` µÄ `onStartup(...)` ·½·¨Ö÷Òª´¦ÀíÁËÁ½¸ö²Ù×÷£º
+ä»ä¸Šé¢çš„åˆ†ææ¥çœ‹ï¼Œ`ServletRegistrationBean` çš„ `onStartup(...)` æ–¹æ³•ä¸»è¦å¤„ç†äº†ä¸¤ä¸ªæ“ä½œï¼š
 
-1.  ½« `servlet` Ìí¼Óµ½ÈİÆ÷ÖĞ
-2.  ´¦Àí `servlet` ²ÎÊıÅäÖÃ
+1.  å°† `servlet` æ·»åŠ åˆ°å®¹å™¨ä¸­
+2.  å¤„ç† `servlet` å‚æ•°é…ç½®
 
-`FilterRegistrationBean` Óë `ServletListenerRegistrationBean` µÄ×¢²á²Ù×÷ÀàËÆ£¬ÕâÀï¾Í²»¶àËµÁË¡£
+`FilterRegistrationBean` ä¸ `ServletListenerRegistrationBean` çš„æ³¨å†Œæ“ä½œç±»ä¼¼ï¼Œè¿™é‡Œå°±ä¸å¤šè¯´äº†ã€‚
 
-#### 2.3 `ServletContextInitializer#onStartup` µÄÖ´ĞĞ
+#### 2.3 `ServletContextInitializer#onStartup` çš„æ‰§è¡Œ
 
-×¢²áÁ÷³ÌÒÑ¾­ŞÛÍêÁË£¬ÎÒÃÇÔÙÀ´¿´¿´ `ServletContextInitializer#onStartup` ÊÇÔÚÄÄÀïÖ´ĞĞµÄ¡£×¢£ºÕâÒ»²½µÄÁ÷³Ì±È½Ï¸´ÔÓ£¬»áÉæ¼°µ½ tomcat µÄÆô¶¯Á÷³Ì£¬Òò´ËÕâ²¿·ÖÖ»¹Ø×¢ÖØµã´úÂë£¬²»¾ßÌå·ÖÎöÒ»²½²½Á÷³Ì¡£
+æ³¨å†Œæµç¨‹å·²ç»æ‹å®Œäº†ï¼Œæˆ‘ä»¬å†æ¥çœ‹çœ‹ `ServletContextInitializer#onStartup` æ˜¯åœ¨å“ªé‡Œæ‰§è¡Œçš„ã€‚æ³¨ï¼šè¿™ä¸€æ­¥çš„æµç¨‹æ¯”è¾ƒå¤æ‚ï¼Œä¼šæ¶‰åŠåˆ° tomcat çš„å¯åŠ¨æµç¨‹ï¼Œå› æ­¤è¿™éƒ¨åˆ†åªå…³æ³¨é‡ç‚¹ä»£ç ï¼Œä¸å…·ä½“åˆ†æä¸€æ­¥æ­¥æµç¨‹ã€‚
 
-ÒÔ tomcat ÈİÆ÷ÎªÀı£¬¾­¹ıÒ»ÏµÁĞµÄµ÷ÊÔÓë´úÂë×·×Ù£¬·¢ÏÖËüÊÇÔÚ `TomcatStarter` ÖĞÔËĞĞµÄ£¬´úÂëÈçÏÂ£º
+ä»¥ tomcat å®¹å™¨ä¸ºä¾‹ï¼Œç»è¿‡ä¸€ç³»åˆ—çš„è°ƒè¯•ä¸ä»£ç è¿½è¸ªï¼Œå‘ç°å®ƒæ˜¯åœ¨ `TomcatStarter` ä¸­è¿è¡Œçš„ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 class TomcatStarter implements ServletContainerInitializer {
@@ -564,7 +564,7 @@ class TomcatStarter implements ServletContainerInitializer {
             throws ServletException {
         try {
             for (ServletContextInitializer initializer : this.initializers) {
-                // ÕâÀïÖ´ĞĞ ServletContextInitializer#onStartup·½·¨
+                // è¿™é‡Œæ‰§è¡Œ ServletContextInitializer#onStartupæ–¹æ³•
                 initializer.onStartup(servletContext);
             }
         }
@@ -580,22 +580,22 @@ class TomcatStarter implements ServletContainerInitializer {
 
 ```
 
-`TomcatStarter` ÊÇ springboot Ìá¹©µÄÀà£¬ËüÊµÏÖÁË `ServletContainerInitializer`£¬Çø±ğÓÚ `ServletContextInitializer`£¬`ServletContainerInitializer` ÊÇÓÉ tomcat Ìá¹©µÄ£¬ÔÚ tomcat Æô¶¯Ê±£¬»áÖ´ĞĞ `ServletContainerInitializer#onStartup` ·½·¨£¨`servlt 3.0` ¹æ·¶£©¡£
+`TomcatStarter` æ˜¯ springboot æä¾›çš„ç±»ï¼Œå®ƒå®ç°äº† `ServletContainerInitializer`ï¼ŒåŒºåˆ«äº `ServletContextInitializer`ï¼Œ`ServletContainerInitializer` æ˜¯ç”± tomcat æä¾›çš„ï¼Œåœ¨ tomcat å¯åŠ¨æ—¶ï¼Œä¼šæ‰§è¡Œ `ServletContainerInitializer#onStartup` æ–¹æ³•ï¼ˆ`servlt 3.0` è§„èŒƒï¼‰ã€‚
 
-ÄÇÃ´ `TomcatStarter` ÊÇÈçºÎÌí¼Óµ½ tomcat ÈİÆ÷ÖĞµÄÄØ£¿ËäÈ» `servlt 3.0` ¹æ·¶¿ÉÒÔÍ¨¹ı `spi` ¼¼ÊõÉ¨Ãèµ½ `ServletContainerInitializer` µÄÊµÏÖ£¬µ«ÊÇÕâÀïÃ÷ÏÔ²»ÊÇÕâÑù×öµÄ£¬ÒòÎªÈç¹ûÓÉ tomcat Í¨¹ı `spi` É¨ÃèµÃµ½ `TomcatStarter` µÄÊµÀı£¬ÄÇËüµÄ³ÉÔ±±äÁ¿ `initializers` ¾ÍÎŞ·¨¸³ÖµÁË£¬ËùÒÔÔÚÌí¼Óµ½ tomcat Ç°£¬`TomcatStarter` ¾ÍÒªÊµÀı»¯²¢ÇÒ `initializers` ¾ÍÒª±»¸³Öµ¡£
+é‚£ä¹ˆ `TomcatStarter` æ˜¯å¦‚ä½•æ·»åŠ åˆ° tomcat å®¹å™¨ä¸­çš„å‘¢ï¼Ÿè™½ç„¶ `servlt 3.0` è§„èŒƒå¯ä»¥é€šè¿‡ `spi` æŠ€æœ¯æ‰«æåˆ° `ServletContainerInitializer` çš„å®ç°ï¼Œä½†æ˜¯è¿™é‡Œæ˜æ˜¾ä¸æ˜¯è¿™æ ·åšçš„ï¼Œå› ä¸ºå¦‚æœç”± tomcat é€šè¿‡ `spi` æ‰«æå¾—åˆ° `TomcatStarter` çš„å®ä¾‹ï¼Œé‚£å®ƒçš„æˆå‘˜å˜é‡ `initializers` å°±æ— æ³•èµ‹å€¼äº†ï¼Œæ‰€ä»¥åœ¨æ·»åŠ åˆ° tomcat å‰ï¼Œ`TomcatStarter` å°±è¦å®ä¾‹åŒ–å¹¶ä¸” `initializers` å°±è¦è¢«èµ‹å€¼ã€‚
 
-¾­¹ı¶à´Îµ÷ÊÔ£¬·¢ÏÖ `TomcatStarter` ÊÇÔÚ `TomcatServletWebServerFactory#configureContext` ÖĞÌí¼Óµ½ tomcat ÈİÆ÷µÄ£¬¹Ø¼ü´úÂëÈçÏÂ:
+ç»è¿‡å¤šæ¬¡è°ƒè¯•ï¼Œå‘ç° `TomcatStarter` æ˜¯åœ¨ `TomcatServletWebServerFactory#configureContext` ä¸­æ·»åŠ åˆ° tomcat å®¹å™¨çš„ï¼Œå…³é”®ä»£ç å¦‚ä¸‹:
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-6625407ce4d1dad8de736db00db124a2a99.png)
 
-¿ÉÒÔ¿´µ½£¬`initializers` ±»µ±×÷¹¹Ôì²ÎÊı´«Èëµ½ `TomcatStarter` µÄ¹¹Ôì·½·¨ÖĞ£¬µÃµ½ `TomcatStarter` µÄÊµÀı£¬ÔÙÊÖ¶¯Ìí¼Óµ½ tomcat ÈİÆ÷ÖĞÁË¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`initializers` è¢«å½“ä½œæ„é€ å‚æ•°ä¼ å…¥åˆ° `TomcatStarter` çš„æ„é€ æ–¹æ³•ä¸­ï¼Œå¾—åˆ° `TomcatStarter` çš„å®ä¾‹ï¼Œå†æ‰‹åŠ¨æ·»åŠ åˆ° tomcat å®¹å™¨ä¸­äº†ã€‚
 
-ÄÇÃ´£¬Õâ¸ö `initializers` ÊÇÔÚÄÄÀï»ñÈ¡µ½µÄÄØ£¿ÊÂÊµÉÏ£¬ÎÒÃÇµÄ `XxxRegistrationBean` ¶¼Òª spring ÈİÆ÷ÖĞ£¬Òª»ñÈ¡µÄ»°£¬Ö»Òªµ÷ÓÃ `beanFactory.getBeansOfType(...)` ¾Í¿ÉÒÔÁË£¬`ServletContextInitializerBeans#addServletContextInitializerBean(String, ServletContextInitializer, ListableBeanFactory)` ¾ÍÊÇ¸ÉÕâ¼şÊÂµÄ£º
+é‚£ä¹ˆï¼Œè¿™ä¸ª `initializers` æ˜¯åœ¨å“ªé‡Œè·å–åˆ°çš„å‘¢ï¼Ÿäº‹å®ä¸Šï¼Œæˆ‘ä»¬çš„ `XxxRegistrationBean` éƒ½è¦ spring å®¹å™¨ä¸­ï¼Œè¦è·å–çš„è¯ï¼Œåªè¦è°ƒç”¨ `beanFactory.getBeansOfType(...)` å°±å¯ä»¥äº†ï¼Œ`ServletContextInitializerBeans#addServletContextInitializerBean(String, ServletContextInitializer, ListableBeanFactory)` å°±æ˜¯å¹²è¿™ä»¶äº‹çš„ï¼š
 
 ```
 private void addServletContextInitializerBeans(ListableBeanFactory beanFactory) {
     for (Class<? extends ServletContextInitializer> initializerType : this.initializerTypes) {
-        // »ñÈ¡ ServletContextInitializer: getOrderedBeansOfType(beanFactory, initializerType)
+        // è·å– ServletContextInitializer: getOrderedBeansOfType(beanFactory, initializerType)
         for (Entry<String, ? extends ServletContextInitializer> initializerBean 
                 : getOrderedBeansOfType(beanFactory, initializerType)) {
             addServletContextInitializerBean(initializerBean.getKey(), 
@@ -605,35 +605,35 @@ private void addServletContextInitializerBeans(ListableBeanFactory beanFactory) 
 }
 
 /**
- * ´¦ÀíÌí¼Ó²Ù×÷
+ * å¤„ç†æ·»åŠ æ“ä½œ
  */
 private void addServletContextInitializerBean(String beanName, 
         ServletContextInitializer initializer, ListableBeanFactory beanFactory) {
-    // Ìí¼Ó ServletRegistrationBean
+    // æ·»åŠ  ServletRegistrationBean
     if (initializer instanceof ServletRegistrationBean) {
         Servlet source = ((ServletRegistrationBean<?>) initializer).getServlet();
         addServletContextInitializerBean(Servlet.class, beanName, initializer, 
                 beanFactory, source);
     }
-    // Ìí¼Ó FilterRegistrationBean
+    // æ·»åŠ  FilterRegistrationBean
     else if (initializer instanceof FilterRegistrationBean) {
         Filter source = ((FilterRegistrationBean<?>) initializer).getFilter();
         addServletContextInitializerBean(Filter.class, beanName, initializer, 
                 beanFactory, source);
     }
-    // Ìí¼Ó DelegatingFilterProxyRegistrationBean
+    // æ·»åŠ  DelegatingFilterProxyRegistrationBean
     else if (initializer instanceof DelegatingFilterProxyRegistrationBean) {
         String source = ((DelegatingFilterProxyRegistrationBean) initializer).getTargetBeanName();
         addServletContextInitializerBean(Filter.class, beanName, initializer, beanFactory, source);
     }
-    // Ìí¼Ó ServletListenerRegistrationBean
+    // æ·»åŠ  ServletListenerRegistrationBean
     else if (initializer instanceof ServletListenerRegistrationBean) {
         EventListener source = ((ServletListenerRegistrationBean<?>) initializer).getListener();
         addServletContextInitializerBean(EventListener.class, beanName, initializer, 
                 beanFactory, source);
     }
     else {
-        // ÆäËûµÄ ServletContextInitializer Bean
+        // å…¶ä»–çš„ ServletContextInitializer Bean
         addServletContextInitializerBean(ServletContextInitializer.class, beanName, 
                 initializer, beanFactory, initializer);
     }
@@ -641,15 +641,15 @@ private void addServletContextInitializerBean(String beanName,
 
 ```
 
-### 3\. ×Ü½á
+### 3\. æ€»ç»“
 
-±¾ÎÄ·ÖÎöÁË springboot ×¢²á servlet Èı´ó×é¼şµÄÁ÷³Ì£º
+æœ¬æ–‡åˆ†æäº† springboot æ³¨å†Œ servlet ä¸‰å¤§ç»„ä»¶çš„æµç¨‹ï¼š
 
-1.  ÒÔ `Servlet` ÎªÀı£¬½éÉÜÁË 3 ÖÖ×¢²á·½Ê½£ºÊ¹ÓÃ `XxxRegistrationBean` ×¢²á¡¢Ê¹ÓÃ `servlet` ×¢½â (`@WebServlet`/`@WebFilter`/`@WebListener`) ×¢²á£¬ÒÔ¼°ÊµÏÖ `ServletContextInitializer` ½Ó¿ÚÊÖ¶¯×¢²á£»
-2.  ·ÖÎöÁË `@ServletComponentScan` ×¢²áµÄÉ¨ÃèÁ÷³Ì
-3.  ÒÔ `ServletRegistrationBean` ÎªÀı£¬·ÖÎöÁË½« `ServletRegistrationBean` ×¢²áµ½ servlet µÄÁ÷³Ì
-4.  ·ÖÎöÁË `ServletContainerInitializer#onStartup` µÄÖ´ĞĞ
+1.  ä»¥ `Servlet` ä¸ºä¾‹ï¼Œä»‹ç»äº† 3 ç§æ³¨å†Œæ–¹å¼ï¼šä½¿ç”¨ `XxxRegistrationBean` æ³¨å†Œã€ä½¿ç”¨ `servlet` æ³¨è§£ (`@WebServlet`/`@WebFilter`/`@WebListener`) æ³¨å†Œï¼Œä»¥åŠå®ç° `ServletContextInitializer` æ¥å£æ‰‹åŠ¨æ³¨å†Œï¼›
+2.  åˆ†æäº† `@ServletComponentScan` æ³¨å†Œçš„æ‰«ææµç¨‹
+3.  ä»¥ `ServletRegistrationBean` ä¸ºä¾‹ï¼Œåˆ†æäº†å°† `ServletRegistrationBean` æ³¨å†Œåˆ° servlet çš„æµç¨‹
+4.  åˆ†æäº† `ServletContainerInitializer#onStartup` çš„æ‰§è¡Œ
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4951050](https://my.oschina.net/funcy/blog/4951050) £¬ÏŞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖĞÄÑÃâÓĞ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õı£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŸæ–‡é“¾æ¥ï¼š[https://my.oschina.net/funcy/blog/4951050](https://my.oschina.net/funcy/blog/4951050) ï¼Œé™äºä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿æŒ‡æ­£ï¼åŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚_

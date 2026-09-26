@@ -1,19 +1,19 @@
-ÔÚ [springboot ×Ô¶¯×°ÅäÖ®Ìõ¼ş×¢½â£¨Ò»£©](https://my.oschina.net/funcy/blog/4918863)Ò»ÎÄÖĞ£¬ÔÚ·ÖÎö `@ConditionalOnBean/@ConditionalOnMissingBean` ×¢½âµÄÌõ¼şÅĞ¶ÏÊ±£¬¹Ù·½Ç¿ÁÒ½¨ÒéÎÒÃÇÔÚ×Ô¶¯×°ÅäÀàÖĞÊ¹ÓÃÕâÁ½¸ö×¢½â£¬²¢ÇÒ `@ConditionalOnBean/@ConditionalOnMissingBean` ±ê¼ÇµÄÀàÒªÔÚÖ¸¶¨µÄÀàÖ®ºó³õÊ¼»¯£¬ÄÇ springboot ÈçºÎÀ´¿ØÖÆ×Ô¶¯×°ÅäË³ĞòÄØ£¿±¾ÎÄ½«À´ÑĞ¾¿ÏÂ¡£
+åœ¨ [springboot è‡ªåŠ¨è£…é…ä¹‹æ¡ä»¶æ³¨è§£ï¼ˆä¸€ï¼‰](https://my.oschina.net/funcy/blog/4918863)ä¸€æ–‡ä¸­ï¼Œåœ¨åˆ†æ `@ConditionalOnBean/@ConditionalOnMissingBean` æ³¨è§£çš„æ¡ä»¶åˆ¤æ–­æ—¶ï¼Œå®˜æ–¹å¼ºçƒˆå»ºè®®æˆ‘ä»¬åœ¨è‡ªåŠ¨è£…é…ç±»ä¸­ä½¿ç”¨è¿™ä¸¤ä¸ªæ³¨è§£ï¼Œå¹¶ä¸” `@ConditionalOnBean/@ConditionalOnMissingBean` æ ‡è®°çš„ç±»è¦åœ¨æŒ‡å®šçš„ç±»ä¹‹ååˆå§‹åŒ–ï¼Œé‚£ springboot å¦‚ä½•æ¥æ§åˆ¶è‡ªåŠ¨è£…é…é¡ºåºå‘¢ï¼Ÿæœ¬æ–‡å°†æ¥ç ”ç©¶ä¸‹ã€‚
 
-### 1\. springboot ´¦Àí×Ô¶¯×°ÅäÀàµÄ¹ı³Ì
+### 1\. springboot å¤„ç†è‡ªåŠ¨è£…é…ç±»çš„è¿‡ç¨‹
 
-ĞèÒªÃ÷È·µÄÊÇ£¬±¾ÎÄÌ½ÌÖµÄ`×Ô¶¯×°ÅäË³Ğò`ÊÇÖ¸½« `class` ×¢²áµ½ `beanFactory` µÄË³Ğò£¬springboot ´¦Àí×Ô¶¯×°ÅäÀàµÄ´óÖÂ¹ı³ÌÈçÏÂ£º
+éœ€è¦æ˜ç¡®çš„æ˜¯ï¼Œæœ¬æ–‡æ¢è®¨çš„`è‡ªåŠ¨è£…é…é¡ºåº`æ˜¯æŒ‡å°† `class` æ³¨å†Œåˆ° `beanFactory` çš„é¡ºåºï¼Œspringboot å¤„ç†è‡ªåŠ¨è£…é…ç±»çš„å¤§è‡´è¿‡ç¨‹å¦‚ä¸‹ï¼š
 
-1.  ¼ÓÔØ×Ô¶¯×°ÅäÀà£¬ÔÚ [springboot ×Ô¶¯×°ÅäÖ®¼ÓÔØ×Ô¶¯×°ÅäÀà](https://my.oschina.net/funcy/blog/4870868) Ò»ÎÄÖĞÒÑ·ÖÎö¹ı£»
-2.  ¶Ô×Ô¶¯×°ÅäÀà½øĞĞÅÅĞò£¬ÕâÊÇ±¾ÎÄ½«Òª·ÖÎöµÄÄÚÈİ£»
-3.  ±éÀú×Ô¶¯×°ÅäÀà£¬¶ÔÃ¿¸ö×Ô¶¯×°ÅäÀàÖğÒ»½øĞĞÒÔÏÂ²Ù×÷£º
-    1.  ¸ù¾İÌõ¼ş×¢½âÅĞ¶Ïµ±Ç°×Ô¶¯×°ÅäÀàÊÇ·ñÂú×ã×°ÅäÌõ¼ş£»
-    2.  Èç¹ûµ±Ç°×Ô¶¯×°ÅäÀàÂú×ì×°ÅäÌõ¼ş£¬×¢²áµ½ `beanFactory` ÖĞ¡£
+1.  åŠ è½½è‡ªåŠ¨è£…é…ç±»ï¼Œåœ¨ [springboot è‡ªåŠ¨è£…é…ä¹‹åŠ è½½è‡ªåŠ¨è£…é…ç±»](https://my.oschina.net/funcy/blog/4870868) ä¸€æ–‡ä¸­å·²åˆ†æè¿‡ï¼›
+2.  å¯¹è‡ªåŠ¨è£…é…ç±»è¿›è¡Œæ’åºï¼Œè¿™æ˜¯æœ¬æ–‡å°†è¦åˆ†æçš„å†…å®¹ï¼›
+3.  éå†è‡ªåŠ¨è£…é…ç±»ï¼Œå¯¹æ¯ä¸ªè‡ªåŠ¨è£…é…ç±»é€ä¸€è¿›è¡Œä»¥ä¸‹æ“ä½œï¼š
+    1.  æ ¹æ®æ¡ä»¶æ³¨è§£åˆ¤æ–­å½“å‰è‡ªåŠ¨è£…é…ç±»æ˜¯å¦æ»¡è¶³è£…é…æ¡ä»¶ï¼›
+    2.  å¦‚æœå½“å‰è‡ªåŠ¨è£…é…ç±»æ»¡å˜´è£…é…æ¡ä»¶ï¼Œæ³¨å†Œåˆ° `beanFactory` ä¸­ã€‚
 
-ÔÙ»Øµ½ `@ConditionalOnBean/@ConditionalOnMissingBean`£¬¶ÔÈçÏÂÁ½¸ö×Ô¶¯×°ÅäÀà£º
+å†å›åˆ° `@ConditionalOnBean/@ConditionalOnMissingBean`ï¼Œå¯¹å¦‚ä¸‹ä¸¤ä¸ªè‡ªåŠ¨è£…é…ç±»ï¼š
 
 ```
-// AÊÇ×Ô¶¯×°ÅäÀà
+// Aæ˜¯è‡ªåŠ¨è£…é…ç±»
 @Configuration
 public class A {
     @Bean
@@ -23,7 +23,7 @@ public class A {
     }
 }
 
-// BÊÇ×Ô¶¯×°ÅäÀà
+// Bæ˜¯è‡ªåŠ¨è£…é…ç±»
 @Configuration
 public class B {
     @Bean
@@ -34,25 +34,25 @@ public class B {
 
 ```
 
-`a1` Óë `b1` ÔÚÁ½¸ö²»Í¬µÄ×Ô¶¯×°ÅäÀàÖĞ³õÊ¼»¯£¬ÇÒ `a1` Ö»ÓĞÔÚ `b1` ²»´æÔÚÊ±£¬²Å»á³õÊ¼»¯£¬¸ù¾İÉÏÃæ×Ü½áµÄ springboot ´¦Àí×Ô¶¯×°ÅäÀàµÄ²½Öè£¬ÎÒÃÇÖ»ÒªÖ¸¶¨ `b1` ÔÚ `a1` Ö®Ç°³õÊ¼»¯¾Í²»»á²úÉúÒì³£ÁË¡£
+`a1` ä¸ `b1` åœ¨ä¸¤ä¸ªä¸åŒçš„è‡ªåŠ¨è£…é…ç±»ä¸­åˆå§‹åŒ–ï¼Œä¸” `a1` åªæœ‰åœ¨ `b1` ä¸å­˜åœ¨æ—¶ï¼Œæ‰ä¼šåˆå§‹åŒ–ï¼Œæ ¹æ®ä¸Šé¢æ€»ç»“çš„ springboot å¤„ç†è‡ªåŠ¨è£…é…ç±»çš„æ­¥éª¤ï¼Œæˆ‘ä»¬åªè¦æŒ‡å®š `b1` åœ¨ `a1` ä¹‹å‰åˆå§‹åŒ–å°±ä¸ä¼šäº§ç”Ÿå¼‚å¸¸äº†ã€‚
 
-ÄÇÃ´£¬×Ô¶¯×°ÅäÀàµÄË³ĞòÈçºÎÖ¸¶¨ÄØ£¿
+é‚£ä¹ˆï¼Œè‡ªåŠ¨è£…é…ç±»çš„é¡ºåºå¦‚ä½•æŒ‡å®šå‘¢ï¼Ÿ
 
-### 2\. ×Ô¶¯×°ÅäÀàµÄË³Ğò¿ØÖÆ×¢½â
+### 2\. è‡ªåŠ¨è£…é…ç±»çš„é¡ºåºæ§åˆ¶æ³¨è§£
 
-springboot ÎªÎÒÃÇÌá¹©ÁËÁ½ÖÖ×Ô¶¯×°ÅäÀàµÄÅÅĞòÊÖ¶Î£º
+springboot ä¸ºæˆ‘ä»¬æä¾›äº†ä¸¤ç§è‡ªåŠ¨è£…é…ç±»çš„æ’åºæ‰‹æ®µï¼š
 
-*   ¾ø¶Ô×Ô¶¯×°ÅäË³Ğò ¡ª¡ª`@AutoConfigOrder`
-*   Ïà¶Ô×Ô¶¯×°ÅäË³Ğò ¡ª¡ª`@AutoConfigureBefore` Óë `@AutoConfigureAfter`
+*   ç»å¯¹è‡ªåŠ¨è£…é…é¡ºåº â€”â€”`@AutoConfigOrder`
+*   ç›¸å¯¹è‡ªåŠ¨è£…é…é¡ºåº â€”â€”`@AutoConfigureBefore` ä¸ `@AutoConfigureAfter`
 
-ÕâÈı¸ö×¢½â¾ÍÊÇÓÃÀ´´¦Àí×Ô¶¯×°ÅäÀàµÄÅÅĞòµÄÁË£¬`@AutoConfigOrder` Ö¸¶¨ÁË×°ÅäË³Ğò£¬Í¬ spring Ìá¹©µÄ `@Order` ÀàËÆ£¬`@AutoConfigureBefore` Óë `@AutoConfigureAfter` ¿ÉÒÔÖ¸¶¨ `class`£¬±íÊ¾ÔÚÄÄ¸ö `class` Ö®Ç°»òÖ®ºó×°Åä¡£
+è¿™ä¸‰ä¸ªæ³¨è§£å°±æ˜¯ç”¨æ¥å¤„ç†è‡ªåŠ¨è£…é…ç±»çš„æ’åºçš„äº†ï¼Œ`@AutoConfigOrder` æŒ‡å®šäº†è£…é…é¡ºåºï¼ŒåŒ spring æä¾›çš„ `@Order` ç±»ä¼¼ï¼Œ`@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` å¯ä»¥æŒ‡å®š `class`ï¼Œè¡¨ç¤ºåœ¨å“ªä¸ª `class` ä¹‹å‰æˆ–ä¹‹åè£…é…ã€‚
 
-»Øµ½Ê¾Àı£¬ÎÒÃÇ¿ÉÒÔÕâÑùÖ¸¶¨×°ÅäË³Ğò£º
+å›åˆ°ç¤ºä¾‹ï¼Œæˆ‘ä»¬å¯ä»¥è¿™æ ·æŒ‡å®šè£…é…é¡ºåºï¼š
 
 ```
-// AÊÇ×Ô¶¯×°ÅäÀà
+// Aæ˜¯è‡ªåŠ¨è£…é…ç±»
 @Configuration
-// ÔÚB.classÖ®ºó×Ô¶¯×°Åä
+// åœ¨B.classä¹‹åè‡ªåŠ¨è£…é…
 @AutoConfigureAfter(B.class)
 public class A {
     @Bean
@@ -62,7 +62,7 @@ public class A {
     }
 }
 
-// BÊÇ×Ô¶¯×°ÅäÀà
+// Bæ˜¯è‡ªåŠ¨è£…é…ç±»
 @Configuration
 public class B {
     ...
@@ -70,36 +70,36 @@ public class B {
 
 ```
 
-### 3\. ×Ô¶¯×°ÅäÀàµÄÅÅĞò
+### 3\. è‡ªåŠ¨è£…é…ç±»çš„æ’åº
 
-Ç°ÃæÎÒÃÇÌáµ½£¬`@AutoConfigOrder`¡¢`@AutoConfigureBefore` Óë `@AutoConfigureAfter` ¿ÉÒÔ¿ØÖÆ×Ô¶¯×°ÅäÀàµÄ×°ÅäË³Ğò£¬ÄÇÃ´ËüÃÇÊÇÔÚÄÄÀï½øĞĞÅÅĞòµÄÄØ£¿ÔÚ [springboot ×Ô¶¯×°ÅäÖ®¼ÓÔØ×Ô¶¯×°ÅäÀà](https://my.oschina.net/funcy/blog/4870868) Ò»ÎÄÖĞ£¬ÎÒÃÇÌá×Ü½áÁË»ñÈ¡×Ô¶¯×°ÅäÀàµÄ²½ÖèÓĞ 6 ²½£º
+å‰é¢æˆ‘ä»¬æåˆ°ï¼Œ`@AutoConfigOrder`ã€`@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` å¯ä»¥æ§åˆ¶è‡ªåŠ¨è£…é…ç±»çš„è£…é…é¡ºåºï¼Œé‚£ä¹ˆå®ƒä»¬æ˜¯åœ¨å“ªé‡Œè¿›è¡Œæ’åºçš„å‘¢ï¼Ÿåœ¨ [springboot è‡ªåŠ¨è£…é…ä¹‹åŠ è½½è‡ªåŠ¨è£…é…ç±»](https://my.oschina.net/funcy/blog/4870868) ä¸€æ–‡ä¸­ï¼Œæˆ‘ä»¬ææ€»ç»“äº†è·å–è‡ªåŠ¨è£…é…ç±»çš„æ­¥éª¤æœ‰ 6 æ­¥ï¼š
 
-1.  µ÷ÓÃ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` ·½·¨¼ÓÔØ×Ô¶¯×°ÅäÀà£»
-2.  ½«µÃµ½µÄ×Ô¶¯×°ÅäÀà±£´æµ½ `autoConfigurationEntries` ÖĞ£»
-3.  µÃµ½¹ıÂËÀà£¬ÕâĞ©¹ıÂËÀà¾ÍÊÇÓÉ `@EnableAutoConfiguration` µÄ `exclude` »ò `excludeName` Ö¸¶¨µÄ£»
-4.  ½« `autoConfigurationEntries` ×ª»»Îª `LinkedHashSet`£¬½á¹ûÎª `processedConfigurations`£»
-5.  È¥³ı `processedConfigurations` ĞèÒª¹ıÂËµÄÀà£»
-6.  ½«µÚ 5 ²½µÃµ½µÄÀàÅÅĞòºó£¬·µ»Ø¡£
+1.  è°ƒç”¨ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` æ–¹æ³•åŠ è½½è‡ªåŠ¨è£…é…ç±»ï¼›
+2.  å°†å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»ä¿å­˜åˆ° `autoConfigurationEntries` ä¸­ï¼›
+3.  å¾—åˆ°è¿‡æ»¤ç±»ï¼Œè¿™äº›è¿‡æ»¤ç±»å°±æ˜¯ç”± `@EnableAutoConfiguration` çš„ `exclude` æˆ– `excludeName` æŒ‡å®šçš„ï¼›
+4.  å°† `autoConfigurationEntries` è½¬æ¢ä¸º `LinkedHashSet`ï¼Œç»“æœä¸º `processedConfigurations`ï¼›
+5.  å»é™¤ `processedConfigurations` éœ€è¦è¿‡æ»¤çš„ç±»ï¼›
+6.  å°†ç¬¬ 5 æ­¥å¾—åˆ°çš„ç±»æ’åºåï¼Œè¿”å›ã€‚
 
-¶ø¶Ô×Ô¶¯×°ÅäÀàµÄÅÅĞòÕıÊÇÔÚµÚ 6 ²½£¬¶ÔÓ¦µÄ·½·¨ÊÇ `AutoConfigurationImportSelector.AutoConfigurationGroup#sortAutoConfigurations`£¬´úÂëÈçÏÂ£º
+è€Œå¯¹è‡ªåŠ¨è£…é…ç±»çš„æ’åºæ­£æ˜¯åœ¨ç¬¬ 6 æ­¥ï¼Œå¯¹åº”çš„æ–¹æ³•æ˜¯ `AutoConfigurationImportSelector.AutoConfigurationGroup#sortAutoConfigurations`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 private List<String> sortAutoConfigurations(Set<String> configurations,
         AutoConfigurationMetadata autoConfigurationMetadata) {
-    // ÏÈ´´½¨ÁË AutoConfigurationSorter ¶ÔÏó£¬
-    // È»ºóµ÷ÓÃ AutoConfigurationSorter.getInPriorityOrder ½øĞĞÅÅĞò
+    // å…ˆåˆ›å»ºäº† AutoConfigurationSorter å¯¹è±¡ï¼Œ
+    // ç„¶åè°ƒç”¨ AutoConfigurationSorter.getInPriorityOrder è¿›è¡Œæ’åº
     return new AutoConfigurationSorter(getMetadataReaderFactory(), autoConfigurationMetadata)
             .getInPriorityOrder(configurations);
 }
 
 ```
 
-Õâ¸ö·½·¨µÄ´¦Àí·ÖÎªÁ½²½£º
+è¿™ä¸ªæ–¹æ³•çš„å¤„ç†åˆ†ä¸ºä¸¤æ­¥ï¼š
 
-1.  ´´½¨ÁË `AutoConfigurationSorter` ¶ÔÏó
-2.  µ÷ÓÃ `AutoConfigurationSorter.getInPriorityOrder` ½øĞĞÅÅĞò
+1.  åˆ›å»ºäº† `AutoConfigurationSorter` å¯¹è±¡
+2.  è°ƒç”¨ `AutoConfigurationSorter.getInPriorityOrder` è¿›è¡Œæ’åº
 
-ÎÒÃÇÏÈÀ´¿´¿´ `AutoConfigurationSorter` µÄ´´½¨²Ù×÷£º
+æˆ‘ä»¬å…ˆæ¥çœ‹çœ‹ `AutoConfigurationSorter` çš„åˆ›å»ºæ“ä½œï¼š
 
 ```
 class AutoConfigurationSorter {
@@ -109,8 +109,8 @@ class AutoConfigurationSorter {
     private final AutoConfigurationMetadata autoConfigurationMetadata;
 
     /**
-     * ¹¹Ôì·½·¨
-     * ½ö½öÖ»ÊÇ¶Ô´«ÈëµÄ²ÎÊı½øĞĞ¸³Öµ£¬½«ËûÃÇ¸³ÖµÎª³ÉÔ±±äÁ¿
+     * æ„é€ æ–¹æ³•
+     * ä»…ä»…åªæ˜¯å¯¹ä¼ å…¥çš„å‚æ•°è¿›è¡Œèµ‹å€¼ï¼Œå°†ä»–ä»¬èµ‹å€¼ä¸ºæˆå‘˜å˜é‡
      */
     AutoConfigurationSorter(MetadataReaderFactory metadataReaderFactory,
             AutoConfigurationMetadata autoConfigurationMetadata) {
@@ -125,78 +125,78 @@ class AutoConfigurationSorter {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬`AutoConfigurationSorter` µÄ¹¹Ôì·½·¨²¢Ã»ÓĞ×öÊ²Ã´ÊµÖÊĞÔµÄ²Ù×÷£¬¿´À´ÅÅĞòµÄ¹Ø¼ü»¹µÃ¿´ `AutoConfigurationSorter.getInPriorityOrder` ·½·¨£¬¸Ã·½·¨µÄ´úÂëÈçÏÂ£º
+å¯ä»¥çœ‹åˆ°ï¼Œ`AutoConfigurationSorter` çš„æ„é€ æ–¹æ³•å¹¶æ²¡æœ‰åšä»€ä¹ˆå®è´¨æ€§çš„æ“ä½œï¼Œçœ‹æ¥æ’åºçš„å…³é”®è¿˜å¾—çœ‹ `AutoConfigurationSorter.getInPriorityOrder` æ–¹æ³•ï¼Œè¯¥æ–¹æ³•çš„ä»£ç å¦‚ä¸‹ï¼š
 
 ```
 List<String> getInPriorityOrder(Collection<String> classNames) {
-    // 1\. ½« classNames °ü×°³É AutoConfigurationClasses
+    // 1\. å°† classNames åŒ…è£…æˆ AutoConfigurationClasses
     AutoConfigurationClasses classes = new AutoConfigurationClasses(this.metadataReaderFactory,
             this.autoConfigurationMetadata, classNames);
     List<String> orderedClassNames = new ArrayList<>(classNames);
-    // 2\. °´ÀàÃûÅÅĞò
+    // 2\. æŒ‰ç±»åæ’åº
     Collections.sort(orderedClassNames);
-    // 3\. Ê¹ÓÃ @AutoConfigureOrder ÅÅĞò
+    // 3\. ä½¿ç”¨ @AutoConfigureOrder æ’åº
     orderedClassNames.sort((o1, o2) -> {
         int i1 = classes.get(o1).getOrder();
         int i2 = classes.get(o2).getOrder();
         return Integer.compare(i1, i2);
     });
-    // 4\. Ê¹ÓÃ @AutoConfigureBefore£¬@AutoConfigureAfter ÅÅĞò
+    // 4\. ä½¿ç”¨ @AutoConfigureBeforeï¼Œ@AutoConfigureAfter æ’åº
     orderedClassNames = sortByAnnotation(classes, orderedClassNames);
     return orderedClassNames;
 }
 
 ```
 
-´Ó´úÂëÀ´ ¿´£¬Õâ¸ö·½·¨µÄÖ´ĞĞ²½ÖèÈçÏÂ£º
+ä»ä»£ç æ¥ çœ‹ï¼Œè¿™ä¸ªæ–¹æ³•çš„æ‰§è¡Œæ­¥éª¤å¦‚ä¸‹ï¼š
 
-1.  ½« `classNames` °ü×°³É `AutoConfigurationClasses`
-2.  °´ÀàÃûÅÅĞò
-3.  Ê¹ÓÃ `@AutoConfigureOrder` ÅÅĞò
-4.  Ê¹ÓÃ `@AutoConfigureBefore`£¬`@AutoConfigureAfter` ÅÅĞò
+1.  å°† `classNames` åŒ…è£…æˆ `AutoConfigurationClasses`
+2.  æŒ‰ç±»åæ’åº
+3.  ä½¿ç”¨ `@AutoConfigureOrder` æ’åº
+4.  ä½¿ç”¨ `@AutoConfigureBefore`ï¼Œ`@AutoConfigureAfter` æ’åº
 
-Õâ¸ö·½·¨ÅÅĞò¹²½øĞĞÁË 3 ´Î£¬¶¼ÊÇ¶Ô `orderedClassNames` ½øĞĞÅÅĞò£¬ÕâÑùÒ»À´£¬ºóÃæµÄÅÅĞò»á´òÂÒÇ°ÃæµÄÅÅĞò£¬×îÏÈµÄÅÅĞòÊÇ°´ÀàÃûÅÅĞò£¬Ò²¾ÍÊÇËµ£¬Èç¹ûÃ»ÓĞÖ¸¶¨ `@AutoConfigureOrder`¡¢`@AutoConfigureBefore` µÈ×¢½â£¬¾Í»áÊ¹ÓÃÀàÃû½øĞĞÅÅĞò¡£
+è¿™ä¸ªæ–¹æ³•æ’åºå…±è¿›è¡Œäº† 3 æ¬¡ï¼Œéƒ½æ˜¯å¯¹ `orderedClassNames` è¿›è¡Œæ’åºï¼Œè¿™æ ·ä¸€æ¥ï¼Œåé¢çš„æ’åºä¼šæ‰“ä¹±å‰é¢çš„æ’åºï¼Œæœ€å…ˆçš„æ’åºæ˜¯æŒ‰ç±»åæ’åºï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œå¦‚æœæ²¡æœ‰æŒ‡å®š `@AutoConfigureOrder`ã€`@AutoConfigureBefore` ç­‰æ³¨è§£ï¼Œå°±ä¼šä½¿ç”¨ç±»åè¿›è¡Œæ’åºã€‚
 
-½ÓÏÂÀ´ÎÒÃÇ¾ßÌå·ÖÎöÕâ¼¸¸ö²Ù×÷°É¡£
+æ¥ä¸‹æ¥æˆ‘ä»¬å…·ä½“åˆ†æè¿™å‡ ä¸ªæ“ä½œå§ã€‚
 
-### 4\. ½« `classNames` °ü×°³É `AutoConfigurationClasses`
+### 4\. å°† `classNames` åŒ…è£…æˆ `AutoConfigurationClasses`
 
-¸Ã²Ù×÷Î»ÓÚ `AutoConfigurationSorter.AutoConfigurationClasses#AutoConfigurationClasses` ·½·¨£¬´úÂëÈçÏÂ£º
+è¯¥æ“ä½œä½äº `AutoConfigurationSorter.AutoConfigurationClasses#AutoConfigurationClasses` æ–¹æ³•ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 private static class AutoConfigurationClasses {
 
-    // ±£´æ½á¹û
+    // ä¿å­˜ç»“æœ
     private final Map<String, AutoConfigurationClass> classes = new HashMap<>();
 
     /**
-     * ¹¹Ôì·½·¨
+     * æ„é€ æ–¹æ³•
      */
     AutoConfigurationClasses(MetadataReaderFactory metadataReaderFactory,
             AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames) {
-        // ½øĞĞ·½·¨µ÷ÓÃ
+        // è¿›è¡Œæ–¹æ³•è°ƒç”¨
         addToClasses(metadataReaderFactory, autoConfigurationMetadata, classNames, true);
     }
 
     /**
-     * Ìí¼ÓÀà£¬¾ÍÊÇ½«Àà°ü×°³É AutoConfigurationClass£¬Ìí¼Óµ½ÃûÎª classes µÄ Map ÖĞ
-     * classNames ¾ÍÊÇÈ¥³ıÁËÅÅ³ıÀàµÄËùÓĞ×Ô¶¯×°ÅäÀà
+     * æ·»åŠ ç±»ï¼Œå°±æ˜¯å°†ç±»åŒ…è£…æˆ AutoConfigurationClassï¼Œæ·»åŠ åˆ°åä¸º classes çš„ Map ä¸­
+     * classNames å°±æ˜¯å»é™¤äº†æ’é™¤ç±»çš„æ‰€æœ‰è‡ªåŠ¨è£…é…ç±»
      */
     private void addToClasses(MetadataReaderFactory metadataReaderFactory,
             AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames, 
             boolean required) {
         for (String className : classNames) {
             if (!this.classes.containsKey(className)) {
-                // ½« className °ü×°³É AutoConfigurationClass
+                // å°† className åŒ…è£…æˆ AutoConfigurationClass
                 AutoConfigurationClass autoConfigurationClass = new AutoConfigurationClass(
                         className, metadataReaderFactory, autoConfigurationMetadata);
                 boolean available = autoConfigurationClass.isAvailable();
-                // @AutoConfigureBefore Óë @AutoConfigureAfter ±ê¼ÇµÄÀàµÄ required Îª false
+                // @AutoConfigureBefore ä¸ @AutoConfigureAfter æ ‡è®°çš„ç±»çš„ required ä¸º false
                 if (required || available) {
                     this.classes.put(className, autoConfigurationClass);
                 }
                 if (available) {
-                    // µİ¹éµ÷ÓÃ
+                    // é€’å½’è°ƒç”¨
                     addToClasses(metadataReaderFactory, autoConfigurationMetadata,
                             autoConfigurationClass.getBefore(), false);
                     addToClasses(metadataReaderFactory, autoConfigurationMetadata,
@@ -210,36 +210,36 @@ private static class AutoConfigurationClasses {
 
 ```
 
-´ÓÒÔÉÏ´úÂëÀ´¿´£¬
+ä»ä»¥ä¸Šä»£ç æ¥çœ‹ï¼Œ
 
-*   `AutoConfigurationClasses` °üº¬Ò»¸ö³ÉÔ±±äÁ¿£º`classes`£¬ÀàĞÍÊÇ `Map`£¬`key` ÊÇ `String`£¨Ò²¾ÍÊÇ `className`£©£¬`value` ÊÇ `AutoConfigurationClass`£¨Ò²¾ÍÊÇ `className` µÄ°üº¬Àà£©;
-*   `AutoConfigurationClasses` µÄ¹¹Ôì·½·¨»áµ÷ÓÃ `addToClasses(...)` ¸Ã·½·¨»á±éÀú´«ÈëµÄ `classNames`£¬½«Æä°ü×°³É `AutoConfigurationClass` ºó£¬ÔÙ±£´æµ½ `classes` ÖĞ¡£
+*   `AutoConfigurationClasses` åŒ…å«ä¸€ä¸ªæˆå‘˜å˜é‡ï¼š`classes`ï¼Œç±»å‹æ˜¯ `Map`ï¼Œ`key` æ˜¯ `String`ï¼ˆä¹Ÿå°±æ˜¯ `className`ï¼‰ï¼Œ`value` æ˜¯ `AutoConfigurationClass`ï¼ˆä¹Ÿå°±æ˜¯ `className` çš„åŒ…å«ç±»ï¼‰;
+*   `AutoConfigurationClasses` çš„æ„é€ æ–¹æ³•ä¼šè°ƒç”¨ `addToClasses(...)` è¯¥æ–¹æ³•ä¼šéå†ä¼ å…¥çš„ `classNames`ï¼Œå°†å…¶åŒ…è£…æˆ `AutoConfigurationClass` åï¼Œå†ä¿å­˜åˆ° `classes` ä¸­ã€‚
 
-ÔÚ·ÖÎö `addToClasses(...)` µÄ¾ßÌåÂß¼­Ç°£¬ÎÒÃÇÏÈÀ´¿´¿´ `AutoConfigurationClass` ÊÇ¸öÉ¶£º
+åœ¨åˆ†æ `addToClasses(...)` çš„å…·ä½“é€»è¾‘å‰ï¼Œæˆ‘ä»¬å…ˆæ¥çœ‹çœ‹ `AutoConfigurationClass` æ˜¯ä¸ªå•¥ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-fd9c1a4c335951391a33f86a86fe89ff496.png)
 
-¿ÉÒÔ¿´µ½ £¬`AutoConfigurationClass` ÊÇÀàÃûµÄ°ü×°£¬²¢ÇÒ»¹±£´æÁË `@AutoConfigureBefore` Óë `@AutoConfigureAfter` Ö¸¶¨µÄÀà£¬ÒÔ¼°Ìá¹©ÁË¸ú `@AutoConfigureOrder`¡¢ `@AutoConfigureBefore`¡¢`@AutoConfigureAfter` Ïà¹ØµÄÒ»Ğ©·½·¨¡£
+å¯ä»¥çœ‹åˆ° ï¼Œ`AutoConfigurationClass` æ˜¯ç±»åçš„åŒ…è£…ï¼Œå¹¶ä¸”è¿˜ä¿å­˜äº† `@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` æŒ‡å®šçš„ç±»ï¼Œä»¥åŠæä¾›äº†è·Ÿ `@AutoConfigureOrder`ã€ `@AutoConfigureBefore`ã€`@AutoConfigureAfter` ç›¸å…³çš„ä¸€äº›æ–¹æ³•ã€‚
 
-ÎÒÃÇÔÙ»Ø¹ıÍ·¿´ `addToClasses(...)` µÄÖ´ĞĞÁ÷³Ì£¬¸Ã·½·¨µÄÖ´ĞĞÁ÷³ÌÈçÏÂ£º
+æˆ‘ä»¬å†å›è¿‡å¤´çœ‹ `addToClasses(...)` çš„æ‰§è¡Œæµç¨‹ï¼Œè¯¥æ–¹æ³•çš„æ‰§è¡Œæµç¨‹å¦‚ä¸‹ï¼š
 
-1.  ±éÀú´«ÈëµÄ `classNames`£¬¶ÔÆäÖĞÃ¿Ò»¸ö `className`£¬½øĞĞÏÂÃæµÄ²Ù×÷£»
-2.  ´´½¨ `AutoConfigurationClass`£¬´«Èë `className`£»
-3.  µ÷ÓÃ `AutoConfigurationSorter.AutoConfigurationClass#isAvailable` ·½·¨£¬µÃµ½ `available`£»
-4.  ÅĞ¶Ï `available` Óë `required` µÄÖµ£¬Èç¹ûÆäÒ»Îª ture£¬¾Í½«ÆäÌí¼Óµ½ `classes`£»
-5.  Èç¹û `available` Îª `true`£¬µİ¹é´¦Àí `className` ÓÉ `@AutoConfigureBefore` Óë `@AutoConfigureAfter` Ö¸¶¨µÄÀà¡£
+1.  éå†ä¼ å…¥çš„ `classNames`ï¼Œå¯¹å…¶ä¸­æ¯ä¸€ä¸ª `className`ï¼Œè¿›è¡Œä¸‹é¢çš„æ“ä½œï¼›
+2.  åˆ›å»º `AutoConfigurationClass`ï¼Œä¼ å…¥ `className`ï¼›
+3.  è°ƒç”¨ `AutoConfigurationSorter.AutoConfigurationClass#isAvailable` æ–¹æ³•ï¼Œå¾—åˆ° `available`ï¼›
+4.  åˆ¤æ–­ `available` ä¸ `required` çš„å€¼ï¼Œå¦‚æœå…¶ä¸€ä¸º tureï¼Œå°±å°†å…¶æ·»åŠ åˆ° `classes`ï¼›
+5.  å¦‚æœ `available` ä¸º `true`ï¼Œé€’å½’å¤„ç† `className` ç”± `@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` æŒ‡å®šçš„ç±»ã€‚
 
-Á÷³Ì¿´×Å²»¸´ÔÓ£¬²»¹ıÓĞ¼¸¸ö¾ÍÈ¥ĞèÒª·ÖÎöÏÂ £º
+æµç¨‹çœ‹ç€ä¸å¤æ‚ï¼Œä¸è¿‡æœ‰å‡ ä¸ªå°±å»éœ€è¦åˆ†æä¸‹ ï¼š
 
-1.  `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`£ºÅĞ¶Ïµ±Ç° `class` ÊÇ·ñ´æÔÚ
-2.  `AutoConfigurationSorter.AutoConfigurationClass#getBefore`£º»ñÈ¡ `class`£ºµ±Ç° `class` ĞèÒªÔÚÕâĞ© `class` Ö®Ç°´¦Àí
-3.  `AutoConfigurationSorter.AutoConfigurationClass#getAfter`£º»ñÈ¡ `class`£ºµ±Ç° `class` ĞèÒªÔÚÕâĞ© `class` Ö®ºó´¦Àí
+1.  `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`ï¼šåˆ¤æ–­å½“å‰ `class` æ˜¯å¦å­˜åœ¨
+2.  `AutoConfigurationSorter.AutoConfigurationClass#getBefore`ï¼šè·å– `class`ï¼šå½“å‰ `class` éœ€è¦åœ¨è¿™äº› `class` ä¹‹å‰å¤„ç†
+3.  `AutoConfigurationSorter.AutoConfigurationClass#getAfter`ï¼šè·å– `class`ï¼šå½“å‰ `class` éœ€è¦åœ¨è¿™äº› `class` ä¹‹åå¤„ç†
 
-½ÓÏÂÀ´ÎÒÃÇÒ»Ò»À´·ÖÎöÏÂÕâ¼¸¸ö·½·¨¡£
+æ¥ä¸‹æ¥æˆ‘ä»¬ä¸€ä¸€æ¥åˆ†æä¸‹è¿™å‡ ä¸ªæ–¹æ³•ã€‚
 
 #### 4.1 `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`
 
-Õâ¸ö·½·¨ÊÇÓÃÀ´ÅĞ¶Ïµ±Ç° `class` ÊÇ·ñÔÚµ±Ç°ÏîÄ¿µÄ `classpath` ÖĞ£¬¿´´úÂë£º
+è¿™ä¸ªæ–¹æ³•æ˜¯ç”¨æ¥åˆ¤æ–­å½“å‰ `class` æ˜¯å¦åœ¨å½“å‰é¡¹ç›®çš„ `classpath` ä¸­ï¼Œçœ‹ä»£ç ï¼š
 
 ```
 boolean isAvailable() {
@@ -256,49 +256,49 @@ boolean isAvailable() {
 
 ```
 
-Õâ¸ö·½·¨´úÂë²»¶à£¬ÏÈÊÇµ÷ÓÃ `wasProcessed()` ·½·¨£¬ÔÙµ÷ÓÃ `getAnnotationMetadata()`£¬ĞèÒª×¢ÒâµÄÊÇ£¬`getAnnotationMetadata()` ¿ÉÄÜ»áÅ×³öÒì³££¬ÕĞÆ¸Òì³£Ò²»á·µ»Ø `false`.
+è¿™ä¸ªæ–¹æ³•ä»£ç ä¸å¤šï¼Œå…ˆæ˜¯è°ƒç”¨ `wasProcessed()` æ–¹æ³•ï¼Œå†è°ƒç”¨ `getAnnotationMetadata()`ï¼Œéœ€è¦æ³¨æ„çš„æ˜¯ï¼Œ`getAnnotationMetadata()` å¯èƒ½ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œæ‹›è˜å¼‚å¸¸ä¹Ÿä¼šè¿”å› `false`.
 
-ÎÒÃÇ¼ÌĞø¸ú½ø `AutoConfigurationSorter.AutoConfigurationClass#wasProcessed` ·½·¨£º
+æˆ‘ä»¬ç»§ç»­è·Ÿè¿› `AutoConfigurationSorter.AutoConfigurationClass#wasProcessed` æ–¹æ³•ï¼š
 
 ```
 private boolean wasProcessed() {
     return (this.autoConfigurationMetadata != null
-        // ÅĞ¶Ï META-INF/spring-autoconfigure-metadata.properties ÎÄ¼şÖĞÊÇ·ñ´æÔÚ¸ÃÅäÖÃ
+        // åˆ¤æ–­ META-INF/spring-autoconfigure-metadata.properties æ–‡ä»¶ä¸­æ˜¯å¦å­˜åœ¨è¯¥é…ç½®
         && this.autoConfigurationMetadata.wasProcessed(this.className));
 }
 
 ```
 
-Õâ¸ö·½·¨ÀïÖ÷Òªµ÷ÓÃÁË `AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#wasProcessed` ·½·¨À´ÅĞ¶Ï£º
+è¿™ä¸ªæ–¹æ³•é‡Œä¸»è¦è°ƒç”¨äº† `AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#wasProcessed` æ–¹æ³•æ¥åˆ¤æ–­ï¼š
 
 ```
 @Override
 public boolean wasProcessed(String className) {
-    // ÅĞ¶Ï properties ÊÇ·ñ´æÔÚ¶ÔÓ¦µÄ className
+    // åˆ¤æ–­ properties æ˜¯å¦å­˜åœ¨å¯¹åº”çš„ className
     return this.properties.containsKey(className);
 }
 
 ```
 
-¿ÉÒÔ¿´µ½£¬Õâ¸ö·½·¨½öÊÇÅĞ¶Ï `properties` ÀïÊÇ·ñ°üº¬´«ÈëµÄ `className`£¬`properties` µÄÄÚÈİÀ´×ÔÓÚ `META-INF/spring-autoconfigure-metadata.properties`£¬ÄÚÈİÊ¾ÀıÈçÏÂ£º
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™ä¸ªæ–¹æ³•ä»…æ˜¯åˆ¤æ–­ `properties` é‡Œæ˜¯å¦åŒ…å«ä¼ å…¥çš„ `className`ï¼Œ`properties` çš„å†…å®¹æ¥è‡ªäº `META-INF/spring-autoconfigure-metadata.properties`ï¼Œå†…å®¹ç¤ºä¾‹å¦‚ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-069444fdaa952c6fa8c39576e776275982b.png)
 
-ĞèÒª×¢ÒâµÄÊÇ£¬¸ÃÎÄ¼şÔÚÔ´ÂëÖĞÊÇ²»´æÔÚµÄ£¬ËüÊÇÔÚ±àÒëÊ±Ğ´ÈëµÄ£¬¹ØÓÚ¸ÃÎÄ¼şµÄĞ´Èë¡¢¼ÓÔØµ½ `properties` µÄÁ÷³Ì£¬±¾ÎÄ¾Í²»Õ¹¿ª·ÖÎöÁË£¬ÕâÀïÌá¹©¸ö´ó¸ÅË¼Â·£º
+éœ€è¦æ³¨æ„çš„æ˜¯ï¼Œè¯¥æ–‡ä»¶åœ¨æºç ä¸­æ˜¯ä¸å­˜åœ¨çš„ï¼Œå®ƒæ˜¯åœ¨ç¼–è¯‘æ—¶å†™å…¥çš„ï¼Œå…³äºè¯¥æ–‡ä»¶çš„å†™å…¥ã€åŠ è½½åˆ° `properties` çš„æµç¨‹ï¼Œæœ¬æ–‡å°±ä¸å±•å¼€åˆ†æäº†ï¼Œè¿™é‡Œæä¾›ä¸ªå¤§æ¦‚æ€è·¯ï¼š
 
-*   ÎÄ¼şµÄĞ´Èë£ºÔÚ´úÂë±àÒëÊ±£¬springboot »á½«×Ô¶¯×°ÅäÀàµÄÒ»Ğ©ĞÅÏ¢ (ÀıÈç£¬`@ConditionalOnClass` Ö¸¶¨µÄ `class`£¬`@ConditionalOnBean` Ö¸¶¨µÄ `bean`£¬`@AutoConfigureBefore` Óë `@AutoConfigureAfter` µÄÖ¸¶¨µÄ `class` µÈ) Ğ´Èëµ½ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ£¬´¦ÀíÀàÎª `AutoConfigureAnnotationProcessor`£¬Õâ¸öÀàÊÇ `javax.annotation.processing.AbstractProcessor` µÄ×ÓÀà£¬¶ø `AbstractProcessor` ÓÉ jdk Ìá¹©£¬¿ÉÒÔÔÚ±àÒëÆÚ¶Ô×¢½â½øĞĞ´¦Àí£»
+*   æ–‡ä»¶çš„å†™å…¥ï¼šåœ¨ä»£ç ç¼–è¯‘æ—¶ï¼Œspringboot ä¼šå°†è‡ªåŠ¨è£…é…ç±»çš„ä¸€äº›ä¿¡æ¯ (ä¾‹å¦‚ï¼Œ`@ConditionalOnClass` æŒ‡å®šçš„ `class`ï¼Œ`@ConditionalOnBean` æŒ‡å®šçš„ `bean`ï¼Œ`@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` çš„æŒ‡å®šçš„ `class` ç­‰) å†™å…¥åˆ° `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­ï¼Œå¤„ç†ç±»ä¸º `AutoConfigureAnnotationProcessor`ï¼Œè¿™ä¸ªç±»æ˜¯ `javax.annotation.processing.AbstractProcessor` çš„å­ç±»ï¼Œè€Œ `AbstractProcessor` ç”± jdk æä¾›ï¼Œå¯ä»¥åœ¨ç¼–è¯‘æœŸå¯¹æ³¨è§£è¿›è¡Œå¤„ç†ï¼›
 
-*   ÎÄ¼şµÄ¼ÓÔØ£ºÔÚ `AutoConfigurationImportSelector.AutoConfigurationGroup#process` ·½·¨ÖĞµ÷ÓÃ `AutoConfigurationImportSelector#getAutoConfigurationEntry` Ê±£¬»á´«Èë `AutoConfigurationMetadata`£¬ÎÄ¼ş `META-INF/spring-autoconfigure-metadata.properties` ÖĞµÄÄÚÈİ¾ÍÊÇ´ÓÕâÀï¼ÓÔØµ½ `AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#properties` ÖĞµÄ£»
+*   æ–‡ä»¶çš„åŠ è½½ï¼šåœ¨ `AutoConfigurationImportSelector.AutoConfigurationGroup#process` æ–¹æ³•ä¸­è°ƒç”¨ `AutoConfigurationImportSelector#getAutoConfigurationEntry` æ—¶ï¼Œä¼šä¼ å…¥ `AutoConfigurationMetadata`ï¼Œæ–‡ä»¶ `META-INF/spring-autoconfigure-metadata.properties` ä¸­çš„å†…å®¹å°±æ˜¯ä»è¿™é‡ŒåŠ è½½åˆ° `AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#properties` ä¸­çš„ï¼›
 
-ÓÉĞ©¿É¼û£¬`AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#wasProcessed` ·½·¨Êµ¼ÊÉÏ¾ÍÊÇÅĞ¶Ï `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞÊÇ·ñÓĞ `className` µÄÅäÖÃ¡£
+ç”±äº›å¯è§ï¼Œ`AutoConfigurationMetadataLoader.PropertiesAutoConfigurationMetadata#wasProcessed` æ–¹æ³•å®é™…ä¸Šå°±æ˜¯åˆ¤æ–­ `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­æ˜¯å¦æœ‰ `className` çš„é…ç½®ã€‚
 
-ÈÃÎÒÃÇ»Øµ½ `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`£¬ÔÙÀ´¿´¿´ÁíÒ»¸ö·½·¨£º`getAnnotationMetadata()`£¬¸Ã·½·¨Î»ÓÚ `AutoConfigurationSorter.AutoConfigurationClass` ÖĞ£¬´úÂëÈçÏÂ£º
+è®©æˆ‘ä»¬å›åˆ° `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`ï¼Œå†æ¥çœ‹çœ‹å¦ä¸€ä¸ªæ–¹æ³•ï¼š`getAnnotationMetadata()`ï¼Œè¯¥æ–¹æ³•ä½äº `AutoConfigurationSorter.AutoConfigurationClass` ä¸­ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 private AnnotationMetadata getAnnotationMetadata() {
     if (this.annotationMetadata == null) {
         try {
-            // ¼ÓÔØ`className`¶ÔÓ¦µÄ×ÊÔ´£¬µ± className ¶ÔÓ¦µÄ×ÊÔ´²»´æÔÚÊ±£¬»áÅ×³öÒì³£
+            // åŠ è½½`className`å¯¹åº”çš„èµ„æºï¼Œå½“ className å¯¹åº”çš„èµ„æºä¸å­˜åœ¨æ—¶ï¼Œä¼šæŠ›å‡ºå¼‚å¸¸
             MetadataReader metadataReader = this.metadataReaderFactory
                     .getMetadataReader(this.className);
             this.annotationMetadata = metadataReader.getAnnotationMetadata();
@@ -312,37 +312,37 @@ private AnnotationMetadata getAnnotationMetadata() {
 
 ```
 
-¼ÌĞø½øÈë `SimpleMetadataReaderFactory#getMetadataReader(String)`£º
+ç»§ç»­è¿›å…¥ `SimpleMetadataReaderFactory#getMetadataReader(String)`ï¼š
 
 ```
 @Override
 /**
- * Õâ¸ö·½·¨»á»ñÈ¡ className ¶ÔÓ¦µÄ .class ÎÄ¼ş
- * Èç¹û .class ÎÄ¼ş²»´æÔÚ£¬¾Í±¨Òì³£ÁË£ºIOException
+ * è¿™ä¸ªæ–¹æ³•ä¼šè·å– className å¯¹åº”çš„ .class æ–‡ä»¶
+ * å¦‚æœ .class æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå°±æŠ¥å¼‚å¸¸äº†ï¼šIOException
  */
 public MetadataReader getMetadataReader(String className) throws IOException {
     try {
-        // ×ª»»Ãû³Æ£º"classpath:xxx/xxx/Xxx.class"
+        // è½¬æ¢åç§°ï¼š"classpath:xxx/xxx/Xxx.class"
         String resourcePath = ResourceLoader.CLASSPATH_URL_PREFIX 
                 + lassUtils.convertClassNameToResourcePath(className) 
                 + ClassUtils.CLASS_FILE_SUFFIX;
-        // »ñÈ¡×ÊÔ´£¬Ä¬ÈÏµÄ resourceLoader Îª classLoader
+        // è·å–èµ„æºï¼Œé»˜è®¤çš„ resourceLoader ä¸º classLoader
         Resource resource = this.resourceLoader.getResource(resourcePath);
-        // ½« resource ×ª»»³É MetadataReader ¶ÔÏó£¬²»´æÔÚ¾Í»áÅ×³öÒì³££ºIOException
+        // å°† resource è½¬æ¢æˆ MetadataReader å¯¹è±¡ï¼Œä¸å­˜åœ¨å°±ä¼šæŠ›å‡ºå¼‚å¸¸ï¼šIOException
         return getMetadataReader(resource);
     }
     catch (FileNotFoundException ex) {
-        // ÓĞ¿ÉÄÜÊÇÄÚ²¿Àà£¬ÔÙ°´ÄÚ²¿ÀàµÄÃüÃû·½Ê½´¦ÀíÒ»´Î
+        // æœ‰å¯èƒ½æ˜¯å†…éƒ¨ç±»ï¼Œå†æŒ‰å†…éƒ¨ç±»çš„å‘½åæ–¹å¼å¤„ç†ä¸€æ¬¡
         int lastDotIndex = className.lastIndexOf('.');
         if (lastDotIndex != -1) {
             String innerClassName = className.substring(0, lastDotIndex) + '$' 
                     + className.substring(lastDotIndex + 1);
-            // ×ª»»Ãû³Æ£º"classpath:xxx/Xxx$Xxx.class"
+            // è½¬æ¢åç§°ï¼š"classpath:xxx/Xxx$Xxx.class"
             String innerClassResourcePath = ResourceLoader.CLASSPATH_URL_PREFIX 
                     + ClassUtils.convertClassNameToResourcePath(innerClassName) 
                     + ClassUtils.CLASS_FILE_SUFFIX;
             Resource innerClassResource = this.resourceLoader.getResource(innerClassResourcePath);
-            // ÅĞ¶ÏÊÇ·ñ´æÔÚ£¬²»´æÔÚ»¹ÊÇ»á±¨Òì³£µÄ£ºIOException
+            // åˆ¤æ–­æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¿˜æ˜¯ä¼šæŠ¥å¼‚å¸¸çš„ï¼šIOException
             if (innerClassResource.exists()) {
                 return getMetadataReader(innerClassResource);
             }
@@ -353,32 +353,32 @@ public MetadataReader getMetadataReader(String className) throws IOException {
 
 ```
 
-Õâ¸ö·½·¨µÄ´¦ÀíÁ÷³ÌÈçÏÂ£º
+è¿™ä¸ªæ–¹æ³•çš„å¤„ç†æµç¨‹å¦‚ä¸‹ï¼š
 
-1.  ½«´«ÈëµÄ `className` ×ª»»Îª `classpath:xxx/xxx/Xxx.class` µÄĞÎÊ½£¬È»ºóÈ¥¼ÓÔØ¶ÔÓ¦µÄ×ÊÔ´£¬Èç¹û×ÊÔ´²»´æÔÚ¼´ `className` ¶ÔÓ¦µÄ`.class` ÎÄ¼ş²»´æÔÚ£¬ÔòÅ×³öÒì³££»
-2.  ÔÚÒì³£µÄ `catch` ¿éÖĞ£¬ÎªÁË·ÀÖ¹ `className` ÊÇÄÚ²¿Àà£¬»á½« `className` ×ª»»Îª `classpath:xxx/Xxx$Xxx.class` µÄĞÎÊ½£¬È»ºóÔÙ¼ÓÔØÒ»´Î×ÊÔ´£¬Èç¹û×ÊÔ´´æÔÚ£¬Ö±½Ó·µ»Ø£¬·ñÔò½«Òì³£ÍùÍâÅ×£»
+1.  å°†ä¼ å…¥çš„ `className` è½¬æ¢ä¸º `classpath:xxx/xxx/Xxx.class` çš„å½¢å¼ï¼Œç„¶åå»åŠ è½½å¯¹åº”çš„èµ„æºï¼Œå¦‚æœèµ„æºä¸å­˜åœ¨å³ `className` å¯¹åº”çš„`.class` æ–‡ä»¶ä¸å­˜åœ¨ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸ï¼›
+2.  åœ¨å¼‚å¸¸çš„ `catch` å—ä¸­ï¼Œä¸ºäº†é˜²æ­¢ `className` æ˜¯å†…éƒ¨ç±»ï¼Œä¼šå°† `className` è½¬æ¢ä¸º `classpath:xxx/Xxx$Xxx.class` çš„å½¢å¼ï¼Œç„¶åå†åŠ è½½ä¸€æ¬¡èµ„æºï¼Œå¦‚æœèµ„æºå­˜åœ¨ï¼Œç›´æ¥è¿”å›ï¼Œå¦åˆ™å°†å¼‚å¸¸å¾€å¤–æŠ›ï¼›
 
-µ½ÁËÕâÀï£¬ÎÒÃÇ¾ÍÃ÷°×ÁË£¬`getAnnotationMetadata()` ¾ÍÊÇÓÃÀ´ÅĞ¶Ïµ±Ç° `className` ¶ÔÓ¦µÄ`.class` ÔÚÏîÄ¿µÄ `classpath` Â·¾¶ÖĞÊÇ·ñ´æÔÚ¡£
+åˆ°äº†è¿™é‡Œï¼Œæˆ‘ä»¬å°±æ˜ç™½äº†ï¼Œ`getAnnotationMetadata()` å°±æ˜¯ç”¨æ¥åˆ¤æ–­å½“å‰ `className` å¯¹åº”çš„`.class` åœ¨é¡¹ç›®çš„ `classpath` è·¯å¾„ä¸­æ˜¯å¦å­˜åœ¨ã€‚
 
-¶ÔÕâÁ½¸ö·½·¨£¬ÎÒÃÇ×Ü½áÈçÏÂ£º
+å¯¹è¿™ä¸¤ä¸ªæ–¹æ³•ï¼Œæˆ‘ä»¬æ€»ç»“å¦‚ä¸‹ï¼š
 
-*   `AutoConfigurationSorter.AutoConfigurationClass#wasProcessed`£ºµ±Ç° `className` ÊÇ·ñÔÚ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ
-*   `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`£ºµ±Ç° `className` ¶ÔÓ¦µÄ`.class` ÎÄ¼şÊÇ·ñ´æÔÚ
+*   `AutoConfigurationSorter.AutoConfigurationClass#wasProcessed`ï¼šå½“å‰ `className` æ˜¯å¦åœ¨ `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­
+*   `AutoConfigurationSorter.AutoConfigurationClass#isAvailable`ï¼šå½“å‰ `className` å¯¹åº”çš„`.class` æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 
-×îÖÕµÄ½áÂÛ£º`AutoConfigurationSorter.AutoConfigurationClass#isAvailable` ¾ÍÊÇÓÃÀ´ÅĞ¶Ïµ±Ç° `className` ¶ÔÓ¦µÄ`.class` ÎÄ¼şÔÚÏîÄ¿µÄ `classpath` Â·¾¶ÖĞ.
+æœ€ç»ˆçš„ç»“è®ºï¼š`AutoConfigurationSorter.AutoConfigurationClass#isAvailable` å°±æ˜¯ç”¨æ¥åˆ¤æ–­å½“å‰ `className` å¯¹åº”çš„`.class` æ–‡ä»¶åœ¨é¡¹ç›®çš„ `classpath` è·¯å¾„ä¸­.
 
 #### 4.2 `AutoConfigurationSorter.AutoConfigurationClass#getBefore/getAfter`
 
-½ÓÏÂÀ´ÎÒÃÇÀ´¿´¿´ `AutoConfigurationSorter.AutoConfigurationClass` ÀàµÄÁ½¸ö·½·¨£º`getAfter()` Óë `getBefore()`£º
+æ¥ä¸‹æ¥æˆ‘ä»¬æ¥çœ‹çœ‹ `AutoConfigurationSorter.AutoConfigurationClass` ç±»çš„ä¸¤ä¸ªæ–¹æ³•ï¼š`getAfter()` ä¸ `getBefore()`ï¼š
 
 ```
 Set<String> getBefore() {
     if (this.before == null) {
         this.before = (wasProcessed() 
-            // Èç¹û´æÔÚÓÚ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ£¬Ö±½Ó»ñÈ¡Öµ
+            // å¦‚æœå­˜åœ¨äº `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­ï¼Œç›´æ¥è·å–å€¼
             ? this.autoConfigurationMetadata.getSet(this.className, "AutoConfigureBefore", 
                     Collections.emptySet()) 
-            // ·ñÔò´Ó @AutoConfigureBefore ×¢½âÉÏ»ñÈ¡
+            // å¦åˆ™ä» @AutoConfigureBefore æ³¨è§£ä¸Šè·å–
             : getAnnotationValue(AutoConfigureBefore.class));
     }
     return this.before;
@@ -387,17 +387,17 @@ Set<String> getBefore() {
 Set<String> getAfter() {
     if (this.after == null) {
         this.after = (wasProcessed() 
-            // Èç¹û´æÔÚÓÚ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ£¬Ö±½Ó»ñÈ¡Öµ
+            // å¦‚æœå­˜åœ¨äº `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­ï¼Œç›´æ¥è·å–å€¼
             ? this.autoConfigurationMetadata.getSet(this.className, "AutoConfigureAfter", 
                     Collections.emptySet()) 
-            // ·ñÔò´Ó @AutoConfigureAfter ×¢½âÉÏ»ñÈ¡
+            // å¦åˆ™ä» @AutoConfigureAfter æ³¨è§£ä¸Šè·å–
             : getAnnotationValue(AutoConfigureAfter.class));
     }
     return this.after;
 }
 
 /**
- * ´Ó @AutoConfigureBefore/@AutoConfigureAfter ×¢½âÖĞ»ñÈ¡Öµ£ºvalue Óë name Ö¸¶¨µÄÖµ
+ * ä» @AutoConfigureBefore/@AutoConfigureAfter æ³¨è§£ä¸­è·å–å€¼ï¼švalue ä¸ name æŒ‡å®šçš„å€¼
  */
 private Set<String> getAnnotationValue(Class<?> annotation) {
     Map<String, Object> attributes = getAnnotationMetadata()
@@ -413,17 +413,17 @@ private Set<String> getAnnotationValue(Class<?> annotation) {
 
 ```
 
-ÕâÁ½¸ö·½·¨ÔÚ´úÂëĞÎÊ½»ù±¾Ò»ÖÂ£¬ÏÈ¿´ `getBefore()` µÄÁ÷³Ì£º
+è¿™ä¸¤ä¸ªæ–¹æ³•åœ¨ä»£ç å½¢å¼åŸºæœ¬ä¸€è‡´ï¼Œå…ˆçœ‹ `getBefore()` çš„æµç¨‹ï¼š
 
-1.  Èç¹ûµ±Ç° `className` ´æÔÚÓÚ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ£¬Ö±½ÓÈ¡Öµ£¬Ç°Ãæ·ÖÎöÒ²Ìáµ½£¬springboot ÔÚ±àÒëÊ±£¬»á°ÑÒ»Ğ©×¢½âµÄĞÅÏ¢Ğ´Èëµ½ `META-INF/spring-autoconfigure-metadata.properties` ÎÄ¼şÖĞ£»
+1.  å¦‚æœå½“å‰ `className` å­˜åœ¨äº `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­ï¼Œç›´æ¥å–å€¼ï¼Œå‰é¢åˆ†æä¹Ÿæåˆ°ï¼Œspringboot åœ¨ç¼–è¯‘æ—¶ï¼Œä¼šæŠŠä¸€äº›æ³¨è§£çš„ä¿¡æ¯å†™å…¥åˆ° `META-INF/spring-autoconfigure-metadata.properties` æ–‡ä»¶ä¸­ï¼›
 
-2.  Èç¹ûµÚ 1 ²½²»³É¹¦£¬Ôò´Óµ±Ç° `class` µÄ `@AutoConfigureBefore` È¡Öµ£»
+2.  å¦‚æœç¬¬ 1 æ­¥ä¸æˆåŠŸï¼Œåˆ™ä»å½“å‰ `class` çš„ `@AutoConfigureBefore` å–å€¼ï¼›
 
-`getAfter()` ·½·¨µÄÁ÷³ÌÓë `getBefore()` µÄÁ÷³Ì»ù±¾Ò»ÖÂ£¬¾Í²»·ÖÎöÁË¡£
+`getAfter()` æ–¹æ³•çš„æµç¨‹ä¸ `getBefore()` çš„æµç¨‹åŸºæœ¬ä¸€è‡´ï¼Œå°±ä¸åˆ†æäº†ã€‚
 
-### 5\. Ê¹ÓÃ `@AutoConfigureOrder` ÅÅĞò
+### 5\. ä½¿ç”¨ `@AutoConfigureOrder` æ’åº
 
-ÈÃÎÒÃÇ»Øµ½ `AutoConfigurationSorter#getInPriorityOrder` ·½·¨£¬ÎÒÃÇÀ´¿´¿´ `@AutoConfigureOrder` µÄÅÅĞò¹ı³Ì£º
+è®©æˆ‘ä»¬å›åˆ° `AutoConfigurationSorter#getInPriorityOrder` æ–¹æ³•ï¼Œæˆ‘ä»¬æ¥çœ‹çœ‹ `@AutoConfigureOrder` çš„æ’åºè¿‡ç¨‹ï¼š
 
 ```
 List<String> getInPriorityOrder(Collection<String> classNames) {
@@ -438,93 +438,93 @@ List<String> getInPriorityOrder(Collection<String> classNames) {
 
 ```
 
-Õâ¸öÅÅĞò²Ù×÷Ê¹ÓÃµÄÊÇ `List#sort`£¬`sort(...)` ÀïµÄ²ÎÊıÎª `Comparator`£¬Ö¸¶¨ÁËÅÅĞò¹æÔò¡£´Ó´úÂëÀ´¿´£¬Í¨¹ı `getOrder()` »ñÈ¡µ½µ±Ç°ÀàµÄË³Ğòºó£¬ÔÙÊ¹ÓÃµÄÊÇ `Integer` µÄ±È½Ï¹æÔò½øĞĞÅÅĞò£¬Òò´Ë `getOrder()` ÊÇÅÅĞòµÄ¹Ø¼ü£¬ËüËù¶Ô¾ÍµÄ·½·¨ÊÇ `AutoConfigurationSorter.AutoConfigurationClass#getOrder`£¬´úÂëÈçÏÂ£º
+è¿™ä¸ªæ’åºæ“ä½œä½¿ç”¨çš„æ˜¯ `List#sort`ï¼Œ`sort(...)` é‡Œçš„å‚æ•°ä¸º `Comparator`ï¼ŒæŒ‡å®šäº†æ’åºè§„åˆ™ã€‚ä»ä»£ç æ¥çœ‹ï¼Œé€šè¿‡ `getOrder()` è·å–åˆ°å½“å‰ç±»çš„é¡ºåºåï¼Œå†ä½¿ç”¨çš„æ˜¯ `Integer` çš„æ¯”è¾ƒè§„åˆ™è¿›è¡Œæ’åºï¼Œå› æ­¤ `getOrder()` æ˜¯æ’åºçš„å…³é”®ï¼Œå®ƒæ‰€å¯¹å°±çš„æ–¹æ³•æ˜¯ `AutoConfigurationSorter.AutoConfigurationClass#getOrder`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 private int getOrder() {
-    // ÅĞ¶Ï META-INF/spring-autoconfigure-metadata.properties ÎÄ¼şÖĞÊÇ·ñ´æÔÚµ±Ç° className
+    // åˆ¤æ–­ META-INF/spring-autoconfigure-metadata.properties æ–‡ä»¶ä¸­æ˜¯å¦å­˜åœ¨å½“å‰ className
     if (wasProcessed()) {
-        // Èç¹û´æÔÚ£¬¾ÍÊ¹ÓÃÎÄ¼şÖĞÖ¸¶¨µÄË³Ğò£¬·ñÔò¾ÍÊ¹ÓÃÄ¬ÈÏË³Ğò
+        // å¦‚æœå­˜åœ¨ï¼Œå°±ä½¿ç”¨æ–‡ä»¶ä¸­æŒ‡å®šçš„é¡ºåºï¼Œå¦åˆ™å°±ä½¿ç”¨é»˜è®¤é¡ºåº
         return this.autoConfigurationMetadata.getInteger(this.className, 
                 "AutoConfigureOrder", AutoConfigureOrder.DEFAULT_ORDER);
     }
-    // ´¦Àí²»´æÔÚµÄÇé¿ö£º»ñÈ¡ @AutoConfigureOrder ×¢½âÖ¸¶¨µÄË³Ğò
+    // å¤„ç†ä¸å­˜åœ¨çš„æƒ…å†µï¼šè·å– @AutoConfigureOrder æ³¨è§£æŒ‡å®šçš„é¡ºåº
     Map<String, Object> attributes = getAnnotationMetadata()
             .getAnnotationAttributes(AutoConfigureOrder.class.getName());
-    // Èç¹û @AutoConfigureOrder Î´ÅäÖÃ£¬¾ÍÊ¹ÓÃÄ¬ÈÏË³Ğò
+    // å¦‚æœ @AutoConfigureOrder æœªé…ç½®ï¼Œå°±ä½¿ç”¨é»˜è®¤é¡ºåº
     return (attributes != null) ? (Integer) attributes.get("value") 
             : AutoConfigureOrder.DEFAULT_ORDER;
 }
 
 ```
 
-Õâ¸ö·½·¨»¹ÊÇ±È½Ï¼òµ¥µÄ£¬¾ÍÊÇ»ñÈ¡ `@AutoConfigureOrder` ×¢½âÖ¸¶¨µÄË³Ğò£¬Èç¹ûÃ»ÓĞ `@AutoConfigureOrder` ×¢½â£¬¾ÍÊ¹ÓÃÄ¬ÈÏË³Ğò£¬Ä¬ÈÏË³Ğò `AutoConfigureOrder.DEFAULT_ORDER` µÄÖµÎª 0¡£
+è¿™ä¸ªæ–¹æ³•è¿˜æ˜¯æ¯”è¾ƒç®€å•çš„ï¼Œå°±æ˜¯è·å– `@AutoConfigureOrder` æ³¨è§£æŒ‡å®šçš„é¡ºåºï¼Œå¦‚æœæ²¡æœ‰ `@AutoConfigureOrder` æ³¨è§£ï¼Œå°±ä½¿ç”¨é»˜è®¤é¡ºåºï¼Œé»˜è®¤é¡ºåº `AutoConfigureOrder.DEFAULT_ORDER` çš„å€¼ä¸º 0ã€‚
 
-### 6\. Ê¹ÓÃ `@AutoConfigureBefore`£¬`@AutoConfigureAfter` ÅÅĞò
+### 6\. ä½¿ç”¨ `@AutoConfigureBefore`ï¼Œ`@AutoConfigureAfter` æ’åº
 
-½ÓÏÂÀ´¾ÍÊÇ×î¼¤¶¯ÈËĞÄµÄ `@AutoConfigureBefore` Óë `@AutoConfigureAfter` ×¢½âµÄÅÅĞòÁË£¬¶ÔÓ¦µÄ·½·¨Îª `AutoConfigurationSorter#sortByAnnotation`£¬´úÂëÈçÏÂ£º
+æ¥ä¸‹æ¥å°±æ˜¯æœ€æ¿€åŠ¨äººå¿ƒçš„ `@AutoConfigureBefore` ä¸ `@AutoConfigureAfter` æ³¨è§£çš„æ’åºäº†ï¼Œå¯¹åº”çš„æ–¹æ³•ä¸º `AutoConfigurationSorter#sortByAnnotation`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 /**
- * ½øĞĞÅÅĞò£¬
- * Êµ¼ÊÉÏÕâ¸ö·½·¨ÀïÖ»ÊÇ×¼±¸ÁËÒ»Ğ©Êı¾İ£¬ÕæÕı¸É»îµÄÊÇ doSortByAfterAnnotation(...)
+ * è¿›è¡Œæ’åºï¼Œ
+ * å®é™…ä¸Šè¿™ä¸ªæ–¹æ³•é‡Œåªæ˜¯å‡†å¤‡äº†ä¸€äº›æ•°æ®ï¼ŒçœŸæ­£å¹²æ´»çš„æ˜¯ doSortByAfterAnnotation(...)
  */
 private List<String> sortByAnnotation(AutoConfigurationClasses classes, List<String> classNames) {
-    // ĞèÒªÅÅĞòµÄ className
+    // éœ€è¦æ’åºçš„ className
     List<String> toSort = new ArrayList<>(classNames);
     toSort.addAll(classes.getAllNames());
-    // ÅÅĞòºÃµÄ className
+    // æ’åºå¥½çš„ className
     Set<String> sorted = new LinkedHashSet<>();
-    // ÕıÔÚÅÅĞòÖĞµÄ className
+    // æ­£åœ¨æ’åºä¸­çš„ className
     Set<String> processing = new LinkedHashSet<>();
     while (!toSort.isEmpty()) {
-        // ÕæÕı´¦ÀíÅÅĞòµÄ·½·¨
+        // çœŸæ­£å¤„ç†æ’åºçš„æ–¹æ³•
         doSortByAfterAnnotation(classes, toSort, sorted, processing, null);
     }
-    // ´æÔÚÓÚ¼¯ºÏ sorted ÖĞ£¬µ«²»´æÔÚÓÚ classNames ÖĞµÄÔªËØ½«»á±»ÒÆ³ı
+    // å­˜åœ¨äºé›†åˆ sorted ä¸­ï¼Œä½†ä¸å­˜åœ¨äº classNames ä¸­çš„å…ƒç´ å°†ä¼šè¢«ç§»é™¤
     sorted.retainAll(classNames);
     return new ArrayList<>(sorted);
 }
 
 /**
- * ¾ßÌå½øĞĞÅÅĞòµÄ·½·¨
+ * å…·ä½“è¿›è¡Œæ’åºçš„æ–¹æ³•
  */
 private void doSortByAfterAnnotation(AutoConfigurationClasses classes, List<String> toSort, 
         Set<String> sorted, Set<String> processing, String current) {
     if (current == null) {
         current = toSort.remove(0);
     }
-    // Ê¹ÓÃ processing À´ÅĞ¶ÏÊÇ·ñ´æÔÚÑ­»·±È½Ï£¬±ÈÈç£¬ÀàA after ÀàB£¬¶ø ÀàB ÓÖ after ÀàA
+    // ä½¿ç”¨ processing æ¥åˆ¤æ–­æ˜¯å¦å­˜åœ¨å¾ªç¯æ¯”è¾ƒï¼Œæ¯”å¦‚ï¼Œç±»A after ç±»Bï¼Œè€Œ ç±»B åˆ after ç±»A
     processing.add(current);
-    // classes.getClassesRequestedAfter£ºµ±Ç° className ĞèÒªÔÚÄÄĞ© className Ö®ºóÖ´ĞĞ
+    // classes.getClassesRequestedAfterï¼šå½“å‰ className éœ€è¦åœ¨å“ªäº› className ä¹‹åæ‰§è¡Œ
     for (String after : classes.getClassesRequestedAfter(current)) {
         Assert.state(!processing.contains(after),
                 "AutoConfigure cycle detected between " + current + " and " + after);
         if (!sorted.contains(after) && toSort.contains(after)) {
-            // µİ¹éµ÷ÓÃ
+            // é€’å½’è°ƒç”¨
             doSortByAfterAnnotation(classes, toSort, sorted, processing, after);
         }
     }
     processing.remove(current);
-    // Ìí¼Óµ½ÒÑÅÅĞò½á¹ûÖĞ
+    // æ·»åŠ åˆ°å·²æ’åºç»“æœä¸­
     sorted.add(current);
 }
 
 ```
 
-`AutoConfigurationSorter#sortByAnnotation` Ìá¹©ÁË±£´æÊı¾İµÄ½á¹¹£¬¶ø `AutoConfigurationSorter#doSortByAfterAnnotation` ²ÅÊÇÕæÕı´¦ÀíÅÅĞòµÄ·½·¨£¬ÅÅĞò²Ù×÷²»Ì«ºÃ¶®£¬´óÖÂÁ÷³ÌÈçÏÂ£º
+`AutoConfigurationSorter#sortByAnnotation` æä¾›äº†ä¿å­˜æ•°æ®çš„ç»“æ„ï¼Œè€Œ `AutoConfigurationSorter#doSortByAfterAnnotation` æ‰æ˜¯çœŸæ­£å¤„ç†æ’åºçš„æ–¹æ³•ï¼Œæ’åºæ“ä½œä¸å¤ªå¥½æ‡‚ï¼Œå¤§è‡´æµç¨‹å¦‚ä¸‹ï¼š
 
-1.  ²éÕÒµ±Ç° `className` ĞèÒªÔÚÄÄĞ© `className` Ö®ºó×°Åä£¬½«Æä±£´æÎª `afterClasses`£¬Ò²¾ÍÊÇËµ£¬`afterClasses` ÖĞµÄÃ¿Ò»¸ö `className` ¶¼ÒªÔÚµ±Ç° `className` Ö®Ç°×°Åä£»
+1.  æŸ¥æ‰¾å½“å‰ `className` éœ€è¦åœ¨å“ªäº› `className` ä¹‹åè£…é…ï¼Œå°†å…¶ä¿å­˜ä¸º `afterClasses`ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œ`afterClasses` ä¸­çš„æ¯ä¸€ä¸ª `className` éƒ½è¦åœ¨å½“å‰ `className` ä¹‹å‰è£…é…ï¼›
 
-2.  ±éÀú `afterClasses`£¬¶ÔÆäÖĞÃ¿Ò»¸ö `className`£¬¼ÌĞø²éÕÒÆä `afterClasses`£¬ÕâÑùµİ¹éÏÂÈ¥£¬²»¿¼ÂÇÑ­»·±È½ÏµÄÇé¿öÏÂ£¬×îÖÕ±ØÈ»»á´æÔÚÒ»¸ö `className`£¬ËüµÄ `afterClasses` Îª¿Õ£¬ÕâÀï¾Í°Ñ `className` ¼ÓÈëµ½ÒÑÍê³ÉÅÅĞòµÄ½á¹¹ÖĞ¡£
+2.  éå† `afterClasses`ï¼Œå¯¹å…¶ä¸­æ¯ä¸€ä¸ª `className`ï¼Œç»§ç»­æŸ¥æ‰¾å…¶ `afterClasses`ï¼Œè¿™æ ·é€’å½’ä¸‹å»ï¼Œä¸è€ƒè™‘å¾ªç¯æ¯”è¾ƒçš„æƒ…å†µä¸‹ï¼Œæœ€ç»ˆå¿…ç„¶ä¼šå­˜åœ¨ä¸€ä¸ª `className`ï¼Œå®ƒçš„ `afterClasses` ä¸ºç©ºï¼Œè¿™é‡Œå°±æŠŠ `className` åŠ å…¥åˆ°å·²å®Œæˆæ’åºçš„ç»“æ„ä¸­ã€‚
 
-ÎÒÃÇÔÙÀ´¿´¿´»ñÈ¡ `afterClasses` µÄ²Ù×÷£¬·½·¨Îª `AutoConfigurationSorter.AutoConfigurationClasses#getClassesRequestedAfter`£¬´úÂëÈçÏÂ£º
+æˆ‘ä»¬å†æ¥çœ‹çœ‹è·å– `afterClasses` çš„æ“ä½œï¼Œæ–¹æ³•ä¸º `AutoConfigurationSorter.AutoConfigurationClasses#getClassesRequestedAfter`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 Set<String> getClassesRequestedAfter(String className) {
-    // µ±Ç°Àà£º»ñÈ¡ÔÚÄÄĞ©ÀàÖ®ºóÖ´ĞĞ£¬¾ÍÊÇ»ñÈ¡ @AutoConfigureAfter ×¢½âÖ¸¶¨µÄÀà
+    // å½“å‰ç±»ï¼šè·å–åœ¨å“ªäº›ç±»ä¹‹åæ‰§è¡Œï¼Œå°±æ˜¯è·å– @AutoConfigureAfter æ³¨è§£æŒ‡å®šçš„ç±»
     Set<String> classesRequestedAfter = new LinkedHashSet<>(get(className).getAfter());
-    // ÆäËûÀà£ºĞèÒªÇ°ÖÃÖ´ĞĞµÄÀàÖĞ
+    // å…¶ä»–ç±»ï¼šéœ€è¦å‰ç½®æ‰§è¡Œçš„ç±»ä¸­
     this.classes.forEach((name, autoConfigurationClass) -> {
         if (autoConfigurationClass.getBefore().contains(className)) {
             classesRequestedAfter.add(name);
@@ -535,34 +535,34 @@ Set<String> getClassesRequestedAfter(String className) {
 
 ```
 
-´Ó´úÂëÀ´µÄÀ´¿´£¬Õâ¸ö `afterClasses` °üº¬Á½¸öÄÚÈİ£º
+ä»ä»£ç æ¥çš„æ¥çœ‹ï¼Œè¿™ä¸ª `afterClasses` åŒ…å«ä¸¤ä¸ªå†…å®¹ï¼š
 
-*   »ñÈ¡ÔÚÄÄĞ©Àà×°ÅäÍê³ÉÖ®ºó×°Åä£¬¾ÍÊÇ»ñÈ¡ `@AutoConfigureAfter` ×¢½âÖ¸¶¨µÄÀà
-*   »ñÈ¡ÄÄĞ©ÀàĞèÒªÔÚµ±Ç°Àà×°ÅäÖ®Ç°½øĞĞ×°Åä
+*   è·å–åœ¨å“ªäº›ç±»è£…é…å®Œæˆä¹‹åè£…é…ï¼Œå°±æ˜¯è·å– `@AutoConfigureAfter` æ³¨è§£æŒ‡å®šçš„ç±»
+*   è·å–å“ªäº›ç±»éœ€è¦åœ¨å½“å‰ç±»è£…é…ä¹‹å‰è¿›è¡Œè£…é…
 
-### 7\. ÔÙÀ´¿´£º`@ConditionalOnBean/@ConditionalOnMissingBean`
+### 7\. å†æ¥çœ‹ï¼š`@ConditionalOnBean/@ConditionalOnMissingBean`
 
-Ç°ÃæÌáµ½ÁË `@ConditionalOnBean/@ConditionalOnMissingBean` µÄ¿Ó£¬ÁË½âÍê×Ô¶¯×°ÅäµÄË³Ğòºó£¬¾ÍÄÜºÜºÃ¹æ±ÜÕâĞ©¿ÓÁË£º
+å‰é¢æåˆ°äº† `@ConditionalOnBean/@ConditionalOnMissingBean` çš„å‘ï¼Œäº†è§£å®Œè‡ªåŠ¨è£…é…çš„é¡ºåºåï¼Œå°±èƒ½å¾ˆå¥½è§„é¿è¿™äº›å‘äº†ï¼š
 
-1.  Á½¸ö `bean` ¶¼ÊÇ×Ô¶¯×°ÅäÀà£º±Ü¿Ó·½Ê½ÊÇ£¬Ê¹ÓÃ `@AutoConfigureBefore` / `@AutoConfigureAfter` »ò `@AutoConfigureOrder` Ö¸¶¨Ìõ¼şË³Ğò£¬±£Ö¤Ìõ¼ş×¢½âÖĞµÄ `bean` ÏÈ×°Åä¼´¿É£»
-2.  Ò»¸öÊÇÆÕÍ¨ `spring bean`£¬Ò»¸öÊÇ×Ô¶¯×°ÅäÀà£ºÈç¹ûÌõ¼ş×¢½âÖĞµÄ `bean` ÊÇÆÕÍ¨ spring bean£¬ÁíÒ»¸öÊÇ×Ô¶¯×°ÅäÀà£¬ÕâÖÖÇé¿öÏÂ²»ÓÃ´¦Àí£¬×Ô¶¯×°ÅäµÄ´¦ÀíÀàÊÇ `DeferredImportSelector` µÄ×ÓÀà£¬ÏÈÌì¾ö¶¨×Ô¶¯×°ÅäÀàÔÚÆÕÍ¨ `spring bean` Ö®ºó´¦Àí£»·´Ö® £¬Ìõ¼ş×¢½âÖĞµÄ `bean` ÊÇ×Ô¶¯×°ÅäÀà£¬ÁíÒ»¸öÊÇÆÕÍ¨ `spring bean`£¬ÕâÖÖÒ»¶¨»á³ö´í£¬²»ÒªÊ¹ÓÃ£»
-3.  Á½¸ö¶¼ÊÇÆÕÍ¨ `spring bean`£ºÎŞ±Ü¿Ó·½·¨£¬`spring bean` ×¢²áµ½ `beanFactory` µÄË³Ğò²»¿É¿Ø£¬²»½¨ÒéÔÚÕâÖÖÇé¿öÏÂÊ¹ÓÃ£»
+1.  ä¸¤ä¸ª `bean` éƒ½æ˜¯è‡ªåŠ¨è£…é…ç±»ï¼šé¿å‘æ–¹å¼æ˜¯ï¼Œä½¿ç”¨ `@AutoConfigureBefore` / `@AutoConfigureAfter` æˆ– `@AutoConfigureOrder` æŒ‡å®šæ¡ä»¶é¡ºåºï¼Œä¿è¯æ¡ä»¶æ³¨è§£ä¸­çš„ `bean` å…ˆè£…é…å³å¯ï¼›
+2.  ä¸€ä¸ªæ˜¯æ™®é€š `spring bean`ï¼Œä¸€ä¸ªæ˜¯è‡ªåŠ¨è£…é…ç±»ï¼šå¦‚æœæ¡ä»¶æ³¨è§£ä¸­çš„ `bean` æ˜¯æ™®é€š spring beanï¼Œå¦ä¸€ä¸ªæ˜¯è‡ªåŠ¨è£…é…ç±»ï¼Œè¿™ç§æƒ…å†µä¸‹ä¸ç”¨å¤„ç†ï¼Œè‡ªåŠ¨è£…é…çš„å¤„ç†ç±»æ˜¯ `DeferredImportSelector` çš„å­ç±»ï¼Œå…ˆå¤©å†³å®šè‡ªåŠ¨è£…é…ç±»åœ¨æ™®é€š `spring bean` ä¹‹åå¤„ç†ï¼›åä¹‹ ï¼Œæ¡ä»¶æ³¨è§£ä¸­çš„ `bean` æ˜¯è‡ªåŠ¨è£…é…ç±»ï¼Œå¦ä¸€ä¸ªæ˜¯æ™®é€š `spring bean`ï¼Œè¿™ç§ä¸€å®šä¼šå‡ºé”™ï¼Œä¸è¦ä½¿ç”¨ï¼›
+3.  ä¸¤ä¸ªéƒ½æ˜¯æ™®é€š `spring bean`ï¼šæ— é¿å‘æ–¹æ³•ï¼Œ`spring bean` æ³¨å†Œåˆ° `beanFactory` çš„é¡ºåºä¸å¯æ§ï¼Œä¸å»ºè®®åœ¨è¿™ç§æƒ…å†µä¸‹ä½¿ç”¨ï¼›
 
-### 8\. ×Ü½á
+### 8\. æ€»ç»“
 
-±¾ÎÄ×Ü½áÁË×Ô¶¯×°ÅäÀàµÄ×°ÅäË³Ğò£¬Ö÷Òª½éÉÜÁËÈçÏÂÄÚÈİ£º
+æœ¬æ–‡æ€»ç»“äº†è‡ªåŠ¨è£…é…ç±»çš„è£…é…é¡ºåºï¼Œä¸»è¦ä»‹ç»äº†å¦‚ä¸‹å†…å®¹ï¼š
 
-1.  ¶Ô×Ô¶¯×°ÅäÀàÅÅĞò£º`AutoConfigurationImportSelector.AutoConfigurationGroup#sortAutoConfigurations`
-2.  Ö¸¶¨×Ô¶¯×°ÅäÀàµÄ×°ÅäË³Ğò£ºÊ¹ÓÃ `@AutoConfigureBefore` / `@AutoConfigureAfter` »ò `@AutoConfigureOrder`
-3.  ÅÅĞò·½Ê½ÓĞÈıÖÖ£¬ÒÀ´ÎÊÇ£º
-    1.  °´ className ÅÅĞò£¬ÓÉ `String` Ìá¹©ÅÅĞò¹æÔò
-    2.  ¸ù¾İ `@AutoConfigureOrder` Ö¸¶¨µÄÖµ½øĞĞÅÅĞò£¬ÓÉ `Integer` Ìá¹©ÅÅĞò¹æÔò
-    3.  ¸ù¾İ `@AutoConfigureBefore` / `@AutoConfigureAfter` ½øĞĞÅÅĞò ĞèÒª×¢ÒâµÄÊÇ£¬ÒÔÉÏÈıÖÖÅÅĞò·½Ê½ÏÈºó½øĞĞ£¬ÒÔ×îºóÅÅĞòÍêµÄ½á¹ûÎª×îÖÕË³Ğò
-4.  ¹ØÓÚ `@ConditionalOnBean/@ConditionalOnMissingBean` ±Ü¿ÓÖ¸ÄÏ£º
-    1.  Á½¸ö `bean` ¶¼ÊÇ×Ô¶¯×°ÅäÀà£º±Ü¿Ó·½Ê½ÊÇ£¬Ê¹ÓÃ `@AutoConfigureBefore` / `@AutoConfigureAfter` »ò `@AutoConfigureOrder` Ö¸¶¨Ìõ¼şË³Ğò£¬±£Ö¤Ìõ¼ş×¢½âÖĞµÄ `bean` ÏÈ×°Åä¼´¿É£»
-    2.  Ò»¸öÊÇÆÕÍ¨ `spring bean`£¬Ò»¸öÊÇ×Ô¶¯×°ÅäÀà£ºÌõ¼ş×¢½âÖĞµÄ `bean` ±ØĞëÎªÆÕÍ¨µÄ `spring bean`£»
-    3.  ÆäËûÇé¿ö²»¿É¿Ø£¬²»½¨ÒéÊ¹ÓÃ¡£
+1.  å¯¹è‡ªåŠ¨è£…é…ç±»æ’åºï¼š`AutoConfigurationImportSelector.AutoConfigurationGroup#sortAutoConfigurations`
+2.  æŒ‡å®šè‡ªåŠ¨è£…é…ç±»çš„è£…é…é¡ºåºï¼šä½¿ç”¨ `@AutoConfigureBefore` / `@AutoConfigureAfter` æˆ– `@AutoConfigureOrder`
+3.  æ’åºæ–¹å¼æœ‰ä¸‰ç§ï¼Œä¾æ¬¡æ˜¯ï¼š
+    1.  æŒ‰ className æ’åºï¼Œç”± `String` æä¾›æ’åºè§„åˆ™
+    2.  æ ¹æ® `@AutoConfigureOrder` æŒ‡å®šçš„å€¼è¿›è¡Œæ’åºï¼Œç”± `Integer` æä¾›æ’åºè§„åˆ™
+    3.  æ ¹æ® `@AutoConfigureBefore` / `@AutoConfigureAfter` è¿›è¡Œæ’åº éœ€è¦æ³¨æ„çš„æ˜¯ï¼Œä»¥ä¸Šä¸‰ç§æ’åºæ–¹å¼å…ˆåè¿›è¡Œï¼Œä»¥æœ€åæ’åºå®Œçš„ç»“æœä¸ºæœ€ç»ˆé¡ºåº
+4.  å…³äº `@ConditionalOnBean/@ConditionalOnMissingBean` é¿å‘æŒ‡å—ï¼š
+    1.  ä¸¤ä¸ª `bean` éƒ½æ˜¯è‡ªåŠ¨è£…é…ç±»ï¼šé¿å‘æ–¹å¼æ˜¯ï¼Œä½¿ç”¨ `@AutoConfigureBefore` / `@AutoConfigureAfter` æˆ– `@AutoConfigureOrder` æŒ‡å®šæ¡ä»¶é¡ºåºï¼Œä¿è¯æ¡ä»¶æ³¨è§£ä¸­çš„ `bean` å…ˆè£…é…å³å¯ï¼›
+    2.  ä¸€ä¸ªæ˜¯æ™®é€š `spring bean`ï¼Œä¸€ä¸ªæ˜¯è‡ªåŠ¨è£…é…ç±»ï¼šæ¡ä»¶æ³¨è§£ä¸­çš„ `bean` å¿…é¡»ä¸ºæ™®é€šçš„ `spring bean`ï¼›
+    3.  å…¶ä»–æƒ…å†µä¸å¯æ§ï¼Œä¸å»ºè®®ä½¿ç”¨ã€‚
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4921594](https://my.oschina.net/funcy/blog/4921594) £¬ÏŞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖĞÄÑÃâÓĞ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õı£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŸæ–‡é“¾æ¥ï¼š[https://my.oschina.net/funcy/blog/4921594](https://my.oschina.net/funcy/blog/4921594) ï¼Œé™äºä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿æŒ‡æ­£ï¼åŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚_

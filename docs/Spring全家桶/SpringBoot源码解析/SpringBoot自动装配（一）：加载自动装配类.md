@@ -1,27 +1,27 @@
-×Ô¶¯×°ÅäÊÇ springboot µÄºËĞÄÖ®Ò»£¬±¾ÎÄ½«À´Ì½¾¿ springboot ÊÇÈçºÎ¼ÓÔØ×Ô¶¯×°ÅäÀàµÄ¡£
+è‡ªåŠ¨è£…é…æ˜¯ springboot çš„æ ¸å¿ƒä¹‹ä¸€ï¼Œæœ¬æ–‡å°†æ¥æ¢ç©¶ springboot æ˜¯å¦‚ä½•åŠ è½½è‡ªåŠ¨è£…é…ç±»çš„ã€‚
 
-ÔÚ [@SpringBootApplication ×¢½â](https://my.oschina.net/funcy/blog/4870882)Ò»ÎÄÖĞ£¬ÎÒÃÇÌáµ½ springboot ´¦Àí×Ô¶¯×°ÅäµÄ×¢½âÊÇ `@EnableAutoConfiguration`£¬´úÂëÈçÏÂ£º
+åœ¨ [@SpringBootApplication æ³¨è§£](https://my.oschina.net/funcy/blog/4870882)ä¸€æ–‡ä¸­ï¼Œæˆ‘ä»¬æåˆ° springboot å¤„ç†è‡ªåŠ¨è£…é…çš„æ³¨è§£æ˜¯ `@EnableAutoConfiguration`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-// ×Ô¶¯×°ÅäµÄ°ü
+// è‡ªåŠ¨è£…é…çš„åŒ…
 @AutoConfigurationPackage
-// ÒıÈëµÄ×Ô¶¯×°ÅäÀà
+// å¼•å…¥çš„è‡ªåŠ¨è£…é…ç±»
 @Import(AutoConfigurationImportSelector.class)
 public @interface EnableAutoConfiguration {
 
     String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
 
     /**
-     * ¿É×ÔĞĞ¶¨ÒåÅÅ³ı×Ô¶¯×°ÅäµÄÀà
+     * å¯è‡ªè¡Œå®šä¹‰æ’é™¤è‡ªåŠ¨è£…é…çš„ç±»
      */
     Class<?>[] exclude() default {};
 
     /**
-     * ¿É×ÔĞĞ¶¨ÒåÅÅ³ı×Ô¶¯×°ÅäµÄÀàÃû
+     * å¯è‡ªè¡Œå®šä¹‰æ’é™¤è‡ªåŠ¨è£…é…çš„ç±»å
      */
     String[] excludeName() default {};
 
@@ -29,19 +29,19 @@ public @interface EnableAutoConfiguration {
 
 ```
 
-ÒÔÉÏ´úÂë°üº¬Èı¸ö²¿·Ö£º
+ä»¥ä¸Šä»£ç åŒ…å«ä¸‰ä¸ªéƒ¨åˆ†ï¼š
 
-1.  `@AutoConfigurationPackage`£ºÖ¸¶¨×Ô¶¯×°ÅäµÄ°ü£»
-2.  `@Import(AutoConfigurationImportSelector.class)`£ºÒıÈë×Ô¶¯×°ÅäµÄ´¦ÀíÀà `AutoConfigurationImportSelector`£¬Õâ¸öÀàÊÇ×Ô¶¯×°ÅäµÄ¹Ø¼üËùÔÚ£»
-3.  `@EnableAutoConfiguration` µÄÊôĞÔ£º`@EnableAutoConfiguration` Ìá¹©ÁËÁ½¸öÊôĞÔ£º`exclude` Óë `excludeName`£¬¿ÉÒÔÓÃÀ´ÅÅ³ı²»ĞèÒª×Ô¶¯×°ÅäµÄÀà¡£
+1.  `@AutoConfigurationPackage`ï¼šæŒ‡å®šè‡ªåŠ¨è£…é…çš„åŒ…ï¼›
+2.  `@Import(AutoConfigurationImportSelector.class)`ï¼šå¼•å…¥è‡ªåŠ¨è£…é…çš„å¤„ç†ç±» `AutoConfigurationImportSelector`ï¼Œè¿™ä¸ªç±»æ˜¯è‡ªåŠ¨è£…é…çš„å…³é”®æ‰€åœ¨ï¼›
+3.  `@EnableAutoConfiguration` çš„å±æ€§ï¼š`@EnableAutoConfiguration` æä¾›äº†ä¸¤ä¸ªå±æ€§ï¼š`exclude` ä¸ `excludeName`ï¼Œå¯ä»¥ç”¨æ¥æ’é™¤ä¸éœ€è¦è‡ªåŠ¨è£…é…çš„ç±»ã€‚
 
-±¾ÎÄÖØµãÀ´·ÖÎö `AutoConfigurationImportSelector` Àà¡£
+æœ¬æ–‡é‡ç‚¹æ¥åˆ†æ `AutoConfigurationImportSelector` ç±»ã€‚
 
 ### 1. `AutoConfigurationImportSelector.AutoConfigurationGroup`
 
-`AutoConfigurationImportSelector` ÊµÏÖÁË `DeferredImportSelector`£¬¹ØÓÚ `DeferredImportSelector` µÄ·ÖÎö£¬¿ÉÒÔ²Î¿¼ [ConfigurationClassPostProcessor Ö®´¦Àí @Import ×¢½â](https://my.oschina.net/funcy/blog/4678152)£¬ÕâÀïÎÒÃÇÖ±½Ó¸ø³ö½áÂÛ£º
+`AutoConfigurationImportSelector` å®ç°äº† `DeferredImportSelector`ï¼Œå…³äº `DeferredImportSelector` çš„åˆ†æï¼Œå¯ä»¥å‚è€ƒ [ConfigurationClassPostProcessor ä¹‹å¤„ç† @Import æ³¨è§£](https://my.oschina.net/funcy/blog/4678152)ï¼Œè¿™é‡Œæˆ‘ä»¬ç›´æ¥ç»™å‡ºç»“è®ºï¼š
 
-* `DeferredImportSelector` ÊÇ `ImportSelector` µÄ×Ó½Ó¿Ú£¬ÆäÄÚ²¿ÓĞÒ»¸ö½Ó¿Ú `Group`£¬¸Ã½Ó¿Ú¶¨ÒåÁËÁ½¸ö·½·¨£º
+* `DeferredImportSelector` æ˜¯ `ImportSelector` çš„å­æ¥å£ï¼Œå…¶å†…éƒ¨æœ‰ä¸€ä¸ªæ¥å£ `Group`ï¼Œè¯¥æ¥å£å®šä¹‰äº†ä¸¤ä¸ªæ–¹æ³•ï¼š
 
   ```
   public interface DeferredImportSelector extends ImportSelector {
@@ -50,12 +50,12 @@ public @interface EnableAutoConfiguration {
       interface Group {
   
           /**
-           * ´¦Àíµ¼Èë²Ù×÷
+           * å¤„ç†å¯¼å…¥æ“ä½œ
            */
           void process(AnnotationMetadata metadata, DeferredImportSelector selector);
   
           /**
-           * ·µ»Øµ¼ÈëÀà
+           * è¿”å›å¯¼å…¥ç±»
            */
           Iterable<Entry> selectImports()
       }
@@ -63,34 +63,34 @@ public @interface EnableAutoConfiguration {
   
   ```
 
-  ÔÚ´¦Àí `DeferredImportSelector` µÄµ¼ÈëÀàÊ±£¬`DeferredImportSelector.Group#process` ·½·¨»áÏÈµ÷ÓÃ£¬È»ºóÔÙµ÷ÓÃ `DeferredImportSelector.Group#selectImports` ·µ»Øµ¼ÈëÀà£»
+  åœ¨å¤„ç† `DeferredImportSelector` çš„å¯¼å…¥ç±»æ—¶ï¼Œ`DeferredImportSelector.Group#process` æ–¹æ³•ä¼šå…ˆè°ƒç”¨ï¼Œç„¶åå†è°ƒç”¨ `DeferredImportSelector.Group#selectImports` è¿”å›å¯¼å…¥ç±»ï¼›
 
-* `DeferredImportSelector` ¿ÉÒÔÖ¸¶¨µ¼ÈëÀàµÄ·Ö×é£¬ÔÚ´¦ÀíÊ±£¬¿ÉÒÔ°´·Ö×é´¦Àíµ¼ÈëÀà£»
+* `DeferredImportSelector` å¯ä»¥æŒ‡å®šå¯¼å…¥ç±»çš„åˆ†ç»„ï¼Œåœ¨å¤„ç†æ—¶ï¼Œå¯ä»¥æŒ‰åˆ†ç»„å¤„ç†å¯¼å…¥ç±»ï¼›
 
-* `DeferredImportSelector` ÔÚ´¦Àíµ¼ÈëÀàÊ±£¬ÏÈ½«µ¼ÈëÀà°´·Ö×é·ÅÈëÒ»¸ö `map` ÖĞ£¬ÔÚ´¦ÀíÍêÆäËûÅäÖÃÀà£¨spring µÄÅäÖÃÀàÎª `@Component`¡¢`@ComponentScan`¡¢`@Import`¡¢`@Configuration`¡¢`@Bean` ±ê¼ÇµÄÀà£©ºóÔÙÀ´´¦Àí·Ö×éÖĞµÄµ¼ÈëÀà£¬Ò²¾ÍÊÇËµ£¬`DeferredImportSelector` µ¼ÈëµÄÀà£¬»áÔÚÆäËûÀà×¢²áµ½ `beanFactory` ÖĞºó£¬ÔÙ½øĞĞ×¢²á£¨×¢²áÇ°»¹ĞèÅĞ¶ÏÄÜ·ñ×¢²áµ½ `beanFactory`£¬ÈôÄÜ²Å×¢²á£©¡£
+* `DeferredImportSelector` åœ¨å¤„ç†å¯¼å…¥ç±»æ—¶ï¼Œå…ˆå°†å¯¼å…¥ç±»æŒ‰åˆ†ç»„æ”¾å…¥ä¸€ä¸ª `map` ä¸­ï¼Œåœ¨å¤„ç†å®Œå…¶ä»–é…ç½®ç±»ï¼ˆspring çš„é…ç½®ç±»ä¸º `@Component`ã€`@ComponentScan`ã€`@Import`ã€`@Configuration`ã€`@Bean` æ ‡è®°çš„ç±»ï¼‰åå†æ¥å¤„ç†åˆ†ç»„ä¸­çš„å¯¼å…¥ç±»ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œ`DeferredImportSelector` å¯¼å…¥çš„ç±»ï¼Œä¼šåœ¨å…¶ä»–ç±»æ³¨å†Œåˆ° `beanFactory` ä¸­åï¼Œå†è¿›è¡Œæ³¨å†Œï¼ˆæ³¨å†Œå‰è¿˜éœ€åˆ¤æ–­èƒ½å¦æ³¨å†Œåˆ° `beanFactory`ï¼Œè‹¥èƒ½æ‰æ³¨å†Œï¼‰ã€‚
 
-ÎÒÃÇÀ´¿´¿´ `AutoConfigurationImportSelector` µÄ´úÂë£º
+æˆ‘ä»¬æ¥çœ‹çœ‹ `AutoConfigurationImportSelector` çš„ä»£ç ï¼š
 
 ```
-// ÊµÏÖÁË DeferredImportSelector
+// å®ç°äº† DeferredImportSelector
 public class AutoConfigurationImportSelector implements DeferredImportSelector, 
         BeanClassLoaderAware,ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered {
 
     ...
 
     /**
-     * ÕâÀïÊµÏÖÁË DeferredImportSelector.Group
+     * è¿™é‡Œå®ç°äº† DeferredImportSelector.Group
      */
     private static class AutoConfigurationGroup implements DeferredImportSelector.Group, 
             BeanClassLoaderAware, BeanFactoryAware, ResourceLoaderAware {
 
         /**
-         * ±£´æµ¼ÈëµÄÀà
+         * ä¿å­˜å¯¼å…¥çš„ç±»
          */
         private final List<AutoConfigurationEntry> autoConfigurationEntries = new ArrayList<>();
 
         /**
-         * ´¦Àíµ¼ÈëÀà
+         * å¤„ç†å¯¼å…¥ç±»
          */
         @Override
         public void process(AnnotationMetadata annotationMetadata, 
@@ -99,12 +99,12 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector,
                     () -> String.format("Only %s implementations are supported, got %s",
                             AutoConfigurationImportSelector.class.getSimpleName(),
                             deferredImportSelector.getClass().getName()));
-            // 1\. µ÷ÓÃ AutoConfigurationImportSelector#getAutoConfigurationEntry(...) ·½·¨£¬
-            // ÔÚÕâ¸ö·½·¨Àï»á¼ÓÔØ×Ô¶¯×°ÅäÀà
+            // 1\. è°ƒç”¨ AutoConfigurationImportSelector#getAutoConfigurationEntry(...) æ–¹æ³•ï¼Œ
+            // åœ¨è¿™ä¸ªæ–¹æ³•é‡Œä¼šåŠ è½½è‡ªåŠ¨è£…é…ç±»
             AutoConfigurationEntry autoConfigurationEntry = 
                 ((AutoConfigurationImportSelector) deferredImportSelector)
                     .getAutoConfigurationEntry(getAutoConfigurationMetadata(), annotationMetadata);
-            // 2\. ½«»ñÈ¡µ½µÄ autoConfigurationEntry ±£´æÆğÀ´
+            // 2\. å°†è·å–åˆ°çš„ autoConfigurationEntry ä¿å­˜èµ·æ¥
             this.autoConfigurationEntries.add(autoConfigurationEntry);
             for (String importClassName : autoConfigurationEntry.getConfigurations()) {
                 this.entries.putIfAbsent(importClassName, annotationMetadata);
@@ -112,24 +112,24 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector,
         }
 
         /**
-         * ·µ»Øµ¼ÈëÀà
+         * è¿”å›å¯¼å…¥ç±»
          */
         @Override
         public Iterable<Entry> selectImports() {
             if (this.autoConfigurationEntries.isEmpty()) {
                 return Collections.emptyList();
             }
-            // 3\. µÃµ½¹ıÂËÀà
+            // 3\. å¾—åˆ°è¿‡æ»¤ç±»
             Set<String> allExclusions = this.autoConfigurationEntries.stream()
                     .map(AutoConfigurationEntry::getExclusions).flatMap(Collection::stream)
                     .collect(Collectors.toSet());
-            // 4\. ½« autoConfigurationEntries ×ª»»Îª LinkedHashSet
+            // 4\. å°† autoConfigurationEntries è½¬æ¢ä¸º LinkedHashSet
             Set<String> processedConfigurations = this.autoConfigurationEntries.stream()
                     .map(AutoConfigurationEntry::getConfigurations).flatMap(Collection::stream)
                     .collect(Collectors.toCollection(LinkedHashSet::new));
-            // 5\. È¥³ıĞèÒª¹ıÂËµÄÀà
+            // 5\. å»é™¤éœ€è¦è¿‡æ»¤çš„ç±»
             processedConfigurations.removeAll(allExclusions);
-            // 6\. ½øĞĞÅÅĞò
+            // 6\. è¿›è¡Œæ’åº
             return sortAutoConfigurations(processedConfigurations, getAutoConfigurationMetadata())
                     .stream().map((importClassName) -> new Entry(
                         this.entries.get(importClassName), importClassName))
@@ -143,28 +143,28 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector,
 
 ```
 
-ÕâÀïÎÒÃÇ½« `DeferredImportSelector.Group#process` Óë `DeferredImportSelector.Group#selectImports` Á½¸ö·½·¨½áºÏÆğÀ´¿´£¬´¦Àí²½Öè×Ü½áÈçÏÂ:
+è¿™é‡Œæˆ‘ä»¬å°† `DeferredImportSelector.Group#process` ä¸ `DeferredImportSelector.Group#selectImports` ä¸¤ä¸ªæ–¹æ³•ç»“åˆèµ·æ¥çœ‹ï¼Œå¤„ç†æ­¥éª¤æ€»ç»“å¦‚ä¸‹:
 
-1.  µ÷ÓÃ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` ·½·¨¼ÓÔØ×Ô¶¯×°ÅäÀà£»
-2.  ½«µÃµ½µÄ×Ô¶¯×°ÅäÀà±£´æµ½ `autoConfigurationEntries` ÖĞ£»
-3.  µÃµ½¹ıÂËÀà£¬ÕâĞ©¹ıÂËÀà¾ÍÊÇÓÉ `@EnableAutoConfiguration` µÄ `exclude` »ò `excludeName` Ö¸¶¨µÄ£»
-4.  ½« `autoConfigurationEntries` ×ª»»Îª `LinkedHashSet`£¬½á¹ûÎª `processedConfigurations`£»
-5.  È¥³ı `processedConfigurations` ĞèÒª¹ıÂËµÄÀà£»
-6.  ½«µÚ 5 ²½µÃµ½µÄÀàÅÅĞòºó£¬·µ»Ø¡£
+1.  è°ƒç”¨ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` æ–¹æ³•åŠ è½½è‡ªåŠ¨è£…é…ç±»ï¼›
+2.  å°†å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»ä¿å­˜åˆ° `autoConfigurationEntries` ä¸­ï¼›
+3.  å¾—åˆ°è¿‡æ»¤ç±»ï¼Œè¿™äº›è¿‡æ»¤ç±»å°±æ˜¯ç”± `@EnableAutoConfiguration` çš„ `exclude` æˆ– `excludeName` æŒ‡å®šçš„ï¼›
+4.  å°† `autoConfigurationEntries` è½¬æ¢ä¸º `LinkedHashSet`ï¼Œç»“æœä¸º `processedConfigurations`ï¼›
+5.  å»é™¤ `processedConfigurations` éœ€è¦è¿‡æ»¤çš„ç±»ï¼›
+6.  å°†ç¬¬ 5 æ­¥å¾—åˆ°çš„ç±»æ’åºåï¼Œè¿”å›ã€‚
 
-½ÓÏÂÀ´ÎÒÃÇ¶ÔÕâĞ©¹Ø¼ü²½Öè½øĞĞ·ÖÎö¡£
+æ¥ä¸‹æ¥æˆ‘ä»¬å¯¹è¿™äº›å…³é”®æ­¥éª¤è¿›è¡Œåˆ†æã€‚
 
-> ÌØ±ğËµÃ÷£º`DeferredImportSelector` ÊÇ `ImportSelector` µÄ×Ó½Ó¿Ú£¬`ImportSelector` ´¦Àíµ¼ÈëÀàµÄ·½·¨ÊÇ `selectImports(...)`£¬ÔÚ `DeferredImportSelector` ÖĞÒ²ÖØĞ´ÁË¸Ã·½·¨£º
+> ç‰¹åˆ«è¯´æ˜ï¼š`DeferredImportSelector` æ˜¯ `ImportSelector` çš„å­æ¥å£ï¼Œ`ImportSelector` å¤„ç†å¯¼å…¥ç±»çš„æ–¹æ³•æ˜¯ `selectImports(...)`ï¼Œåœ¨ `DeferredImportSelector` ä¸­ä¹Ÿé‡å†™äº†è¯¥æ–¹æ³•ï¼š
 >
 > ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-75a2839c622af2d0f374189b2e2765a64d7.png)
 >
-> Õâ¸ö·½·¨Ëù×öµÄÒ²ÊÇ¼ÓÔØ×Ô¶¯×°ÅäÀà£¬·µ»Ø×îÖÕµ¼ÈëµÄÀà£¬µ«ĞèÒª×¢ÒâµÄÊÇ£¬springboot µÄ×Ô¶¯µ¼ÈëÀà**²»ÊÇ**ÔÚÕâÀï´¦ÀíµÄ£¬¹ØÓÚÕâµã£¬¿ÉÒÔÔÚ·½·¨ÄÚ´ò¸ö¶Ïµã£¬È»ºó¾Í»á·¢ÏÖÕâ¸ö·½·¨²¢Ã»ÓĞÔËĞĞµ½£¡
+> è¿™ä¸ªæ–¹æ³•æ‰€åšçš„ä¹Ÿæ˜¯åŠ è½½è‡ªåŠ¨è£…é…ç±»ï¼Œè¿”å›æœ€ç»ˆå¯¼å…¥çš„ç±»ï¼Œä½†éœ€è¦æ³¨æ„çš„æ˜¯ï¼Œspringboot çš„è‡ªåŠ¨å¯¼å…¥ç±»**ä¸æ˜¯**åœ¨è¿™é‡Œå¤„ç†çš„ï¼Œå…³äºè¿™ç‚¹ï¼Œå¯ä»¥åœ¨æ–¹æ³•å†…æ‰“ä¸ªæ–­ç‚¹ï¼Œç„¶åå°±ä¼šå‘ç°è¿™ä¸ªæ–¹æ³•å¹¶æ²¡æœ‰è¿è¡Œåˆ°ï¼
 >
-> ×îºóÔÙÉùÃ÷ÏÂ£ºspringboot µÄ×Ô¶¯µ¼ÈëÀà**²»ÊÇ**ÔÚ `AutoConfigurationImportSelector#selectImports` ·½·¨ÖĞ´¦ÀíµÄ£¬¶øÊÇÔÚ `AutoConfigurationImportSelector.AutoConfigurationGroup#selectImports` ·½·¨ÖĞ´¦ÀíµÄ¡£
+> æœ€åå†å£°æ˜ä¸‹ï¼šspringboot çš„è‡ªåŠ¨å¯¼å…¥ç±»**ä¸æ˜¯**åœ¨ `AutoConfigurationImportSelector#selectImports` æ–¹æ³•ä¸­å¤„ç†çš„ï¼Œè€Œæ˜¯åœ¨ `AutoConfigurationImportSelector.AutoConfigurationGroup#selectImports` æ–¹æ³•ä¸­å¤„ç†çš„ã€‚
 
-### 2\. »ñÈ¡×°ÅäÀà£º`AutoConfigurationImportSelector#getAutoConfigurationEntry`
+### 2\. è·å–è£…é…ç±»ï¼š`AutoConfigurationImportSelector#getAutoConfigurationEntry`
 
-×Ô¶¯ÅäÖÃ ÀàµÄ¼ÓÔØ´úÂëÎª£º
+è‡ªåŠ¨é…ç½® ç±»çš„åŠ è½½ä»£ç ä¸ºï¼š
 
 ```
 AutoConfigurationEntry autoConfigurationEntry = 
@@ -173,77 +173,77 @@ AutoConfigurationEntry autoConfigurationEntry =
 
 ```
 
-¸Ã´úÂë¾ÍÊÇÓÃÀ´¼ÓÔØ×Ô¶¯×°ÅäÀàµÄ£¬ÎÒÃÇÖ±½Ó½øÈë `AutoConfigurationImportSelector#getAutoConfigurationEntry` ·½·¨£º
+è¯¥ä»£ç å°±æ˜¯ç”¨æ¥åŠ è½½è‡ªåŠ¨è£…é…ç±»çš„ï¼Œæˆ‘ä»¬ç›´æ¥è¿›å…¥ `AutoConfigurationImportSelector#getAutoConfigurationEntry` æ–¹æ³•ï¼š
 
 ```
 protected AutoConfigurationEntry getAutoConfigurationEntry(
         AutoConfigurationMetadata autoConfigurationMetadata, AnnotationMetadata annotationMetadata) {
-    // ÓÖÒ»´ÎÅĞ¶ÏÊÇ·ñ¿ªÆô×Ô¶¯×°Åä
+    // åˆä¸€æ¬¡åˆ¤æ–­æ˜¯å¦å¼€å¯è‡ªåŠ¨è£…é…
     if (!isEnabled(annotationMetadata)) {
         return EMPTY_ENTRY;
     }
-    // »ñÈ¡×¢½âµÄÊôĞÔ
+    // è·å–æ³¨è§£çš„å±æ€§
     AnnotationAttributes attributes = getAttributes(annotationMetadata);
-    // 1\. ¼ÓÔØºòÑ¡µÄ×Ô¶¯ÅäÖÃÀà
+    // 1\. åŠ è½½å€™é€‰çš„è‡ªåŠ¨é…ç½®ç±»
     List<String> configurations = getCandidateConfigurations(annotationMetadata, attributes);
-    // 2\. È¥ÖØ£¬×ª»»³Éset£¬ÔÙ×ª»»³Élist
+    // 2\. å»é‡ï¼Œè½¬æ¢æˆsetï¼Œå†è½¬æ¢æˆlist
     configurations = removeDuplicates(configurations);
-    // 3\. È¥³ıĞèÒªÅÅ³ıµÄÀà£¬ÆäÊµ¾ÍÊÇ´¦Àí@EnableAutoConfigurationµÄexcludeÓëexcludeName
+    // 3\. å»é™¤éœ€è¦æ’é™¤çš„ç±»ï¼Œå…¶å®å°±æ˜¯å¤„ç†@EnableAutoConfigurationçš„excludeä¸excludeName
     Set<String> exclusions = getExclusions(annotationMetadata, attributes);
     checkExcludedClasses(configurations, exclusions);
     configurations.removeAll(exclusions);
-    // 4\. ¹ıÂË²»ĞèÒª×Ô¶¯×°ÅäµÄÀà
+    // 4\. è¿‡æ»¤ä¸éœ€è¦è‡ªåŠ¨è£…é…çš„ç±»
     configurations = filter(configurations, autoConfigurationMetadata);
-    // 5\. ´¥·¢ AutoConfigurationImportEvent ÊÂ¼ş
+    // 5\. è§¦å‘ AutoConfigurationImportEvent äº‹ä»¶
     fireAutoConfigurationImportEvents(configurations, exclusions);
-    // 6\. ×îÖÕ·µ»ØµÄÖµ
+    // 6\. æœ€ç»ˆè¿”å›çš„å€¼
     return new AutoConfigurationEntry(configurations, exclusions);
 }
 
 ```
 
-Õâ¸ö·½·¨·Ç³£ÖØÒª£¬°üº¬ÁË»ñÈ¡×Ô¶¯×°ÅäÀàµÄÈ«²¿²Ù×÷£¬¸Ã²Ù×÷Á÷³ÌÈçÏÂ£º
+è¿™ä¸ªæ–¹æ³•éå¸¸é‡è¦ï¼ŒåŒ…å«äº†è·å–è‡ªåŠ¨è£…é…ç±»çš„å…¨éƒ¨æ“ä½œï¼Œè¯¥æ“ä½œæµç¨‹å¦‚ä¸‹ï¼š
 
-1. ¼ÓÔØºòÑ¡µÄ×Ô¶¯×°ÅäÀà£¬springboot ×Ô¶¯×°ÅäµÄÀàÎ»ÓÚ `classpath` ÏÂµÄ `META-INF/spring.factories` ÎÄ¼şÖĞ£¬key Îª `org.springframework.boot.autoconfigure.EnableAutoConfiguration`£¬Õâ¸öÎÒÃÇºóÃæÔÙÏêÏ¸·ÖÎö£»
+1. åŠ è½½å€™é€‰çš„è‡ªåŠ¨è£…é…ç±»ï¼Œspringboot è‡ªåŠ¨è£…é…çš„ç±»ä½äº `classpath` ä¸‹çš„ `META-INF/spring.factories` æ–‡ä»¶ä¸­ï¼Œkey ä¸º `org.springframework.boot.autoconfigure.EnableAutoConfiguration`ï¼Œè¿™ä¸ªæˆ‘ä»¬åé¢å†è¯¦ç»†åˆ†æï¼›
 
-2. È¥³ıÖØ¸´µÄ×Ô¶¯×°ÅäÀà£¬ÉÏÒ»²½¼ÓÔØµÃµ½µÄ×Ô¶¯×°ÅäÀà¿ÉÄÜ»áÓĞÖØ¸´£¬ÔÚÕâÀï»áÈ¥³ıÖØ¸´µÄÀà£¬È¥³ı·½Ê½Ò²·Ç³£¼òµ¥£¬springboot ¾ÍÖ»ÊÇÏÈ×ª»»³É `Set`£¬ÔÙ×ª»»³É `List`£»
+2. å»é™¤é‡å¤çš„è‡ªåŠ¨è£…é…ç±»ï¼Œä¸Šä¸€æ­¥åŠ è½½å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»å¯èƒ½ä¼šæœ‰é‡å¤ï¼Œåœ¨è¿™é‡Œä¼šå»é™¤é‡å¤çš„ç±»ï¼Œå»é™¤æ–¹å¼ä¹Ÿéå¸¸ç®€å•ï¼Œspringboot å°±åªæ˜¯å…ˆè½¬æ¢æˆ `Set`ï¼Œå†è½¬æ¢æˆ `List`ï¼›
 
-3. È¥³ıÅÅ³ıµÄÀà£¬Ç°ÃæÌáµ½ `@EnableAutoConfiguration` ¿ÉÒÔÍ¨¹ı `exclude` Óë `excludeName` Ö¸¶¨ĞèÒªÅÅ³ıµÄÀà£¬ÕâÒ»²½¾ÍÊÇÀ´´¦ÀíÕâÁ½¸öÊôĞÔµÄ£»
+3. å»é™¤æ’é™¤çš„ç±»ï¼Œå‰é¢æåˆ° `@EnableAutoConfiguration` å¯ä»¥é€šè¿‡ `exclude` ä¸ `excludeName` æŒ‡å®šéœ€è¦æ’é™¤çš„ç±»ï¼Œè¿™ä¸€æ­¥å°±æ˜¯æ¥å¤„ç†è¿™ä¸¤ä¸ªå±æ€§çš„ï¼›
 
-4. ¹ıÂË²»ĞèÒª×Ô¶¯×°ÅäµÄÀà£¬¸ù¾İ±¾ÈËµ÷ÊÔ£¬·¢ÏÖ²¢Ã»ÓĞÍê³É¹ıÂË£º
+4. è¿‡æ»¤ä¸éœ€è¦è‡ªåŠ¨è£…é…çš„ç±»ï¼Œæ ¹æ®æœ¬äººè°ƒè¯•ï¼Œå‘ç°å¹¶æ²¡æœ‰å®Œæˆè¿‡æ»¤ï¼š
 
-   ¹ıÂËÇ°ÊÇ 124 ¸ö£º
+   è¿‡æ»¤å‰æ˜¯ 124 ä¸ªï¼š
 
    ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-773695c0161c8126f239c2e66529fc8a394.png)
 
-   ¹ıÂËºó»¹ÊÇ 124 ¸ö£º
+   è¿‡æ»¤åè¿˜æ˜¯ 124 ä¸ªï¼š
 
    ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-7144d971f729b5dfbddfeff2d3319c7705c.png)
 
-5. ´¥·¢ `AutoConfigurationImportEvent` ÊÂ¼ş£»
+5. è§¦å‘ `AutoConfigurationImportEvent` äº‹ä»¶ï¼›
 
-6. ½«µÚ 3 ²½µÃµ½µÄÅÅ³ıÀàÓëµÚ 4 ²½µÃµ½µÄ×Ô¶¯×°ÅäÀà°ü×°³É `AutoConfigurationEntry` ·µ»Ø¡£
+6. å°†ç¬¬ 3 æ­¥å¾—åˆ°çš„æ’é™¤ç±»ä¸ç¬¬ 4 æ­¥å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»åŒ…è£…æˆ `AutoConfigurationEntry` è¿”å›ã€‚
 
-×¢Òâ×îºóÒ»ĞĞ´úÂë£º
+æ³¨æ„æœ€åä¸€è¡Œä»£ç ï¼š
 
 ```
-// 6\. ×îÖÕ·µ»ØµÄÖµ
+// 6\. æœ€ç»ˆè¿”å›çš„å€¼
 return new AutoConfigurationEntry(configurations, exclusions);
 
 ```
 
-ÕâÀï°Ñ `configurations` Óë `exclusions` ¶¼´«ÈëÁË `AutoConfigurationEntry` µÄ¹¹Ôì·½·¨£¬ÎÒÃÇÀ´¿´¿´ `AutoConfigurationEntry`£º
+è¿™é‡ŒæŠŠ `configurations` ä¸ `exclusions` éƒ½ä¼ å…¥äº† `AutoConfigurationEntry` çš„æ„é€ æ–¹æ³•ï¼Œæˆ‘ä»¬æ¥çœ‹çœ‹ `AutoConfigurationEntry`ï¼š
 
 ```
 protected static class AutoConfigurationEntry {
-    // ×Ô¶¯×°ÅäÀà
+    // è‡ªåŠ¨è£…é…ç±»
     private final List<String> configurations;
 
-    // ĞèÒªÅÅ³ıµÄ×Ô¶¯×°ÅäÀà
+    // éœ€è¦æ’é™¤çš„è‡ªåŠ¨è£…é…ç±»
     private final Set<String> exclusions;
 
     /**
-     * ¹¹Ôì·½·¨£¬¶ÔÔÙÕß½øĞĞ¸³Öµ
+     * æ„é€ æ–¹æ³•ï¼Œå¯¹å†è€…è¿›è¡Œèµ‹å€¼
      */
     AutoConfigurationEntry(Collection<String> configurations, Collection<String> exclusions) {
         this.configurations = new ArrayList<>(configurations);
@@ -255,22 +255,22 @@ protected static class AutoConfigurationEntry {
 
 ```
 
-ÓÉĞ©¿É¼û£¬×îÖÕ·µ»ØµÄ `AutoConfigurationEntry` °üº¬Á½´óÄÚÈİ£º
+ç”±äº›å¯è§ï¼Œæœ€ç»ˆè¿”å›çš„ `AutoConfigurationEntry` åŒ…å«ä¸¤å¤§å†…å®¹ï¼š
 
-*   `configurations`£º×Ô¶¯×°ÅäÀà£¬ÒÑ¾­È¥³ıÁËĞèÒªÅÅ³ıµÄÀà
-*   `exclusions`£ºÍ¨¹ı `@EnableAutoConfiguration` Ö¸¶¨µÄĞèÒªÅÅ³ıµÄÀà
+*   `configurations`ï¼šè‡ªåŠ¨è£…é…ç±»ï¼Œå·²ç»å»é™¤äº†éœ€è¦æ’é™¤çš„ç±»
+*   `exclusions`ï¼šé€šè¿‡ `@EnableAutoConfiguration` æŒ‡å®šçš„éœ€è¦æ’é™¤çš„ç±»
 
-Õû¸ö×Ô¶¯×°ÅäÀàµÄ»ñÈ¡¾ÍÊÇÕâÑùÁË£¬ÏÂÃæÎÒÃÇÀ´¿´¿´¼ÓÔØºòÑ¡µÄ×Ô¶¯×°ÅäÀàµÄÁ÷³Ì¡£
+æ•´ä¸ªè‡ªåŠ¨è£…é…ç±»çš„è·å–å°±æ˜¯è¿™æ ·äº†ï¼Œä¸‹é¢æˆ‘ä»¬æ¥çœ‹çœ‹åŠ è½½å€™é€‰çš„è‡ªåŠ¨è£…é…ç±»çš„æµç¨‹ã€‚
 
-### 3\. ¼ÓÔØºòÑ¡µÄ×Ô¶¯×°ÅäÀà
+### 3\. åŠ è½½å€™é€‰çš„è‡ªåŠ¨è£…é…ç±»
 
-×Ô¶¯×°ÅäÀàµÄ¼ÓÔØÎ»ÓÚ `AutoConfigurationImportSelector#getCandidateConfigurations`£¬´úÂëÈçÏÂ£º
+è‡ªåŠ¨è£…é…ç±»çš„åŠ è½½ä½äº `AutoConfigurationImportSelector#getCandidateConfigurations`ï¼Œä»£ç å¦‚ä¸‹ï¼š
 
 ```
 protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, 
         AnnotationAttributes attributes) {
-    // µ÷ÓÃµÄÊÇ spring Ìá¹©µÄ·½·¨£ºSpringFactoriesLoader.loadFactoryNames(...)
-    // getSpringFactoriesLoaderFactoryClass() ·µ»ØµÄÊÇEnableAutoConfiguration
+    // è°ƒç”¨çš„æ˜¯ spring æä¾›çš„æ–¹æ³•ï¼šSpringFactoriesLoader.loadFactoryNames(...)
+    // getSpringFactoriesLoaderFactoryClass() è¿”å›çš„æ˜¯EnableAutoConfiguration
     List<String> configurations = SpringFactoriesLoader
             .loadFactoryNames(getSpringFactoriesLoaderFactoryClass(), getBeanClassLoader());
     Assert.notEmpty(configurations, "...");
@@ -283,7 +283,7 @@ protected Class<?> getSpringFactoriesLoaderFactoryClass() {
 
 ```
 
-¼ÌĞø½øÈë `SpringFactoriesLoader#loadFactoryNames`£º
+ç»§ç»­è¿›å…¥ `SpringFactoriesLoader#loadFactoryNames`ï¼š
 
 ```
 public final class SpringFactoriesLoader {
@@ -291,13 +291,13 @@ public final class SpringFactoriesLoader {
     public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
 
     public static List<String> loadFactoryNames(Class<?> factoryType, @Nullable ClassLoader classLoader) {
-        // µÃµ½µÄ factoryTypeName ÊÇ org.springframework.boot.autoconfigure.EnableAutoConfiguration
+        // å¾—åˆ°çš„ factoryTypeName æ˜¯ org.springframework.boot.autoconfigure.EnableAutoConfiguration
         String factoryTypeName = factoryType.getName();
         return loadSpringFactories(classLoader).getOrDefault(factoryTypeName, Collections.emptyList());
     }
 
     /**
-     * ÔÚÕâÀï½øĞĞ¼ÓÔØ£¬¼ÓÔØµÄÊÇ META-INF/spring.factories ÖĞµÄÊôĞÔ
+     * åœ¨è¿™é‡Œè¿›è¡ŒåŠ è½½ï¼ŒåŠ è½½çš„æ˜¯ META-INF/spring.factories ä¸­çš„å±æ€§
      */
     private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
         MultiValueMap<String, String> result = cache.get(classLoader);
@@ -306,7 +306,7 @@ public final class SpringFactoriesLoader {
         }
 
         try {
-            // ¼ÓÔØ META-INF/spring.factories µÄÄÚÈİ
+            // åŠ è½½ META-INF/spring.factories çš„å†…å®¹
             Enumeration<URL> urls = (classLoader != null ?
                     classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
                     ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
@@ -314,11 +314,11 @@ public final class SpringFactoriesLoader {
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
                 UrlResource resource = new UrlResource(url);
-                // ½« META-INF/spring.factories µÄÄÚÈİ×ª»»Îª Properties ¶ÔÏó
+                // å°† META-INF/spring.factories çš„å†…å®¹è½¬æ¢ä¸º Properties å¯¹è±¡
                 Properties properties = PropertiesLoaderUtils.loadProperties(resource);
                 for (Map.Entry<?, ?> entry : properties.entrySet()) {
                     String factoryTypeName = ((String) entry.getKey()).trim();
-                    // StringUtils.commaDelimitedListToStringArray(...) ¶ººÅ·Ö¸îÎªÊı×é
+                    // StringUtils.commaDelimitedListToStringArray(...) é€—å·åˆ†å‰²ä¸ºæ•°ç»„
                     for (String factoryImplementationName : 
                                 StringUtils.commaDelimitedListToStringArray((String) entry.getValue())) {
                         result.add(factoryTypeName, factoryImplementationName.trim());
@@ -338,52 +338,52 @@ public final class SpringFactoriesLoader {
 
 ```
 
-¿ÉÒÔ¿´µ½£¬ÕâÀï¼ÓÔØµÄÊÇ `classpath` ÏÂµÄ `META-INF/spring.factories` ÎÄ¼ş£¬×¢Òâ£ºÕâ¸öÎÄ¼ş¿ÉÄÜ»áÓĞ¶à¸ö£¬Î»ÓÚ²»Í¬µÄ jar °üÖĞ¡£
+å¯ä»¥çœ‹åˆ°ï¼Œè¿™é‡ŒåŠ è½½çš„æ˜¯ `classpath` ä¸‹çš„ `META-INF/spring.factories` æ–‡ä»¶ï¼Œæ³¨æ„ï¼šè¿™ä¸ªæ–‡ä»¶å¯èƒ½ä¼šæœ‰å¤šä¸ªï¼Œä½äºä¸åŒçš„ jar åŒ…ä¸­ã€‚
 
-springboot ×Ô´øµÄ `META-INF/spring.factories` Î»ÓÚ `spring-boot-autoconfigure` Ä£¿éÏÂ£º
+springboot è‡ªå¸¦çš„ `META-INF/spring.factories` ä½äº `spring-boot-autoconfigure` æ¨¡å—ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-ace5e83645626966eae1e62a50752f2417d.png)
 
-ÎÒÃÇÀ´¿´Ò»ÑÛ `spring.factories`£º
+æˆ‘ä»¬æ¥çœ‹ä¸€çœ¼ `spring.factories`ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-d7de9ecd19345f0dc77cc304843c588fe4d.png)
 
-Õâ¸öÎÄ¼ş¶¨ÒåÁËĞí¶àµÄÅäÖÃÀà£¬ÒÔ `key-value` µÄĞÎÊ½±£´æ£¬¶à¸öÖµÖ®¼äÊ¹ÓÃ ¡°,¡± ·Ö¿ª£¬ÉÏÃæÌáµ½µÄ×Ô¶¯×°ÅäÀàµÄ key ÊÇ `org.springframework.boot.autoconfigure.EnableAutoConfiguration`£¬¶ÔÓ¦µÄ `value` ·Ç³£¶à£¬ÕâÀï¾Í²»Õ¹Ê¾ÁË¡£
+è¿™ä¸ªæ–‡ä»¶å®šä¹‰äº†è®¸å¤šçš„é…ç½®ç±»ï¼Œä»¥ `key-value` çš„å½¢å¼ä¿å­˜ï¼Œå¤šä¸ªå€¼ä¹‹é—´ä½¿ç”¨ â€œ,â€ åˆ†å¼€ï¼Œä¸Šé¢æåˆ°çš„è‡ªåŠ¨è£…é…ç±»çš„ key æ˜¯ `org.springframework.boot.autoconfigure.EnableAutoConfiguration`ï¼Œå¯¹åº”çš„ `value` éå¸¸å¤šï¼Œè¿™é‡Œå°±ä¸å±•ç¤ºäº†ã€‚
 
-ÕâÒ»²½Ö®ºó£¬×Ô¶¯×°ÅäÀà¾Í±»×¢²áµ½ spring ÈİÆ÷ÖĞÁË¡£×¢£º´ËÊ±¼ÓÔØµ½ spring ÈİÆ÷ÖĞµÄ»¹ÊÇ `BeanDefinition`£¬ÒªÏë³ÉÎª spring bean£¬»¹µÃ¾­¹ı `ConditionalOnBean`¡¢`ConditionalOnClass` µÈ×¢½âµÄ¿¼Ñé£¬ÕâĞ©ÎÒÃÇºóÃæÔÙ·ÖÎö¡£
+è¿™ä¸€æ­¥ä¹‹åï¼Œè‡ªåŠ¨è£…é…ç±»å°±è¢«æ³¨å†Œåˆ° spring å®¹å™¨ä¸­äº†ã€‚æ³¨ï¼šæ­¤æ—¶åŠ è½½åˆ° spring å®¹å™¨ä¸­çš„è¿˜æ˜¯ `BeanDefinition`ï¼Œè¦æƒ³æˆä¸º spring beanï¼Œè¿˜å¾—ç»è¿‡ `ConditionalOnBean`ã€`ConditionalOnClass` ç­‰æ³¨è§£çš„è€ƒéªŒï¼Œè¿™äº›æˆ‘ä»¬åé¢å†åˆ†æã€‚
 
-### 4\. »ñÈ¡×Ô¶¯×°ÅäÀàºóµÄ´¦Àí
+### 4\. è·å–è‡ªåŠ¨è£…é…ç±»åçš„å¤„ç†
 
-ÈÃÎÒÃÇÔÙ»Øµ½ `AutoConfigurationImportSelector.AutoConfigurationGroup`£¬ÔÚµÚ 1 ½ÚÎÒÃÇ×Ü½áµÄÁ÷³ÌÈçÏÂ£º
+è®©æˆ‘ä»¬å†å›åˆ° `AutoConfigurationImportSelector.AutoConfigurationGroup`ï¼Œåœ¨ç¬¬ 1 èŠ‚æˆ‘ä»¬æ€»ç»“çš„æµç¨‹å¦‚ä¸‹ï¼š
 
-1.  µ÷ÓÃ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` ·½·¨¼ÓÔØ×Ô¶¯×°ÅäÀà£»
-2.  ½«µÃµ½µÄ×Ô¶¯×°ÅäÀà±£´æµ½ `autoConfigurationEntries` ÖĞ£»
-3.  µÃµ½¹ıÂËÀà£¬ÕâĞ©¹ıÂËÀà¾ÍÊÇÓÉ `@EnableAutoConfiguration` µÄ `exclude` »ò `excludeName` Ö¸¶¨µÄ£»
-4.  ½« `autoConfigurationEntries` ×ª»»Îª `LinkedHashSet`£¬½á¹ûÎª `processedConfigurations`£»
-5.  È¥³ı `processedConfigurations` ĞèÒª¹ıÂËµÄÀà£»
-6.  ½«µÚ 5 ²½µÃµ½µÄÀàÅÅĞòºó£¬·µ»Ø¡£
+1.  è°ƒç”¨ `AutoConfigurationImportSelector#getAutoConfigurationEntry(...)` æ–¹æ³•åŠ è½½è‡ªåŠ¨è£…é…ç±»ï¼›
+2.  å°†å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»ä¿å­˜åˆ° `autoConfigurationEntries` ä¸­ï¼›
+3.  å¾—åˆ°è¿‡æ»¤ç±»ï¼Œè¿™äº›è¿‡æ»¤ç±»å°±æ˜¯ç”± `@EnableAutoConfiguration` çš„ `exclude` æˆ– `excludeName` æŒ‡å®šçš„ï¼›
+4.  å°† `autoConfigurationEntries` è½¬æ¢ä¸º `LinkedHashSet`ï¼Œç»“æœä¸º `processedConfigurations`ï¼›
+5.  å»é™¤ `processedConfigurations` éœ€è¦è¿‡æ»¤çš„ç±»ï¼›
+6.  å°†ç¬¬ 5 æ­¥å¾—åˆ°çš„ç±»æ’åºåï¼Œè¿”å›ã€‚
 
-ÒÔÉÏµÚ 2 ½ÚÓëµÚ 3 ½Ú£¬·ÖÎöµÄÊÇ×Ô¶¯¼ÓÔØÀàµÄ¼ÓÔØ¹ı³Ì£¬ÎÒÃÇÔÙÀ´¿´¿´½ÓÏÂÀ´µÄ²½Öè¡£
+ä»¥ä¸Šç¬¬ 2 èŠ‚ä¸ç¬¬ 3 èŠ‚ï¼Œåˆ†æçš„æ˜¯è‡ªåŠ¨åŠ è½½ç±»çš„åŠ è½½è¿‡ç¨‹ï¼Œæˆ‘ä»¬å†æ¥çœ‹çœ‹æ¥ä¸‹æ¥çš„æ­¥éª¤ã€‚
 
-¶ÔÕÕ×Å´úÂë£¬ÎÒÃÇ»á·¢ÏÖ½ÓÏÂÀ´µÄ²½Öè¶¼±È½Ï¼òµ¥£¬ÕâÀïÒ²ÖğÒ»ËµÃ÷ÏÂ°É¡£
+å¯¹ç…§ç€ä»£ç ï¼Œæˆ‘ä»¬ä¼šå‘ç°æ¥ä¸‹æ¥çš„æ­¥éª¤éƒ½æ¯”è¾ƒç®€å•ï¼Œè¿™é‡Œä¹Ÿé€ä¸€è¯´æ˜ä¸‹å§ã€‚
 
-*   µÚ 2 ²½£¬±£´æµÃµ½µÄ×Ô¶¯×°ÅäÀà£¬Õâ¸ö²Ù×÷½ö½öÖ»ÊÇµ÷ÓÃÁË `List#add(...)` ·½·¨£¬½«µÃµ½µÄ `autoConfigurationEntry` ±£´æµ½ `autoConfigurationEntries`£¬Õâ¸ö½á¹¹ÊÇ `AutoConfigurationGroup` µÄ³ÉÔ±±äÁ¿£¬ÔÚ `AutoConfigurationImportSelector.AutoConfigurationGroup#selectImports` ·½·¨ÖĞ»áÓÃµ½£»
+*   ç¬¬ 2 æ­¥ï¼Œä¿å­˜å¾—åˆ°çš„è‡ªåŠ¨è£…é…ç±»ï¼Œè¿™ä¸ªæ“ä½œä»…ä»…åªæ˜¯è°ƒç”¨äº† `List#add(...)` æ–¹æ³•ï¼Œå°†å¾—åˆ°çš„ `autoConfigurationEntry` ä¿å­˜åˆ° `autoConfigurationEntries`ï¼Œè¿™ä¸ªç»“æ„æ˜¯ `AutoConfigurationGroup` çš„æˆå‘˜å˜é‡ï¼Œåœ¨ `AutoConfigurationImportSelector.AutoConfigurationGroup#selectImports` æ–¹æ³•ä¸­ä¼šç”¨åˆ°ï¼›
 
-*   µÚ 3 ²½£¬µÃµ½µÄÊÇËùÓĞµÄ¹ıÂËÀà£¬¸Ã¹ıÂËÀàÊÇ±éÀú `autoConfigurationEntries`£¬È»ºóÍ¨¹ı `autoConfigurationEntry#getExclusions` ·½·¨µÃµ½µÄ £¬Ç°ÃæÎÒÃÇÒ²Ìáµ½¹ı£¬`autoConfigurationEntry` Ö»°üº¬Á½¸ö³ÉÔ±±äÁ¿£º`configurations`(È¥³ıÅÅ³ıÀàºóµÄ×Ô¶¯×°ÅäÀà) Óë `exclusions`(Í¨¹ı `@EnableAutoConfiguration` Ö¸¶¨µÄÅÅ³ıÀà)£»
+*   ç¬¬ 3 æ­¥ï¼Œå¾—åˆ°çš„æ˜¯æ‰€æœ‰çš„è¿‡æ»¤ç±»ï¼Œè¯¥è¿‡æ»¤ç±»æ˜¯éå† `autoConfigurationEntries`ï¼Œç„¶åé€šè¿‡ `autoConfigurationEntry#getExclusions` æ–¹æ³•å¾—åˆ°çš„ ï¼Œå‰é¢æˆ‘ä»¬ä¹Ÿæåˆ°è¿‡ï¼Œ`autoConfigurationEntry` åªåŒ…å«ä¸¤ä¸ªæˆå‘˜å˜é‡ï¼š`configurations`(å»é™¤æ’é™¤ç±»åçš„è‡ªåŠ¨è£…é…ç±») ä¸ `exclusions`(é€šè¿‡ `@EnableAutoConfiguration` æŒ‡å®šçš„æ’é™¤ç±»)ï¼›
 
-*   µÚ 4 ²½£¬½« `List` ×ª»»Îª `LinkedHashSet`£¬²»·ÖÎö£»
+*   ç¬¬ 4 æ­¥ï¼Œå°† `List` è½¬æ¢ä¸º `LinkedHashSet`ï¼Œä¸åˆ†æï¼›
 
-*   µÚ 5 ²½£¬¶ÔËùÓĞµÄ×Ô¶¯×°ÅäÀàÔÙ½øĞĞÒ»´ÎÈ¥³ıÅÅ³ıÀàµÄ²Ù×÷£¬ÅÅ³ıµÄ¶ÔÏóÊÇËùÓĞµÄÅÅ³ıÀà£¬ÕâÖÖÇé¿öÓ¦¸ÃÊÇ»á¶ÔÍ¬Ò»ÏîÄ¿ÖĞÓĞ¶à¸ö `@EnableAutoConfiguration` µÄÇé¿ö£¬±ÈÈçµÚÒ»¸ö `@EnableAutoConfiguration` ×¢½âÅÅ³ı `A`¡¢`B` Á½¸öÀà£¬µÚ¶ş¸ö `@EnableAutoConfiguration` ×¢½âÅÅ³ı `C`£¬`D` Á½¸öÀà£¬ÄÇ×îÖÕÅÅ³ıµÄÊÇ `A`¡¢`B`¡¢`C`£¬`D` ËÄ¸öÀà£»
+*   ç¬¬ 5 æ­¥ï¼Œå¯¹æ‰€æœ‰çš„è‡ªåŠ¨è£…é…ç±»å†è¿›è¡Œä¸€æ¬¡å»é™¤æ’é™¤ç±»çš„æ“ä½œï¼Œæ’é™¤çš„å¯¹è±¡æ˜¯æ‰€æœ‰çš„æ’é™¤ç±»ï¼Œè¿™ç§æƒ…å†µåº”è¯¥æ˜¯ä¼šå¯¹åŒä¸€é¡¹ç›®ä¸­æœ‰å¤šä¸ª `@EnableAutoConfiguration` çš„æƒ…å†µï¼Œæ¯”å¦‚ç¬¬ä¸€ä¸ª `@EnableAutoConfiguration` æ³¨è§£æ’é™¤ `A`ã€`B` ä¸¤ä¸ªç±»ï¼Œç¬¬äºŒä¸ª `@EnableAutoConfiguration` æ³¨è§£æ’é™¤ `C`ï¼Œ`D` ä¸¤ä¸ªç±»ï¼Œé‚£æœ€ç»ˆæ’é™¤çš„æ˜¯ `A`ã€`B`ã€`C`ï¼Œ`D` å››ä¸ªç±»ï¼›
 
-*   µÚ 6 ²½£¬ÕâÒ»²½µÄÖ÷Òª²Ù×÷ÊÇÅÅĞò£¬Õâ¸öË³Ğò¾ö¶¨ÁË×Ô¶¯×°ÅäÀà×¢²áµ½ `beanFactory` ÖĞµÄË³Ğò£¬`AutoConfigureOrder`¡¢`@AutoConfigureAfter` Óë `@AutoConfigureBefore` ¾ÍÊÇÔÚÕâÀï´¦ÀíµÄ£¬¹ØÓÚÕâ¿éÄÚÈİ£¬¿ÉÒÔ²Î¿¼ [springboot ×Ô¶¯×°ÅäÖ®×Ô¶¯×°ÅäË³Ğò](https://my.oschina.net/funcy/blog/4921594).
+*   ç¬¬ 6 æ­¥ï¼Œè¿™ä¸€æ­¥çš„ä¸»è¦æ“ä½œæ˜¯æ’åºï¼Œè¿™ä¸ªé¡ºåºå†³å®šäº†è‡ªåŠ¨è£…é…ç±»æ³¨å†Œåˆ° `beanFactory` ä¸­çš„é¡ºåºï¼Œ`AutoConfigureOrder`ã€`@AutoConfigureAfter` ä¸ `@AutoConfigureBefore` å°±æ˜¯åœ¨è¿™é‡Œå¤„ç†çš„ï¼Œå…³äºè¿™å—å†…å®¹ï¼Œå¯ä»¥å‚è€ƒ [springboot è‡ªåŠ¨è£…é…ä¹‹è‡ªåŠ¨è£…é…é¡ºåº](https://my.oschina.net/funcy/blog/4921594).
 
-¾­¹ıÕâĞ©²½Öèºó£¬×Ô¶¯×°ÅäµÄ»ñÈ¡¾ÍÍê³ÉÁË¡£
+ç»è¿‡è¿™äº›æ­¥éª¤åï¼Œè‡ªåŠ¨è£…é…çš„è·å–å°±å®Œæˆäº†ã€‚
 
-### 5\. ×Ô¶¨Òå×Ô¶¯×°ÅäÀà
+### 5\. è‡ªå®šä¹‰è‡ªåŠ¨è£…é…ç±»
 
-ÁË½âÍê×Ô¶¯×°ÅäÀàµÄ¼ÓÔØ¹ı³Ìºó£¬ÎÒÃÇÒ²¿ÉÒÔ×Ô¶¨ÒåÒ»¸ö×Ô¶¯×°ÅäÀà¡£
+äº†è§£å®Œè‡ªåŠ¨è£…é…ç±»çš„åŠ è½½è¿‡ç¨‹åï¼Œæˆ‘ä»¬ä¹Ÿå¯ä»¥è‡ªå®šä¹‰ä¸€ä¸ªè‡ªåŠ¨è£…é…ç±»ã€‚
 
-1.  ×¼±¸Ò»¸ö×Ô¶¯×°ÅäÀà
+1.  å‡†å¤‡ä¸€ä¸ªè‡ªåŠ¨è£…é…ç±»
 
 ```
 @Configuration
@@ -398,9 +398,9 @@ public class MyAutoConfiguration {
 
 ```
 
-Õâ¸öÀàºÜ¼òµ¥£¬¾ÍÊÇÒ»¸ö±ê¼ÇÁË `@Configuration` µÄÀà£¬ÀàÖĞÊ¹ÓÃ `@Bean` ×¢½â´´½¨ÁËÒ»¸ö bean£¬ÔÚ´´½¨ bean µÄ¹ı³ÌÖĞ»á ´òÓ¡ "create object"¡£
+è¿™ä¸ªç±»å¾ˆç®€å•ï¼Œå°±æ˜¯ä¸€ä¸ªæ ‡è®°äº† `@Configuration` çš„ç±»ï¼Œç±»ä¸­ä½¿ç”¨ `@Bean` æ³¨è§£åˆ›å»ºäº†ä¸€ä¸ª beanï¼Œåœ¨åˆ›å»º bean çš„è¿‡ç¨‹ä¸­ä¼š æ‰“å° "create object"ã€‚
 
-1.  ×¼±¸ `META-INF/spring.factories` ÄÚÈİÈçÏÂ£º
+1.  å‡†å¤‡ `META-INF/spring.factories` å†…å®¹å¦‚ä¸‹ï¼š
 
 ```
 # Auto Configure
@@ -409,7 +409,7 @@ org.springframework.boot.learn.autoconfigure.demo01.configure.MyAutoConfiguratio
 
 ```
 
-1.  Ö÷Àà
+1.  ä¸»ç±»
 
 ```
 @SpringBootApplication
@@ -423,34 +423,34 @@ public class AutoconfigureDemo01Application {
 
 ```
 
-ÔËĞĞ½á¹ûÈçÏÂ£º
+è¿è¡Œç»“æœå¦‚ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-9337a7ac4ce4ff7d71e69bc952bfac30b12.png)
 
-¿ÉÒÔ¿´µ½£¬`create object` ³É¹¦´òÓ¡ÁË¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`create object` æˆåŠŸæ‰“å°äº†ã€‚
 
-ÄÇÕâ¸ö `bean` ÊÇÍ¨¹ı°üÉ¨Ãè´´½¨µÄ£¬»¹ÊÇ×Ô¶¯×°Åäµ¼ÈëµÄÄØ£¿ÎÒÃÇÍ¨¹ıµ÷ÊÔµÄ·½Ê½À´¿´ÏÂ×Ô¶¯×°ÅäµÃµ½µÄÀà£º
+é‚£è¿™ä¸ª `bean` æ˜¯é€šè¿‡åŒ…æ‰«æåˆ›å»ºçš„ï¼Œè¿˜æ˜¯è‡ªåŠ¨è£…é…å¯¼å…¥çš„å‘¢ï¼Ÿæˆ‘ä»¬é€šè¿‡è°ƒè¯•çš„æ–¹å¼æ¥çœ‹ä¸‹è‡ªåŠ¨è£…é…å¾—åˆ°çš„ç±»ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-27bea49ddeae2f0f720ea338914cc443aec.png)
 
-¿ÉÒÔ¿´µ½£¬`MyAutoConfiguration` ¾ÍÔÚ×Ô¶¯×°ÅäÀàµÄÁĞ±íÖĞÁË¡£
+å¯ä»¥çœ‹åˆ°ï¼Œ`MyAutoConfiguration` å°±åœ¨è‡ªåŠ¨è£…é…ç±»çš„åˆ—è¡¨ä¸­äº†ã€‚
 
-×¢Òâµ½£¬`MyAutoConfiguration` ¼ÓÁË `@Configuration` ×¢½â£¬ ÄÇÃ´Ëü¾¿¾¹ÊÇÓÉ sping ÈİÆ÷É¨Ãèµ½µÄ£¬»¹ÊÇÓÉ×Ô¶¯×°ÅäµÃµ½µÄÄØ£¿
+æ³¨æ„åˆ°ï¼Œ`MyAutoConfiguration` åŠ äº† `@Configuration` æ³¨è§£ï¼Œ é‚£ä¹ˆå®ƒç©¶ç«Ÿæ˜¯ç”± sping å®¹å™¨æ‰«æåˆ°çš„ï¼Œè¿˜æ˜¯ç”±è‡ªåŠ¨è£…é…å¾—åˆ°çš„å‘¢ï¼Ÿ
 
-ÔÚ[¡¾springboot Ô´Âë·ÖÎö¡¿@SpringBootApplication ×¢½â](https://my.oschina.net/funcy/blog/4870882)Ò»ÎÄÖĞ£¬ÎÒÃÇÌáµ½ `SpringBootApplication` ×¢½âÖĞµÄ `@ComponentScan` »áÖ¸¶¨Ò»¸ö¹ıÂËÆ÷£º`AutoConfigurationExcludeFilter`£¬Õâ¸ö¹ıÂËÆ÷»á¹ıÂË×Ô¶¯×°ÅäÀà£¬ÕâÀïÎÒÃÇ¿´ÏÂÄ¿Ç°ÎªÖ¹ `beanFactory` ¶¼ÓĞÄÄĞ© `beanName`£º
+åœ¨[ã€springboot æºç åˆ†æã€‘@SpringBootApplication æ³¨è§£](https://my.oschina.net/funcy/blog/4870882)ä¸€æ–‡ä¸­ï¼Œæˆ‘ä»¬æåˆ° `SpringBootApplication` æ³¨è§£ä¸­çš„ `@ComponentScan` ä¼šæŒ‡å®šä¸€ä¸ªè¿‡æ»¤å™¨ï¼š`AutoConfigurationExcludeFilter`ï¼Œè¿™ä¸ªè¿‡æ»¤å™¨ä¼šè¿‡æ»¤è‡ªåŠ¨è£…é…ç±»ï¼Œè¿™é‡Œæˆ‘ä»¬çœ‹ä¸‹ç›®å‰ä¸ºæ­¢ `beanFactory` éƒ½æœ‰å“ªäº› `beanName`ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-1725008451f5516ab540bcc3ae13d1f37ee.png)
 
-¿ÉÒÔ¿´µ½£¬²¢Ã»ÓĞ `MyAutoConfiguration`£¬Òò´Ë´ËÊ±Ëü»¹Ã»±»É¨Ãè½ø `beanFactory` ÖĞ¡£
+å¯ä»¥çœ‹åˆ°ï¼Œå¹¶æ²¡æœ‰ `MyAutoConfiguration`ï¼Œå› æ­¤æ­¤æ—¶å®ƒè¿˜æ²¡è¢«æ‰«æè¿› `beanFactory` ä¸­ã€‚
 
-µ±È»£¬ÎÒÃÇÒ²¿ÉÒÔ°Ñ `MyAutoConfiguration` ÉÏÃæµÄ `@Configuration` ×¢½âÈ¥µô£¬ÕâÑù¾Í²»»áÓĞÕâ¸öÀ§»óÁË¡£
+å½“ç„¶ï¼Œæˆ‘ä»¬ä¹Ÿå¯ä»¥æŠŠ `MyAutoConfiguration` ä¸Šé¢çš„ `@Configuration` æ³¨è§£å»æ‰ï¼Œè¿™æ ·å°±ä¸ä¼šæœ‰è¿™ä¸ªå›°æƒ‘äº†ã€‚
 
-### 6\. ×Ü½á
+### 6\. æ€»ç»“
 
-±¾ÎÄ´Ó `@EnableAutoConfiguration` ×¢½â³ö·¢£¬·ÖÎöÁË×Ô¶¯×°ÅäÀàµÄ¼ÓÔØÁ÷³Ì£¬¼ÓÔØÁ÷³ÌÔÚ `AutoConfigurationImportSelector#getAutoConfigurationEntry` ·½·¨ÖĞ£¬×îÖÕ¼ÓÔØµÄÊÇ `META-INF/spring.factories` ÎÄ¼şÖĞ key ÊÇ `org.springframework.boot.autoconfigure.EnableAutoConfiguration` µÄÀà¡£
+æœ¬æ–‡ä» `@EnableAutoConfiguration` æ³¨è§£å‡ºå‘ï¼Œåˆ†æäº†è‡ªåŠ¨è£…é…ç±»çš„åŠ è½½æµç¨‹ï¼ŒåŠ è½½æµç¨‹åœ¨ `AutoConfigurationImportSelector#getAutoConfigurationEntry` æ–¹æ³•ä¸­ï¼Œæœ€ç»ˆåŠ è½½çš„æ˜¯ `META-INF/spring.factories` æ–‡ä»¶ä¸­ key æ˜¯ `org.springframework.boot.autoconfigure.EnableAutoConfiguration` çš„ç±»ã€‚
 
-µÃµ½×Ô¶¯×°ÅäÀàºó£¬spring »á½«Æä×¢²áµ½ÈİÆ÷ÖĞ£¬´ËÊ±ËüÃÇ»¹ÊÇÒ»¸öµÄ `BeanDefinition`£¬ÒªÏë³ÉÎª spring bean£¬»¹µÃ¾­¹ı `ConditionalOnBean`¡¢`ConditionalOnClass` µÈ×¢½âµÄ¿¼Ñé£¬ÕâĞ©ÎÒÃÇºóÃæÔÙ·ÖÎö¡£
+å¾—åˆ°è‡ªåŠ¨è£…é…ç±»åï¼Œspring ä¼šå°†å…¶æ³¨å†Œåˆ°å®¹å™¨ä¸­ï¼Œæ­¤æ—¶å®ƒä»¬è¿˜æ˜¯ä¸€ä¸ªçš„ `BeanDefinition`ï¼Œè¦æƒ³æˆä¸º spring beanï¼Œè¿˜å¾—ç»è¿‡ `ConditionalOnBean`ã€`ConditionalOnClass` ç­‰æ³¨è§£çš„è€ƒéªŒï¼Œè¿™äº›æˆ‘ä»¬åé¢å†åˆ†æã€‚
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4870868](https://my.oschina.net/funcy/blog/4870868) £¬ÏŞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖĞÄÑÃâÓĞ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õı£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŸæ–‡é“¾æ¥ï¼š[https://my.oschina.net/funcy/blog/4870868](https://my.oschina.net/funcy/blog/4870868) ï¼Œé™äºä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿æŒ‡æ­£ï¼åŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚_

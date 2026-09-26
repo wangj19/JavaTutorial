@@ -1,41 +1,41 @@
-Ç°Ãæ¼¸ÆªÎÄÕÂ·ÖÎö springboot µÄÆô¶¯Á÷³Ì£¬±¾ÎÄÀ´×Ü½áÏÂ¡£
+å‰é¢å‡ ç¯‡æ–‡ç« åˆ†æž springboot çš„å¯åŠ¨æµç¨‹ï¼Œæœ¬æ–‡æ¥æ€»ç»“ä¸‹ã€‚
 
-ÎÄÕÂÒ»¿ªÊ¼£¬´Ó `SpringApplication.run(Demo01Application.class, args);` ´úÂëÈëÊÖ£¬×ÅÖØ·ÖÎöÁËÁ½¸ö·½·¨£º
+æ–‡ç« ä¸€å¼€å§‹ï¼Œä»Ž `SpringApplication.run(Demo01Application.class, args);` ä»£ç å…¥æ‰‹ï¼Œç€é‡åˆ†æžäº†ä¸¤ä¸ªæ–¹æ³•ï¼š
 
 *   `SpringApplication#SpringApplication(...)`
 *   `SpringApplication#run(...)`
 
-ÕâÁ½¸ö·½·¨º­¸ÇÁË springboot Æô¶¯µÄÕû¸öÁ÷³Ì£¬ÕâÀïÎÒÃÇÖðÒ»×Ü½áÏÂ ¡£
+è¿™ä¸¤ä¸ªæ–¹æ³•æ¶µç›–äº† springboot å¯åŠ¨çš„æ•´ä¸ªæµç¨‹ï¼Œè¿™é‡Œæˆ‘ä»¬é€ä¸€æ€»ç»“ä¸‹ ã€‚
 
 ### `SpringApplication#SpringApplication(...)`
 
-Õâ¸ö·½·¨µÄÁ÷³ÌÈçÏÂ£º
+è¿™ä¸ªæ–¹æ³•çš„æµç¨‹å¦‚ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-e9a43f1c523c0f19d37e4741580ed32ca08.png)
 
-ÆäÖÐ£¬
+å…¶ä¸­ï¼Œ
 
-*   `webApplicationType` »áÔÚºóÃæ¾ö¶¨´´½¨Ê²Ã´ÀàÐÍµÄ `applicationContext`£»
-*   `Initialzers` À´×ÔÓÚ `META-INF/spring.factories`£¬»áÔÚ springboot Æô¶¯Ê±×öÒ»Ð©³õÊ¼»¯²Ù×÷£»
-*   `Listteners` Í¬ÑùÀ´×ÔÓÚ `META-INF/spring.factories`£¬Ìá¹©ÁË¶à¸ö·½·¨£¬¿ÉÒÔ·½±ãµØ¼àÌý springboot µÄÖ´ÐÐ¹ý³Ì¡£
+*   `webApplicationType` ä¼šåœ¨åŽé¢å†³å®šåˆ›å»ºä»€ä¹ˆç±»åž‹çš„ `applicationContext`ï¼›
+*   `Initialzers` æ¥è‡ªäºŽ `META-INF/spring.factories`ï¼Œä¼šåœ¨ springboot å¯åŠ¨æ—¶åšä¸€äº›åˆå§‹åŒ–æ“ä½œï¼›
+*   `Listteners` åŒæ ·æ¥è‡ªäºŽ `META-INF/spring.factories`ï¼Œæä¾›äº†å¤šä¸ªæ–¹æ³•ï¼Œå¯ä»¥æ–¹ä¾¿åœ°ç›‘å¬ springboot çš„æ‰§è¡Œè¿‡ç¨‹ã€‚
 
 ### `SpringApplication#run(...)`
 
-Õâ²¿·ÖµÄÁ÷³ÌÈçÏÂ£º
+è¿™éƒ¨åˆ†çš„æµç¨‹å¦‚ä¸‹ï¼š
 
 ![](https://java-tutorial.oss-cn-shanghai.aliyuncs.com/up-07a6b491fbe69b8dcbd41e59a8543f06671.png)
 
-ÆäÖÐ£¬
+å…¶ä¸­ï¼Œ
 
-*   `getRunListener()` »á»ñÈ¡ËùÓÐµÄ `Listeners`£¬Ò²¾ÍÊÇÔÚ `SpringApplication#SpringApplication(...)` ÖÐ »ñÈ¡µÄ `Listeners`£¬`Listeners` ÖÐÌá¹©ÁËÖÚ¶à·½·¨£¬¿É¼àÌý springboot µÄÆô¶¯Á÷³Ì£»
-*   ×¼±¸ÔËÐÐ»·¾³Ê±£¬»á¸ù¾Ý `webApplicationType` µÄÀàÐÍÀ´´´½¨¡¢ÅäÖÃ£¬µÃµ½ÏàÓ¦ÀàÐÍµÄ `Environment` ¶ÔÏó£¬Õâ ¸ö¶ÔÏóºóÃæ»áÉèÖÃµ½ spring ÈÝÆ÷ÖÐ£¬spring ÈÝÆ÷ÖÐÊ¹ÓÃµÄ `Environment` ¾ÍÊÇÔÚÕâÀï´´½¨¼°ÅäÖÃµÄ£»
-*   ´´½¨ ioc ÈÝÆ÷Ê±£¬Ò²ÊÇ¸ù¾Ý `webApplicationType` µÄÀàÐÍÀ´´´½¨¶ÔÓ¦µÄ `ApplicationContext`£»
-*   ÔÚ×¼±¸ ioc ÈÝÆ÷µÄ·½·¨ÖÐ£¬»á¶Ô `ApplicationContext` ×öÒ»¸öÅäÖÃ £¬`Initializers` Ò²»áÔÚÕâÀïÔËÐÐ£»
-*   Æô¶¯ ioc ÈÝÆ÷Ê±£¬springboot »á×¢²áÒ»¸ö shutdownhook£¬ÓÃÒÔÔÚÏîÄ¿¹Ø±ÕÊ±´¦Àí¹Ø±Õ²Ù×÷£¬ÁíÍâ£¬¶ÔÓÚ ioc µÄÆô¶¯Á÷³Ì£¬springboot ÔÚÆäÀ©Õ¹ÖÐ»á´´½¨¼°Æô¶¯ web ÈÝÆ÷£»
-*   springboot Ìá¹©ÁËÁ½ÖÖÀàÐÍµÄÔËÐÐÆ÷£º`ApplicationRunner`¡¢`CommandLineRunner`£¬ÔÚÆô¶¯ºó»áµ÷ÓÃÁ½ÕßµÄ·½·¨¡£
+*   `getRunListener()` ä¼šèŽ·å–æ‰€æœ‰çš„ `Listeners`ï¼Œä¹Ÿå°±æ˜¯åœ¨ `SpringApplication#SpringApplication(...)` ä¸­ èŽ·å–çš„ `Listeners`ï¼Œ`Listeners` ä¸­æä¾›äº†ä¼—å¤šæ–¹æ³•ï¼Œå¯ç›‘å¬ springboot çš„å¯åŠ¨æµç¨‹ï¼›
+*   å‡†å¤‡è¿è¡ŒçŽ¯å¢ƒæ—¶ï¼Œä¼šæ ¹æ® `webApplicationType` çš„ç±»åž‹æ¥åˆ›å»ºã€é…ç½®ï¼Œå¾—åˆ°ç›¸åº”ç±»åž‹çš„ `Environment` å¯¹è±¡ï¼Œè¿™ ä¸ªå¯¹è±¡åŽé¢ä¼šè®¾ç½®åˆ° spring å®¹å™¨ä¸­ï¼Œspring å®¹å™¨ä¸­ä½¿ç”¨çš„ `Environment` å°±æ˜¯åœ¨è¿™é‡Œåˆ›å»ºåŠé…ç½®çš„ï¼›
+*   åˆ›å»º ioc å®¹å™¨æ—¶ï¼Œä¹Ÿæ˜¯æ ¹æ® `webApplicationType` çš„ç±»åž‹æ¥åˆ›å»ºå¯¹åº”çš„ `ApplicationContext`ï¼›
+*   åœ¨å‡†å¤‡ ioc å®¹å™¨çš„æ–¹æ³•ä¸­ï¼Œä¼šå¯¹ `ApplicationContext` åšä¸€ä¸ªé…ç½® ï¼Œ`Initializers` ä¹Ÿä¼šåœ¨è¿™é‡Œè¿è¡Œï¼›
+*   å¯åŠ¨ ioc å®¹å™¨æ—¶ï¼Œspringboot ä¼šæ³¨å†Œä¸€ä¸ª shutdownhookï¼Œç”¨ä»¥åœ¨é¡¹ç›®å…³é—­æ—¶å¤„ç†å…³é—­æ“ä½œï¼Œå¦å¤–ï¼Œå¯¹äºŽ ioc çš„å¯åŠ¨æµç¨‹ï¼Œspringboot åœ¨å…¶æ‰©å±•ä¸­ä¼šåˆ›å»ºåŠå¯åŠ¨ web å®¹å™¨ï¼›
+*   springboot æä¾›äº†ä¸¤ç§ç±»åž‹çš„è¿è¡Œå™¨ï¼š`ApplicationRunner`ã€`CommandLineRunner`ï¼Œåœ¨å¯åŠ¨åŽä¼šè°ƒç”¨ä¸¤è€…çš„æ–¹æ³•ã€‚
 
-ÒÔÉÏÄÚÈÝ½²µÄ±È½Ï¼òÂÔ£¬Èç¹ûÒªÏêÏ¸ÁË½â£¬¿É×ÔÐÐÔÄ¶ÁÇ°ÃæµÄÎÄÕÂ¡£
+ä»¥ä¸Šå†…å®¹è®²çš„æ¯”è¾ƒç®€ç•¥ï¼Œå¦‚æžœè¦è¯¦ç»†äº†è§£ï¼Œå¯è‡ªè¡Œé˜…è¯»å‰é¢çš„æ–‡ç« ã€‚
 
 * * *
 
-_±¾ÎÄÔ­ÎÄÁ´½Ó£º[https://my.oschina.net/funcy/blog/4906588](https://my.oschina.net/funcy/blog/4906588) £¬ÏÞÓÚ×÷Õß¸öÈËË®Æ½£¬ÎÄÖÐÄÑÃâÓÐ´íÎóÖ®´¦£¬»¶Ó­Ö¸Õý£¡Ô­´´²»Ò×£¬ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£_
+_æœ¬æ–‡åŽŸæ–‡é“¾æŽ¥ï¼š[https://my.oschina.net/funcy/blog/4906588](https://my.oschina.net/funcy/blog/4906588) ï¼Œé™äºŽä½œè€…ä¸ªäººæ°´å¹³ï¼Œæ–‡ä¸­éš¾å…æœ‰é”™è¯¯ä¹‹å¤„ï¼Œæ¬¢è¿ŽæŒ‡æ­£ï¼åŽŸåˆ›ä¸æ˜“ï¼Œå•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…èŽ·å¾—æŽˆæƒï¼Œéžå•†ä¸šè½¬è½½è¯·æ³¨æ˜Žå‡ºå¤„ã€‚_
